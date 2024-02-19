@@ -1,0 +1,355 @@
+fileFormatVersion: 2
+guid: 383f23903b459d54795ea9d98a0d3c9f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3812038031784012661
+    second: J2_0
+  - first:
+      213: 2050077839777304748
+    second: J2_1
+  - first:
+      213: 5874485422329992166
+    second: J2_2
+  - first:
+      213: 2119227225536013967
+    second: J2_3
+  - first:
+      213: -7465624800732251476
+    second: J2_4
+  - first:
+      213: 6444188111521432618
+    second: J2_5
+  - first:
+      213: -843855882022279711
+    second: J2_6
+  - first:
+      213: 5738583476793841412
+    second: J2_7
+  - first:
+      213: -5313773004496188003
+    second: J2_8
+  - first:
+      213: -3191844668437540332
+    second: J2_9
+  - first:
+      213: 6602577412404006917
+    second: J2_10
+  - first:
+      213: 5434964977517215276
+    second: J2_11
+  - first:
+      213: 668076229766285087
+    second: J2_12
+  - first:
+      213: -7567401807569150617
+    second: J2_13
+  - first:
+      213: 1715817385907512871
+    second: J2_14
+  - first:
+      213: 2102258522298348331
+    second: J2_15
+  - first:
+      213: 5065242292649018809
+    second: J2_16
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: J2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 49
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      tessellationDetail: -1
+      bones: []
+      spriteID: b841c3d6b9be81bc0800000000000000
+      internalID: -3812038031784012661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: J2_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 49
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ff834264fcd21c4fbfd2ad57e89f057
+      internalID: 2050077839777304748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: J2_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 0
+        width: 49
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ad345ac9eae95849b4c4cee924d7c43
+      internalID: 5874485422329992166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: J2_3
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 49
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c91fc9420e45c419bbb6ddd0bad85b
+      internalID: 2119227225536013967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: J2_4
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 0
+        width: 49
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e898232c7a8285429f7d623b53c6b86
+      internalID: -7465624800732251476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: J2_5
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 0
+        width: 49
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      physicsShape:
+      - - {x: 0, y: -50}
+        - {x: 24.5, y: 0}
+        - {x: 0, y: 50}
+        - {x: -24.5, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f5b48284de6bfa43a05686dbd5a5cd0
+      internalID: 1108383083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      J2_0: -3812038031784012661
+      J2_1: 2050077839777304748
+      J2_2: 5874485422329992166
+      J2_3: 2119227225536013967
+      J2_4: -7465624800732251476
+      J2_5: 1108383083
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,4 @@
+repository "1.0@Mausina24@cloud"
+  path "/"
+    br "/main"
+    co "/main"
