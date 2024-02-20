@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      barmaid_01_0: 4415529269842108486
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

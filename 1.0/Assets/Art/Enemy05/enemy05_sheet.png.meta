@@ -692,7 +692,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      enemy05_sheet_0: -3765357420754830917
+      enemy05_sheet_1: 8327164058782189630
+      enemy05_sheet_10: -6250285064963401504
+      enemy05_sheet_11: 1382911627815478484
+      enemy05_sheet_12: 5834024179371879462
+      enemy05_sheet_13: 2769599483604668010
+      enemy05_sheet_14: 1053342792683045085
+      enemy05_sheet_15: 6767351681324711330
+      enemy05_sheet_16: -3367348942678143399
+      enemy05_sheet_17: -1892560339032270977
+      enemy05_sheet_18: 3315657910601621265
+      enemy05_sheet_19: 6251543147330776840
+      enemy05_sheet_2: 3202196793029933303
+      enemy05_sheet_20: 907941599908155879
+      enemy05_sheet_21: 707805688337960155
+      enemy05_sheet_22: 9220251738543742080
+      enemy05_sheet_23: -435372182854757126
+      enemy05_sheet_3: 969201957560143698
+      enemy05_sheet_4: 7631253521574963409
+      enemy05_sheet_5: 8884659676271035940
+      enemy05_sheet_6: -5241098061429067917
+      enemy05_sheet_7: 4476810429242199486
+      enemy05_sheet_8: 8562242856802029402
+      enemy05_sheet_9: -87072530788358607
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

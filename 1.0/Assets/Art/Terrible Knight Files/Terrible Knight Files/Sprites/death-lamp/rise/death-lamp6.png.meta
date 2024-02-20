@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      death-lamp6_0: -7562372697926639297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

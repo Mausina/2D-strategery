@@ -9,15 +9,19 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        PlayerController playerController = collision.GetComponent<PlayerController>();
         Damageable damageable = collision.GetComponent<Damageable>();
-        
-        if (damageable != null) 
+
+        // Check if the object is damageable and not defending
+        if (damageable != null && (playerController == null || !playerController.IsDefending))
         {
             bool gotHit = damageable.Hit(attackDamage, knockback);
-            if (gotHit) 
-            { 
+            if (gotHit)
+            {
                 Debug.Log(collision.name + " hit for " + attackDamage);
             }
+           
         }
     }
+
 }

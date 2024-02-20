@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      beggar_04_0: 2057771383819333716
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

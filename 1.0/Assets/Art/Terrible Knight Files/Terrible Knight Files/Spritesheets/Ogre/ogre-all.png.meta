@@ -548,7 +548,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ogre-all_0: -3594484457629969995
+      ogre-all_1: -4664767155103432201
+      ogre-all_10: -1411118602359390288
+      ogre-all_11: -1274766509915135589
+      ogre-all_12: 8862683930606685096
+      ogre-all_13: -6190071336135440697
+      ogre-all_14: 1787186343413232086
+      ogre-all_15: 910273743808106140
+      ogre-all_16: 5467243515356100486
+      ogre-all_17: -7389026037198933967
+      ogre-all_2: 1508447386602987955
+      ogre-all_3: -3695864615766751128
+      ogre-all_4: -7975219477362993523
+      ogre-all_5: 8107000302029758085
+      ogre-all_6: 5518198650203346236
+      ogre-all_7: 6777313829327553006
+      ogre-all_8: -3708555608199364136
+      ogre-all_9: 425735000807090001
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

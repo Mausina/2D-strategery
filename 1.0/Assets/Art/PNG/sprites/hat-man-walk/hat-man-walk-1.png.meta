@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hat-man-walk-1_0: 4621059404976809294
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

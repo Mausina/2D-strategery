@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ogre-walk-unarmed4_0: -1608595923698698378
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

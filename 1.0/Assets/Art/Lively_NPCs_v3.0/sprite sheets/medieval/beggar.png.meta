@@ -236,7 +236,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      beggar_0: 1758886893875271299
+      beggar_1: -2558054790027443184
+      beggar_2: -4331409648259820851
+      beggar_3: -7901225729642760323
+      beggar_4: 9092362684649297373
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

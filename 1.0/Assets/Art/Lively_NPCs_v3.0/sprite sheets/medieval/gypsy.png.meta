@@ -260,7 +260,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gypsy_0: -8336581216189555712
+      gypsy_1: -3055035762531606059
+      gypsy_2: 3076317779257515468
+      gypsy_3: 2228074536336823560
+      gypsy_4: 4122667020098489660
+      gypsy_5: -6410816236295858838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

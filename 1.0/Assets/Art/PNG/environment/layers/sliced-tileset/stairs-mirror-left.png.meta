@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stairs-mirror-left_0: 2738582403993590355
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

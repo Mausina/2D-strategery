@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      werewolf-fall1_0: 7649089775787203785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -188,7 +188,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mutant-toad-attack_0: -9019813706511003728
+      mutant-toad-attack_1: -8881004204805916132
+      mutant-toad-attack_2: 1442993183183069376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

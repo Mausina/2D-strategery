@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ogre-idle3_0: -5443337111762203169
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      masked_woman_2_0: 5267391130472687390
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

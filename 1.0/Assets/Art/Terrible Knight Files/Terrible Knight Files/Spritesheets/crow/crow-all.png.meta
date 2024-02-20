@@ -308,7 +308,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crow-all_0: 2562556696740005728
+      crow-all_1: -2220013663899343128
+      crow-all_2: -8402940888655830413
+      crow-all_3: 5274659223050855977
+      crow-all_4: 5574621459551208797
+      crow-all_5: -1081826230379775533
+      crow-all_6: -5019049297073391742
+      crow-all_7: 553737295356061015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

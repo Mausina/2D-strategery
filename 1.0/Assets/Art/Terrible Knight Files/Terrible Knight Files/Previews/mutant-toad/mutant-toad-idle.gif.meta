@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mutant-toad-idle_0: 4217304980618897571
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

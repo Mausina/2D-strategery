@@ -212,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hat-man-idle_0: 2177280170693991130
+      hat-man-idle_1: -310498643037018469
+      hat-man-idle_2: -5628793773226165213
+      hat-man-idle_3: 5508982163796420381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

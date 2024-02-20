@@ -236,7 +236,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      merchant_0: 6549793444401180961
+      merchant_1: 65063161555740034
+      merchant_2: 1614086757527820424
+      merchant_3: -8227650458184809490
+      merchant_4: -3352636522432418542
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

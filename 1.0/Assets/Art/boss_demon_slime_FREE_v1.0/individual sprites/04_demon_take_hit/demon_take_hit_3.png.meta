@@ -188,7 +188,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      demon_take_hit_3_0: 4612154288656733579
+      demon_take_hit_3_1: -1619150994847067844
+      demon_take_hit_3_2: -4736208238560625656
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

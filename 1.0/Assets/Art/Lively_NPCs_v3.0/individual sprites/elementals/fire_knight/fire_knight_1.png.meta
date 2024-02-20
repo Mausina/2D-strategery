@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fire_knight_1_0: -512218152078212105
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

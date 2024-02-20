@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crystal_mauler_4_0: 6877360666796738977
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -212,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      priestess_2_0: 5672011219174130903
+      priestess_2_1: 5239791699442338489
+      priestess_2_2: 4904783815459955131
+      priestess_2_3: -8630542600499709589
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

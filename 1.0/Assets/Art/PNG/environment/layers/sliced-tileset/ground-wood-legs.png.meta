@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ground-wood-legs_0: 4984721140958496614
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

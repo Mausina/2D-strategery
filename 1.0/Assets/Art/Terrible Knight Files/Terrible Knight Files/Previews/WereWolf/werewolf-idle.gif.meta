@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      werewolf-idle_0: 1025074656149104167
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -236,7 +236,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gunslinger_0: 8660985937403008085
+      gunslinger_1: -7581480267892197045
+      gunslinger_2: -8884899378164507358
+      gunslinger_3: 4581952626220237602
+      gunslinger_4: 3658439265524577628
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      barkeep_04_0: -7637275610796580166
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

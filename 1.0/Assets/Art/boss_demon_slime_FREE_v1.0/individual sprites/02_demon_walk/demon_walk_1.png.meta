@@ -212,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      demon_walk_1_0: -3240190119498413776
+      demon_walk_1_1: 55611847106393867
+      demon_walk_1_2: -452333040419211524
+      demon_walk_1_3: 3646993818300377039
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

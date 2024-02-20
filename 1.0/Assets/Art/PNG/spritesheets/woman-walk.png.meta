@@ -260,7 +260,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      woman-walk_0: -7055692883311893104
+      woman-walk_1: 7057545941973739177
+      woman-walk_2: -5717916955860902053
+      woman-walk_3: -7108666070887215665
+      woman-walk_4: -7572237577892657378
+      woman-walk_5: -373691635977516054
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

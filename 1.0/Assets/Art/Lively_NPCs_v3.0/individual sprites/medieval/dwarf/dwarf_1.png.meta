@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dwarf_1_0: -1924110628766792234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

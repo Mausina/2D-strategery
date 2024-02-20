@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crow-fly2_0: -3103820403607092130
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

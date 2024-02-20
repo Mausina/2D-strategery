@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      oldman-walk-5_0: -5836571639153145084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

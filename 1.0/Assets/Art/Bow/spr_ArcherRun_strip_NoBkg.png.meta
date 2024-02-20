@@ -308,7 +308,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spr_ArcherRun_strip_NoBkg_0: -2059313341184450652
+      spr_ArcherRun_strip_NoBkg_1: 3298773136771543401
+      spr_ArcherRun_strip_NoBkg_2: -2522910385747591830
+      spr_ArcherRun_strip_NoBkg_3: 1517452464379883438
+      spr_ArcherRun_strip_NoBkg_4: -4839675686180813581
+      spr_ArcherRun_strip_NoBkg_5: 7017127527191711373
+      spr_ArcherRun_strip_NoBkg_6: 2872329259373745873
+      spr_ArcherRun_strip_NoBkg_7: -4445661109594356626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

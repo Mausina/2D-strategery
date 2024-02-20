@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crow-front3_0: 8500929957196433791
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bearded-idle-5_0: -8228856018704402712
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

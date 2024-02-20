@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wind_hashashin_4_0: 1424085656762719084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

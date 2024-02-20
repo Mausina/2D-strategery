@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fairy_2_0: -8203591687936870675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

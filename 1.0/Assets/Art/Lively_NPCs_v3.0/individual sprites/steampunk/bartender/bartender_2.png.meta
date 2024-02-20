@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bartender_2_0: 3382021351511429193
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

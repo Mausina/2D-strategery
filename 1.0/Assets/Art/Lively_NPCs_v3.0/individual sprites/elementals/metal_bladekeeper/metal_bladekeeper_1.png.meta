@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      metal_bladekeeper_1_0: -7237642543970102676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

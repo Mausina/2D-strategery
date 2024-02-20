@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bearded-walk-4_0: -3927611149120197613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

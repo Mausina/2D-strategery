@@ -452,7 +452,21 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spr_ArcherDash_strip_NoBkg_0: -6383840792322587427
+      spr_ArcherDash_strip_NoBkg_1: 2658056000246406634
+      spr_ArcherDash_strip_NoBkg_10: -3356522382420394467
+      spr_ArcherDash_strip_NoBkg_11: -6421938143169101536
+      spr_ArcherDash_strip_NoBkg_12: 4343829271563977093
+      spr_ArcherDash_strip_NoBkg_13: 1057635630311590892
+      spr_ArcherDash_strip_NoBkg_2: 1956391048688057792
+      spr_ArcherDash_strip_NoBkg_3: 8315193402684791560
+      spr_ArcherDash_strip_NoBkg_4: -6607601680713929482
+      spr_ArcherDash_strip_NoBkg_5: -1904458416949389513
+      spr_ArcherDash_strip_NoBkg_6: -4681940711591112114
+      spr_ArcherDash_strip_NoBkg_7: 6504735261283429872
+      spr_ArcherDash_strip_NoBkg_8: 7170064908779786744
+      spr_ArcherDash_strip_NoBkg_9: -6658175687907798547
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

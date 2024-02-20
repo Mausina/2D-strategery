@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      crow-idle3_0: -1055060320953213557
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

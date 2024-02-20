@@ -908,7 +908,40 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      player-all_0: -7330583089273548130
+      player-all_1: -6890963160243929358
+      player-all_10: 8076510140293084034
+      player-all_11: -8543991374223588403
+      player-all_12: -2193709177386211826
+      player-all_13: -3016371203147705464
+      player-all_14: 909966594860221459
+      player-all_15: -3538677121699297984
+      player-all_16: -6564655294471922340
+      player-all_17: 1058267090891429092
+      player-all_18: 5698787212406222293
+      player-all_19: 2380622873992481343
+      player-all_2: -4805623942200532524
+      player-all_20: 5405080735597038344
+      player-all_21: 4088276188746588255
+      player-all_22: 6376140048670583622
+      player-all_23: -6791507947516318023
+      player-all_24: -5316021737565444039
+      player-all_25: 3566601921562170529
+      player-all_26: 4738017268286927475
+      player-all_27: 9216707830416860802
+      player-all_28: 5247833792307203880
+      player-all_29: 4792558548638584445
+      player-all_3: 3116609371910547555
+      player-all_30: 2275236656950807813
+      player-all_31: -3129718151403439014
+      player-all_32: -3998894968465655147
+      player-all_4: -4711639696040531208
+      player-all_5: -2022552297598551038
+      player-all_6: -6339892769318914625
+      player-all_7: -7832973829160259189
+      player-all_8: 9166727424142371476
+      player-all_9: 9080529702730750351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

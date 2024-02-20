@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      woman-idle-1_0: 3562525684888074242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

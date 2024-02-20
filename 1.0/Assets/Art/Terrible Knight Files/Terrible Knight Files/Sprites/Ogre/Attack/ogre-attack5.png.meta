@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ogre-attack5_0: 9196228379197716364
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

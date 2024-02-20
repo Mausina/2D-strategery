@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      water_priestess_3_0: 598436056182749233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

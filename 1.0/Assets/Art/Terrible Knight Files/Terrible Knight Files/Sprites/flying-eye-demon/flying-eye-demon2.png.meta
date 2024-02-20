@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      flying-eye-demon2_0: 3930553659659705133
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

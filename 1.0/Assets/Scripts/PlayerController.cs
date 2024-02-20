@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private bool _isDefending = false;
     public HealthBar healthBar;
     TouchingDirection touchingDirection;
+    public bool IsDefending
+{
+    get { return _isDefending; }
+}
 
 
     public float CurrentMoveSpeed
@@ -229,13 +233,18 @@ public class PlayerController : MonoBehaviour
         healthBar.SetHealth(maxHealth);
     }
 
+
     public void OnDefense(InputAction.CallbackContext context)
     {
 
         if (context.started)
         {
-            
+            _isDefending = true;
             animator.SetTrigger(AnimationStrings.defenseTriger);
+        }
+        else if (context.canceled)
+        {
+            _isDefending = false;
         }
     }
 

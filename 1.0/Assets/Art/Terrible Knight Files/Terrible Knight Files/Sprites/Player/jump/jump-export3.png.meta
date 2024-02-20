@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      jump-export3_0: -7304280610725700668
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

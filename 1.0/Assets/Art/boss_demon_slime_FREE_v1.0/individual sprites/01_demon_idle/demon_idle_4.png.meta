@@ -212,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      demon_idle_4_0: -5048345749898512009
+      demon_idle_4_1: 7961078747033581458
+      demon_idle_4_2: -2001191390383626862
+      demon_idle_4_3: -6706899391818714760
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

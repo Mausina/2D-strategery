@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      attack-crouch3_0: 2969088262676375444
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

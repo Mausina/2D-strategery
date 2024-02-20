@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      death-lamp-walk4_0: -3789098227781505370
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

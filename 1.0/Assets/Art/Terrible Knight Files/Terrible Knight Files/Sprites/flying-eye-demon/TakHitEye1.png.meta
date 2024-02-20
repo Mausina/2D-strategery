@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TakHitEye1_0: -3621209278947601949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

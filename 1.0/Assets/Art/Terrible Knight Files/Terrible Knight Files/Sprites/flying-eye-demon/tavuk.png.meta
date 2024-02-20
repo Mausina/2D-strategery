@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tavuk_0: 8648707884363184448
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

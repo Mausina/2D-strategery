@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mermaid_4_0: 4419284530756391286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -692,7 +692,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spr_ArcherDeath_strip_NoBkg_0: 7422584641007586597
+      spr_ArcherDeath_strip_NoBkg_1: -4271705085655139399
+      spr_ArcherDeath_strip_NoBkg_10: -1582260799210342539
+      spr_ArcherDeath_strip_NoBkg_11: 2526563131324745881
+      spr_ArcherDeath_strip_NoBkg_12: 6406055980233049248
+      spr_ArcherDeath_strip_NoBkg_13: 7555017084545965819
+      spr_ArcherDeath_strip_NoBkg_14: 1687448604226499288
+      spr_ArcherDeath_strip_NoBkg_15: -7501194738951318784
+      spr_ArcherDeath_strip_NoBkg_16: 7883885352880048595
+      spr_ArcherDeath_strip_NoBkg_17: -5518531795366011153
+      spr_ArcherDeath_strip_NoBkg_18: -6059804413861248563
+      spr_ArcherDeath_strip_NoBkg_19: 3051237251957655111
+      spr_ArcherDeath_strip_NoBkg_2: -8126814056417129791
+      spr_ArcherDeath_strip_NoBkg_20: 2391920144272203305
+      spr_ArcherDeath_strip_NoBkg_21: 1514079159171161330
+      spr_ArcherDeath_strip_NoBkg_22: 5965378744832533864
+      spr_ArcherDeath_strip_NoBkg_23: -7536256245836037910
+      spr_ArcherDeath_strip_NoBkg_3: -4456171766757322981
+      spr_ArcherDeath_strip_NoBkg_4: 2031057757287746147
+      spr_ArcherDeath_strip_NoBkg_5: -9029247011614499800
+      spr_ArcherDeath_strip_NoBkg_6: 450559907369952231
+      spr_ArcherDeath_strip_NoBkg_7: -8317733048221286813
+      spr_ArcherDeath_strip_NoBkg_8: 7471285573102270951
+      spr_ArcherDeath_strip_NoBkg_9: 7588431239505575496
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

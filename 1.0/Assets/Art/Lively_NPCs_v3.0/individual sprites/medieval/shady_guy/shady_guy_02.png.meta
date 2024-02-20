@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shady_guy_02_0: 3629289181952778698
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

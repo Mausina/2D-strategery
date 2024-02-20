@@ -404,7 +404,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spr_ArcherJumpAndFall_strip_NoBkg_0: -2219065651456378354
+      spr_ArcherJumpAndFall_strip_NoBkg_1: 909036703281560809
+      spr_ArcherJumpAndFall_strip_NoBkg_10: -4636590942019407041
+      spr_ArcherJumpAndFall_strip_NoBkg_11: -3653751484265009736
+      spr_ArcherJumpAndFall_strip_NoBkg_2: 2697561521814206091
+      spr_ArcherJumpAndFall_strip_NoBkg_3: -3263904415398710611
+      spr_ArcherJumpAndFall_strip_NoBkg_4: 6197709404368266594
+      spr_ArcherJumpAndFall_strip_NoBkg_5: 5576746003819696004
+      spr_ArcherJumpAndFall_strip_NoBkg_6: 6995673144358672470
+      spr_ArcherJumpAndFall_strip_NoBkg_7: -7798071144570975379
+      spr_ArcherJumpAndFall_strip_NoBkg_8: 4074719310926259543
+      spr_ArcherJumpAndFall_strip_NoBkg_9: 1477694705114700619
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

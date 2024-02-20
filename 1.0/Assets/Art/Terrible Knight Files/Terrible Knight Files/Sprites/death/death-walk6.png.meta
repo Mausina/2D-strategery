@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      death-walk6_0: 1311841395256520274
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

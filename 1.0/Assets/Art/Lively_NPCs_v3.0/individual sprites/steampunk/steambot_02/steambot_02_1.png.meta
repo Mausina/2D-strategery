@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      steambot_02_1_0: 5577633112735610448
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

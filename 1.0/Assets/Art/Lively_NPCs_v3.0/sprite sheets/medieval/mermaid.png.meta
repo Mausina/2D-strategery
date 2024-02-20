@@ -212,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mermaid_0: 5916281833206745938
+      mermaid_1: -8731298359184940492
+      mermaid_2: 3667005281694965458
+      mermaid_3: 2794563151806063131
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

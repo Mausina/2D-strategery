@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      villager_02_04_0: -822049070156341099
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

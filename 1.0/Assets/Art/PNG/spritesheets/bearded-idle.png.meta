@@ -236,7 +236,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bearded-idle_0: 1145270007144734111
+      bearded-idle_1: 2890065762719934041
+      bearded-idle_2: -401274066150044845
+      bearded-idle_3: -4187019501144628337
+      bearded-idle_4: 5078748104852053800
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

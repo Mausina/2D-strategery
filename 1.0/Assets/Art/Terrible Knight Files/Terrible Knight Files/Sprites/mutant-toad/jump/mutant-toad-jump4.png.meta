@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mutant-toad-jump4_0: -1388007877000708595
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      masked_man_4_0: 3514562411892053988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -188,7 +188,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      demon_cleave_15_0: 6276261735365323200
+      demon_cleave_15_1: 7231745517739097793
+      demon_cleave_15_2: 6115244854211691535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

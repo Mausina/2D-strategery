@@ -1028,7 +1028,45 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      credits-text_0: 5158047264698655979
+      credits-text_1: -403390897547669700
+      credits-text_10: -8811329061826015610
+      credits-text_11: 9114482005361377883
+      credits-text_12: -6059039727670589692
+      credits-text_13: 897755665990580547
+      credits-text_14: 867658693228882028
+      credits-text_15: -1372409790006838551
+      credits-text_16: -2158940924782536933
+      credits-text_17: -8553347432959068750
+      credits-text_18: -1472929844507192601
+      credits-text_19: 4442573545139069823
+      credits-text_2: 2599234017281011123
+      credits-text_20: -5536355566556492104
+      credits-text_21: -587759282973616174
+      credits-text_22: -6283564679246221769
+      credits-text_23: -4038143603969542082
+      credits-text_24: 901794665054428659
+      credits-text_25: -5797951850679655725
+      credits-text_26: 3914966160677444238
+      credits-text_27: 6949940547645336590
+      credits-text_28: 3261133532071978384
+      credits-text_29: -1138453576815520149
+      credits-text_3: 7715354010434482349
+      credits-text_30: -4469609131199081997
+      credits-text_31: 3389882250674689105
+      credits-text_32: 1328732232140942054
+      credits-text_33: 7863397009794255386
+      credits-text_34: -1491712422099048186
+      credits-text_35: -2309558119873013872
+      credits-text_36: -5989900223743872815
+      credits-text_37: 8318560404982173788
+      credits-text_4: -6037721444040658915
+      credits-text_5: -7898462884889305820
+      credits-text_6: -5150041436190248741
+      credits-text_7: -2000886481963361141
+      credits-text_8: 5409953487761935263
+      credits-text_9: -855592205577053547
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

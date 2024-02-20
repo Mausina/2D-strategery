@@ -500,7 +500,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      death-lamp_0: 4722278453895792686
+      death-lamp_1: 6339996809113040020
+      death-lamp_10: -921394015473198124
+      death-lamp_11: 3284520447336860053
+      death-lamp_12: -1044147517407502374
+      death-lamp_13: 4024179653149650024
+      death-lamp_14: -7154738915894132771
+      death-lamp_15: -457402310792991944
+      death-lamp_2: 8617784773530158264
+      death-lamp_3: 6912154032015052333
+      death-lamp_4: 3890557521636735400
+      death-lamp_5: -6995061183105068910
+      death-lamp_6: -138119485501109712
+      death-lamp_7: 7809361696006584174
+      death-lamp_8: 8100448562848722736
+      death-lamp_9: 2220649756783412166
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

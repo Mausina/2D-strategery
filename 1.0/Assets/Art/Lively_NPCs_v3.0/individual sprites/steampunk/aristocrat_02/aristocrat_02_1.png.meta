@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      aristocrat_02_1_0: -1165377742587313326
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

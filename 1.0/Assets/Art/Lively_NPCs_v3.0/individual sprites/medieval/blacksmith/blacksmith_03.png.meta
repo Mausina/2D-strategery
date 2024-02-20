@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      blacksmith_03_0: -6825095267381186173
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

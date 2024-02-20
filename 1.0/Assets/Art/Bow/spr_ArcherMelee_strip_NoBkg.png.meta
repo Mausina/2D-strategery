@@ -788,7 +788,35 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spr_ArcherMelee_strip_NoBkg_0: 1186533346117086666
+      spr_ArcherMelee_strip_NoBkg_1: -6980642963973101430
+      spr_ArcherMelee_strip_NoBkg_10: 6156141235964118036
+      spr_ArcherMelee_strip_NoBkg_11: -4027363473593538756
+      spr_ArcherMelee_strip_NoBkg_12: -5786938423962338772
+      spr_ArcherMelee_strip_NoBkg_13: -3748026166648516718
+      spr_ArcherMelee_strip_NoBkg_14: 6055911332424399306
+      spr_ArcherMelee_strip_NoBkg_15: -2748641049339819908
+      spr_ArcherMelee_strip_NoBkg_16: -7347063359946610308
+      spr_ArcherMelee_strip_NoBkg_17: 862911528476927278
+      spr_ArcherMelee_strip_NoBkg_18: 7235069399607101270
+      spr_ArcherMelee_strip_NoBkg_19: 4183425110700099300
+      spr_ArcherMelee_strip_NoBkg_2: -3842900499396239051
+      spr_ArcherMelee_strip_NoBkg_20: -6652638962246478678
+      spr_ArcherMelee_strip_NoBkg_21: 8347524165432312020
+      spr_ArcherMelee_strip_NoBkg_22: 7759214788714687516
+      spr_ArcherMelee_strip_NoBkg_23: -2245690461671048647
+      spr_ArcherMelee_strip_NoBkg_24: 6208646795418640009
+      spr_ArcherMelee_strip_NoBkg_25: 6369254666040586459
+      spr_ArcherMelee_strip_NoBkg_26: -5339662564909016753
+      spr_ArcherMelee_strip_NoBkg_27: 7369621656871157567
+      spr_ArcherMelee_strip_NoBkg_3: -3507642287945024449
+      spr_ArcherMelee_strip_NoBkg_4: -7063324460009203258
+      spr_ArcherMelee_strip_NoBkg_5: 900520822277682719
+      spr_ArcherMelee_strip_NoBkg_6: 3398036825352594433
+      spr_ArcherMelee_strip_NoBkg_7: 4585856664268319840
+      spr_ArcherMelee_strip_NoBkg_8: 4206360236105249706
+      spr_ArcherMelee_strip_NoBkg_9: 5347555214844355933
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

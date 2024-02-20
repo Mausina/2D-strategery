@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      attack-side-export2_0: 7345633143642857780
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

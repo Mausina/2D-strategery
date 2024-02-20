@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      house-b_0: -5917179919014792914
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

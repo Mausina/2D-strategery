@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stairs-wall-right_0: -2909436599500240814
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

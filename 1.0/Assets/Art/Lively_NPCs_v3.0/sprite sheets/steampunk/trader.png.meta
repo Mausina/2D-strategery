@@ -212,7 +212,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      trader_0: -1882941844453778916
+      trader_1: -7245136963012034963
+      trader_2: 3767799055908060644
+      trader_3: -8436265841636554499
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

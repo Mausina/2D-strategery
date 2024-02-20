@@ -260,7 +260,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      demon_death_13_0: 8063630162354015199
+      demon_death_13_1: -2438642566706636775
+      demon_death_13_2: -1052574975367120706
+      demon_death_13_3: -383331960732949200
+      demon_death_13_4: 1646474257455213344
+      demon_death_13_5: -2009296644500133100
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      leaf_ranger_3_0: -6196327406759299115
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
