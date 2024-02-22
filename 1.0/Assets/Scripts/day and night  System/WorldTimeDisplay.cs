@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace WorldTime
+namespace WorldTimeSystem
 {
     [RequireComponent(typeof(TMP_Text))]
     public class WorldTimeDisplay : MonoBehaviour

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-namespace WorldTime
+namespace WorldTimeSystem
 {
     [RequireComponent(typeof(Light2D))]
     public class WorldLight : MonoBehaviour

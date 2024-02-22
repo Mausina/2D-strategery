@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace WorldTime
+namespace WorldTimeSystem
 {
     public class WorldTime : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace WorldTime
         public event EventHandler<TimeSpan> WorldTimeChanged;
 
         [SerializeField]
-        private float _dayLength;
+        private float _dayLength; // 150 _dayLength
 
         private TimeSpan _currentTime;
         private float _minuteLength => _dayLength / WorlTimeConstans.MinutesInDay; // Make sure the constant is correctly named and accessible
@@ -26,7 +26,9 @@ namespace WorldTime
             {
                 _currentTime = _currentTime.Add(TimeSpan.FromMinutes(1));
                 // Invoke the event with the custom EventArgs
-                WorldTimeChanged?.Invoke(this,_currentTime);
+               // Debug.Log($"Current Time: {_currentTime.ToString()}");
+                WorldTimeChanged?.Invoke(this, _currentTime);
+
                 yield return new WaitForSeconds(_minuteLength);
             }
         }

@@ -1,4 +1,4 @@
-namespace WorldTime
+namespace WorldTimeSystem
 {
     public static class WorlTimeConstans 
     {

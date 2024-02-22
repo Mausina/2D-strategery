@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using WorldTime;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirection), typeof(Damageable))]
 public class PlayerController : MonoBehaviour
@@ -13,10 +15,12 @@ public class PlayerController : MonoBehaviour
     public float airWalkSpeed = 3f;
     public float jumpInpulse = 5f;
     public int maxHealth = 100;
+    public HealthBar healthBar;
     Vector2 moveInput;
     Damageable damageable;
     private bool _isDefending = false;
-    public HealthBar healthBar;
+    [SerializeField]
+    WorldTimeSystem.WorldTime myWorldTime;
     TouchingDirection touchingDirection;
     public bool IsDefending
 {
@@ -143,8 +147,24 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        myWorldTime = FindObjectOfType<WorldTimeSystem.WorldTime>();
         healthBar.SetMaxHealth(maxHealth);
+        if (myWorldTime != null)
+        {
+            myWorldTime.WorldTimeChanged += OnWorldTimeChanged;
+        }
+        else
+        {
+            Debug.LogError("myWorldTime is not assigned on " + gameObject.name);
+        }
 
+    }
+    private void OnDestroy()
+    {
+        if (myWorldTime != null)
+        {
+            myWorldTime.WorldTimeChanged -= OnWorldTimeChanged;
+        }
     }
 
     private void FixedUpdate()
@@ -247,7 +267,17 @@ public class PlayerController : MonoBehaviour
             _isDefending = false;
         }
     }
+    private void OnWorldTimeChanged(object sender, TimeSpan currentTime)
+    {
+        // Determine if it's day or night based on currentTime
+        // Assuming day is between 6:00 AM (06:00) and 6:00 PM (18:00)
+        bool isNight = currentTime.Hours < 6 || currentTime.Hours >= 18;
+        
+        // Set the animator boolean parameter "IsNight" based on the isNight condition
+        animator.SetBool("IsNight", isNight);
+        Debug.Log($"Time changed. Current hour: {currentTime.Hours}, IsNight: {isNight}");
 
-    
+    }
+
 
 }
