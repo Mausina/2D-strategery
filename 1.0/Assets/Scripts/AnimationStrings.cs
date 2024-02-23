@@ -24,5 +24,6 @@ internal class AnimationStrings
     internal static string LockVelocity = "lockVelocity";
     internal static string defenseTriger = "defenseTriger";
     internal static string startTriger = "Start";
+    internal static string isNightBool = "IsNight";
 }
 

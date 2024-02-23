@@ -22,6 +22,85 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     WorldTimeSystem.WorldTime myWorldTime;
     TouchingDirection touchingDirection;
+
+
+    public float maxStamina = 30f; // Maximum stamina
+    private float currentStamina; // Current stamina level
+    private bool isExhausted = false; // Is the player exhausted?
+
+
+    private void Update()
+    {
+        HandleStamina();
+        UpdateDyspneaAnimation();
+    }
+    private void HandleStamina()
+    {
+        if (IsRunning)
+        {
+            // Decrease stamina while running
+            currentStamina -= Time.deltaTime;
+            if (currentStamina <= 0)
+            {
+                isExhausted = true; // Player becomes exhausted
+                currentStamina = 0; // Ensure stamina does not go below 0
+            }
+        }
+        else
+        {
+            // Recover stamina when not running
+            if (currentStamina < maxStamina)
+            {
+                currentStamina += Time.deltaTime; // Adjust recovery rate as needed
+            }
+            else if (isExhausted && currentStamina >= maxStamina / 2) // Half stamina needed to recover from exhaustion
+            {
+                isExhausted = false; // Player recovers from exhaustion
+            }
+        }
+
+        // Limit player's ability to run if exhausted
+        if (isExhausted)
+        {
+            LimitPlayerMovement();
+        }
+
+        // Update UI or indicators of stamina/exhaustion here if necessary
+    }
+
+    private void LimitPlayerMovement()
+    {
+        // Limit the player's speed to walking speed when exhausted
+        if (IsRunning)
+        {
+            IsRunning = false; // Force player to walk
+            // Optionally, apply a visual or audio cue to indicate exhaustion
+        }
+    }
+
+    private void UpdateDyspneaAnimation()
+    {
+        // Update animator with dyspnea or exhaustion animation based on isExhausted
+        animator.SetBool("IsDyspneic", isExhausted);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public bool IsDefending
 {
     get { return _isDefending; }
@@ -143,6 +222,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingDirection = GetComponent<TouchingDirection>();
         damageable = GetComponent<Damageable>();
+        currentStamina = maxStamina;
     }
 
     private void Start()
@@ -271,11 +351,11 @@ public class PlayerController : MonoBehaviour
     {
         // Determine if it's day or night based on currentTime
         // Assuming day is between 6:00 AM (06:00) and 6:00 PM (18:00)
-        bool isNight = currentTime.Hours < 6 || currentTime.Hours >= 18;
+        bool isNight = currentTime.Hours < 6 || currentTime.Hours >= 19;
         
         // Set the animator boolean parameter "IsNight" based on the isNight condition
-        animator.SetBool("IsNight", isNight);
-        Debug.Log($"Time changed. Current hour: {currentTime.Hours}, IsNight: {isNight}");
+        animator.SetBool(AnimationStrings.isNightBool, isNight);
+       // Debug.Log($"Time changed. Current hour: {currentTime.Hours}, IsNight: {isNight}");
 
     }
 
