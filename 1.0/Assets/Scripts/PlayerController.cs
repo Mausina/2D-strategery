@@ -16,17 +16,28 @@ public class PlayerController : MonoBehaviour
     public float jumpInpulse = 5f;
     public int maxHealth = 100;
     public HealthBar healthBar;
+    public float maxStamina = 30f; // Maximum stamina
+
+    private float currentStamina; // Current stamina level
+    private bool showStaminaWarning = false; // Flag to control the stamina warning animation
+    private float staminaWarningDuration = 5f; // Duration to show the stamina warning animation
+    private float staminaWarningTimer = 0f; // Timer for the stamina warning animation
+    private bool _isDefending = false;
+    private bool isExhausted = false; // Is the player exhausted?
+    public bool _isFacingRight = true;
+
     Vector2 moveInput;
     Damageable damageable;
-    private bool _isDefending = false;
     [SerializeField]
     WorldTimeSystem.WorldTime myWorldTime;
+    [SerializeField]
+    private bool _isRunning = false;
+    [SerializeField]
+    public bool _isMoving = false;
     TouchingDirection touchingDirection;
+    Rigidbody2D rb;
+    Animator animator;
 
-
-    public float maxStamina = 30f; // Maximum stamina
-    private float currentStamina; // Current stamina level
-    private bool isExhausted = false; // Is the player exhausted?
 
 
     private void Update()
@@ -38,25 +49,63 @@ public class PlayerController : MonoBehaviour
     {
         if (IsRunning)
         {
-            // Decrease stamina while running
             currentStamina -= Time.deltaTime;
+
+            // Check for stamina warning condition
+            if (currentStamina <= 5f && !showStaminaWarning)
+            {
+                // Start the stamina warning timer
+                showStaminaWarning = true;
+                staminaWarningTimer = staminaWarningDuration;
+                PlayStaminaWarningAnimation(true);
+            }
+
             if (currentStamina <= 0)
             {
-                isExhausted = true; // Player becomes exhausted
-                currentStamina = 0; // Ensure stamina does not go below 0
+                isExhausted = true;
+                currentStamina = 0;
+                // Ensure warning animation stops if it was showing
+                if (showStaminaWarning)
+                {
+                    showStaminaWarning = false;
+                    PlayStaminaWarningAnimation(false);
+                }
             }
         }
         else
         {
-            // Recover stamina when not running
             if (currentStamina < maxStamina)
             {
-                currentStamina += Time.deltaTime; // Adjust recovery rate as needed
+                currentStamina += Time.deltaTime;
+                if (showStaminaWarning && currentStamina > 5f)
+                {
+                    // Stop showing the stamina warning as we've recovered past the threshold
+                    showStaminaWarning = false;
+                    PlayStaminaWarningAnimation(false);
+                }
             }
-            else if (isExhausted && currentStamina >= maxStamina / 2) // Half stamina needed to recover from exhaustion
+
+            if (isExhausted && currentStamina >= maxStamina / 2)
             {
-                isExhausted = false; // Player recovers from exhaustion
+                isExhausted = false;
             }
+        }
+
+        if (showStaminaWarning)
+        {
+            staminaWarningTimer -= Time.deltaTime;
+            if (staminaWarningTimer <= 0)
+            {
+                showStaminaWarning = false;
+                PlayStaminaWarningAnimation(false);
+            }
+        }
+
+        // Debug messages
+        Debug.Log($"Current Stamina: {currentStamina}");
+        if (showStaminaWarning)
+        {
+            Debug.Log($"Time left to show stamina warning: {staminaWarningTimer}");
         }
 
         // Limit player's ability to run if exhausted
@@ -64,8 +113,6 @@ public class PlayerController : MonoBehaviour
         {
             LimitPlayerMovement();
         }
-
-        // Update UI or indicators of stamina/exhaustion here if necessary
     }
 
     private void LimitPlayerMovement()
@@ -84,28 +131,15 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsDyspneic", isExhausted);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private void PlayStaminaWarningAnimation(bool play)
+    {
+        animator.SetBool("ShowStaminaWarning", play);
+    }
 
     public bool IsDefending
 {
     get { return _isDefending; }
 }
-
 
     public float CurrentMoveSpeed
     {
@@ -134,9 +168,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    public bool _isMoving = false;
-
     public bool IsMoving
     {
         get
@@ -149,9 +180,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(AnimationStrings.isMoving, value);
         }
     }
-    [SerializeField]
-    private bool _isRunning = false;
-
+    
     public bool IsRunning
     {
         get
@@ -164,8 +193,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(AnimationStrings.isRunning, value);
         }
     }
-
-    public bool _isFacingRight = true;
 
     public bool IsFacingRight
     {
@@ -181,8 +208,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
     public bool CanMove
     {
         get
@@ -190,7 +215,6 @@ public class PlayerController : MonoBehaviour
             return animator.GetBool(AnimationStrings.canMove);
         }
     }
-
 
     public bool IsAlive
     {
@@ -211,10 +235,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(AnimationStrings.LockVelocity, value);
         }
     }
-
-    Rigidbody2D rb;
-    Animator animator;
-
 
     private void Awake()
     {
@@ -239,6 +259,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
     private void OnDestroy()
     {
         if (myWorldTime != null)
@@ -259,8 +280,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
@@ -279,7 +298,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
     private void SetFacingDirection(Vector2 moveInput)
     {
         if (moveInput.x > 0 && !IsFacingRight)
@@ -291,7 +309,6 @@ public class PlayerController : MonoBehaviour
             IsFacingRight = false;
         }
     }
-
 
     public void OnRun(InputAction.CallbackContext context)
     {
@@ -332,7 +349,6 @@ public class PlayerController : MonoBehaviour
             maxHealth = 0;
         healthBar.SetHealth(maxHealth);
     }
-
 
     public void OnDefense(InputAction.CallbackContext context)
     {
