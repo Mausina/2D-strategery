@@ -2793,9 +2793,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205111023}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.011007086, w: 0.99993944}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.859515, y: 2.7324, z: 2.7324}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1298246357}
@@ -2846,7 +2846,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightOuterRadius: 2.0812113
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -3954,22 +3954,22 @@ MonoBehaviour:
   _worldTime: {fileID: 617396642}
   _gradient:
     serializedVersion: 2
-    key0: {r: 0.05660379, g: 0.0536668, b: 0.0536668, a: 1}
-    key1: {r: 0.066037714, g: 0.06011924, b: 0.06011924, a: 1}
-    key2: {r: 0.1546885, g: 0.15272339, b: 0.2264151, a: 0}
-    key3: {r: 0.09433961, g: 0.08705171, b: 0.08499465, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 12336
-    ctime2: 40478
-    ctime3: 65535
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
+    key0: {r: 0.08235294, g: 0.08235294, b: 0.13333334, a: 1}
+    key1: {r: 0.8962264, g: 0.7638633, b: 0.5368903, a: 1}
+    key2: {r: 1, g: 1, b: 1, a: 0}
+    key3: {r: 1, g: 1, b: 1, a: 0}
+    key4: {r: 0.8980393, g: 0.76470596, b: 0.5372549, a: 0}
+    key5: {r: 0.9056604, g: 0.6077921, b: 0.08116765, a: 0}
+    key6: {r: 0.7924528, g: 0.3063052, b: 0.16820934, a: 0}
+    key7: {r: 0.14582591, g: 0.14582591, b: 0.2735849, a: 0}
+    ctime0: 11180
+    ctime1: 16384
+    ctime2: 19853
+    ctime3: 44525
+    ctime4: 46646
+    ctime5: 49922
+    ctime6: 52043
+    ctime7: 54741
     atime0: 0
     atime1: 65535
     atime2: 0
@@ -3980,7 +3980,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
-    m_NumColorKeys: 4
+    m_NumColorKeys: 8
     m_NumAlphaKeys: 2
 --- !u!114 &1574621191
 MonoBehaviour:
