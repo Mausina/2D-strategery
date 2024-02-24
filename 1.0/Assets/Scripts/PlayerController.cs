@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (isExhausted && currentStamina >= maxStamina / 2)
+            if (isExhausted && currentStamina >= maxStamina / 3)
             {
                 isExhausted = false;
             }
