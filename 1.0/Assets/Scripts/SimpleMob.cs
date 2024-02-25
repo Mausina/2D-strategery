@@ -1,65 +1,83 @@
 using UnityEngine;
 
+
 public class EnemyMob : MonoBehaviour
 {
+    /*
     public float speed = 1.0f; // Normal movement speed of the mob
     public float chaseSpeed = 2.0f; // Increased speed when chasing the player
     public int health = 3; // Health of the mob
+    public int attackDamage = 1; // Damage dealt by the mob
+    public float attackRate = 1.0f; // How often the mob can attack in seconds
+    public float attackRange = 1.5f; // Range within which the mob can attack
 
     private GameObject target; // Target (player's kingdom or structures)
     private GameObject player; // Reference to the player
+    private float lastAttackTime = -1; // Time since last attack
 
     void Start()
     {
-        // Find the player's kingdom or a specific target. This is just a placeholder.
         target = GameObject.Find("Player");
-        // Assuming the player has a tag of "Player"
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        // Move towards the target each frame
         MoveTowardsTarget();
 
-        // Check for destruction
         if (health <= 0)
         {
-            Destroy(gameObject); // Destroy the mob if health is depleted
+            Destroy(gameObject);
         }
+
+        AttemptAttack();
     }
 
     void MoveTowardsTarget()
     {
-        float step = speed * Time.deltaTime; // Use normal speed by default
-
-        // Calculate distance to the player
+        float step = speed * Time.deltaTime;
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-        // If the player is within a 5 unit radius, increase speed
         if (distanceToPlayer <= 5f)
         {
-            step = chaseSpeed * Time.deltaTime; // Use chase speed
+            step = chaseSpeed * Time.deltaTime;
         }
 
-        // Move towards the target
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
     }
 
-    // Method to call when the mob takes damage
+    void AttemptAttack()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        // Check if the mob is within attack range and if enough time has passed since the last attack
+        if (distanceToPlayer <= attackRange && Time.time - lastAttackTime >= attackRate)
+        {
+            // Make sure the player GameObject has a Damageable component attached
+            Damageable playerDamageable = player.GetComponent<Damageable>();
+            if (playerDamageable != null)
+            {
+                // Assuming your Damageable component's TakeDamage method accepts damage and knockback
+                Vector2 knockback = new Vector2(0, 0); // Define knockback as needed
+                playerDamageable.TakeDamage(attackDamage, knockback);
+                lastAttackTime = Time.time; // Update the time of the last attack
+            }
+        }
+    }
+
+
     public void TakeDamage(int damage)
     {
         health -= damage;
     }
 
-    // OnCollisionEnter or OnTriggerEnter methods to handle collisions/damage
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Example: Take 1 damage if hit by a player's arrow
         if (collision.gameObject.CompareTag("PlayerArrow"))
         {
             TakeDamage(1);
         }
     }
+    */
 }
 
