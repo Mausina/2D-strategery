@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CoinPickup : MonoBehaviour
 {
@@ -6,18 +7,19 @@ public class CoinPickup : MonoBehaviour
     private GameObject player;
     private float playerNearbyTime = 0f;
     private bool playerIsNearby = false;
+    private bool isBeingCollected = false;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player"); // Find the player GameObject
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        if (player != null)
+        if (player != null && !isBeingCollected)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance <= 4.5f) // If the player is within 3 units
+            if (distance <= 4.5f) // If the player is within 4.5 units
             {
                 if (!playerIsNearby)
                 {
@@ -26,10 +28,9 @@ public class CoinPickup : MonoBehaviour
                 }
 
                 playerNearbyTime += Time.deltaTime;
-                if (playerNearbyTime >= 1f) // 2 seconds have passed
+                if (playerNearbyTime >= 1f) // 1 second has passed
                 {
-                    CoinManager.Instance.AddCoins(value);
-                    Destroy(gameObject); // Destroy the coin object
+                    StartCoroutine(CollectCoin());
                 }
             }
             else
@@ -38,5 +39,25 @@ public class CoinPickup : MonoBehaviour
                 playerNearbyTime = 0f; // Reset the timer as the player is no longer nearby
             }
         }
+    }
+
+    private IEnumerator CollectCoin()
+    {
+        isBeingCollected = true; // The coin is being collected, so set the flag
+
+        // Optional: Add a sound effect or particle effect here
+
+        float duration = 0.2f; // The duration of the movement towards the player
+        float elapsedTime = 0;
+        Vector3 startPosition = transform.position;
+        while (elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, player.transform.position, (elapsedTime / duration));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        CoinManager.Instance.AddCoins(value); // Add the coin to the player's total
+        Destroy(gameObject); // Destroy the coin object
     }
 }
