@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Debug messages
-        Debug.Log($"Current Stamina: {currentStamina}");
+       // Debug.Log($"Current Stamina: {currentStamina}");
         if (showStaminaWarning)
         {
             Debug.Log($"Time left to show stamina warning: {staminaWarningTimer}");
