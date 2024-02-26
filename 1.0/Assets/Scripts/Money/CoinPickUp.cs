@@ -28,7 +28,7 @@ public class CoinPickup : MonoBehaviour
                 }
 
                 playerNearbyTime += Time.deltaTime;
-                if (playerNearbyTime >= 1f) // 1 second has passed
+                if (playerNearbyTime >= 0.75f) // 1 second has passed
                 {
                     StartCoroutine(CollectCoin());
                 }
@@ -43,6 +43,7 @@ public class CoinPickup : MonoBehaviour
 
     private IEnumerator CollectCoin()
     {
+        //Debug.Log("CollectCoin coroutine started.");
         isBeingCollected = true; // The coin is being collected, so set the flag
 
         // Optional: Add a sound effect or particle effect here
