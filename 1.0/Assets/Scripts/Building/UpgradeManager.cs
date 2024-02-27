@@ -2,26 +2,110 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    public GameObject upgradeUI; // Assign in inspector, the UI that should appear
+    [Header("Upgrade UI")]
+    public GameObject coinIcon; // Assign your 3D model or sprite in the inspector
+    public GameObject coinPrefab;
+    public int upgradeCost = 1;
+    public Wall wall; // Assign this in the inspector
 
-    void OnTriggerEnter(Collider other)
+    private bool playerInRange = false;
+    private int coinsInserted = 0;
+
+    private void Awake()
     {
-        if (other.CompareTag("Player")) // Make sure your player GameObject has the tag "Player"
+        playerInRange = false;
+        coinIcon.SetActive(false); // Start with the coin icon hidden
+
+    }
+
+
+    private void Update()
+    {
+        if (playerInRange)
         {
-            ShowUpgradeUI(true);
+            if (!coinIcon.activeSelf)
+            {
+                coinIcon.SetActive(true);
+                coinsInserted = 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.U) && CoinManager.Instance.coins > 0)
+            {
+                InsertCoin();
+            }
+        }
+        else
+        {
+            if (coinIcon.activeSelf)
+            {
+                coinIcon.SetActive(false);
+            }
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
-            ShowUpgradeUI(false);
+            playerInRange = true;
         }
     }
 
-    void ShowUpgradeUI(bool show)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        upgradeUI.SetActive(show);
+        if (other.gameObject.tag == "Player")
+        {
+            playerInRange = false;
+        }
+    }
+
+    private bool coinInserted = false; // Flag to prevent multiple coins from being inserted
+
+    private void InsertCoin()
+    {
+        Debug.Log("Attempting to insert coin.");
+        if (CoinManager.Instance.coins > 0 && !coinInserted)
+        {
+            Debug.Log("Coin inserted.");
+            coinInserted = true; // Prevent further coin insertion until this one is processed
+            CoinManager.Instance.SubtractCoins(1); // Subtract one coin
+
+            GameObject coin = Instantiate(coinPrefab, coinIcon.transform.position, Quaternion.identity);
+
+            coinsInserted++;
+            Debug.Log("Upgrade cost met.");
+            Debug.Log(coinsInserted);
+            Debug.Log(upgradeCost);
+            if (coinsInserted >= upgradeCost)
+            {
+                // Find the Wall GameObject by tag and get the Wall component
+                GameObject wallObject = GameObject.FindGameObjectWithTag("Wall");
+                if (wallObject != null)
+                {
+                    Wall wall = wallObject.GetComponent<Wall>();
+                    if (wall != null)
+                    {
+                        wall.UpgradeWall();
+                    }
+                    else
+                    {
+                        Debug.Log("Wall component not found on tagged object.");
+                    }
+                }
+                else
+                {
+                    Debug.Log("Wall GameObject not found by tag.");
+                }
+
+                coinsInserted = 0; // Reset for the next upgrade
+            }
+
+
+            Destroy(coin, 1.0f); // Destroy the coin after a delay, adjust as needed
+            coinInserted = false; // Allow new coins to be inserted
+        }
     }
 }
+
+
+

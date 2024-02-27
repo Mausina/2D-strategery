@@ -9,7 +9,16 @@ public class Wall : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private int currentHealth;
 
-    
+    /*
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            UpgradeWall();
+        }
+    }
+    */
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,10 +29,27 @@ public class Wall : MonoBehaviour
     {
         if (level < maxLevel)
         {
-            level++;
-            UpdateWallVisual();
+            WallLevel nextLevelInfo = wallLevels[level]; // Get the next level's info
+            int upgradeCost = nextLevelInfo.upgradeCost; // Get the upgrade cost for the next level
+
+            // Assuming you have a method to get the current coins the player has
+            if (CoinManager.Instance.CanAfford(upgradeCost)) // Check if the player can afford the upgrade
+            {
+                CoinManager.Instance.SpendCoins(upgradeCost); // Deduct the coins for the upgrade
+                level++;
+                UpdateWallVisual(); // Update the wall's visual and stats
+            }
+            else
+            {
+                Debug.Log("Not enough coins to upgrade!");
+            }
+        }
+        else
+        {
+            Debug.Log("Wall is already at maximum level!");
         }
     }
+
 
     void UpdateWallVisual()
     {
@@ -43,7 +69,7 @@ public class Wall : MonoBehaviour
         Debug.Log(currentHealth.ToString());
         if (currentHealth <= 0)
         {
-            
+
             // Handle the wall being destroyed
             // You might disable the wall, show a destroyed state, etc.
         }
