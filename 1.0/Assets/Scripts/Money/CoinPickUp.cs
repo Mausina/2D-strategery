@@ -28,7 +28,7 @@ public class CoinPickup : MonoBehaviour
                 }
 
                 playerNearbyTime += Time.deltaTime;
-                if (playerNearbyTime >= 0.75f) // 1 second has passed
+                if (playerNearbyTime >= 0.7f) // 1 second has passed
                 {
                     StartCoroutine(CollectCoin());
                 }
@@ -48,7 +48,7 @@ public class CoinPickup : MonoBehaviour
 
         // Optional: Add a sound effect or particle effect here
 
-        float duration = 0.2f; // The duration of the movement towards the player
+        float duration = 0.3f; // The duration of the movement towards the player
         float elapsedTime = 0;
         Vector3 startPosition = transform.position;
         while (elapsedTime < duration)
@@ -58,7 +58,7 @@ public class CoinPickup : MonoBehaviour
             yield return null;
         }
 
-        CoinManager.Instance.AddCoins(value); // Add the coin to the player's total
+        CoinManager.Instance.AddCoins(value); // Add the coin to the player's total                
         Destroy(gameObject); // Destroy the coin object
     }
 }

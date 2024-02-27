@@ -22,28 +22,30 @@ public class CoinManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateCoinText();
+       // UpdateCoinText();
     }
 
     public void AddCoins(int amount)
     {
         coins += amount;
-        Debug.Log("sum" + amount);
-        UpdateCoinText();
+        Debug.Log("sum:" + coins);
+       // UpdateCoinText();
     }
 
     public void SubtractCoins(int amount)
     {
         coins -= amount;
         if (coins < 0) coins = 0;
-        UpdateCoinText();
+       // UpdateCoinText();
     }
 
+    /*
     void UpdateCoinText()
     {
         if (coinText != null)
         {
-            coinText.text = "Coins: " + coins.ToString();
+           // coinText.text = "Coins: " + coins.ToString();
         }
     }
+    */
 }
