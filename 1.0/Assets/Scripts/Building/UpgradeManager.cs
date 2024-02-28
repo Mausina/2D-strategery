@@ -3,16 +3,15 @@ using System.Collections.Generic;
 
 public class UpgradeManager : MonoBehaviour
 {
-    [SerializeField] private List<int> upgradeCosts;
-    [SerializeField] private List<GameObject> levelIconContainers;
-    private int currentLevel = 0;
+    [SerializeField] private List<GameObject> levelIconContainers; // References to each level's icon container
+    private int currentLevel = 0; // Tracks the current level
     private bool playerInRange = false;
-    private int coinsPlaced = 0;
+    private int coinsPlaced = 0; // Tracks how many coins have been placed
     public Wall wall;
-    [SerializeField] private GameObject prefabCoin;
-    private List<GameObject> instantiatedCoins = new List<GameObject>();
-    private float timeSinceLastCoin = 0f;
-    private float coinDropDelay = 1f;
+    [SerializeField] private GameObject prefabCoin; // The coin prefab
+    private List<GameObject> instantiatedCoins = new List<GameObject>(); // Tracks instantiated coins
+    private float timeSinceLastCoin = 0f; // Timer for dropping coins
+    private float coinDropDelay = 1f; // Delay before dropping coins
 
     void Start()
     {
@@ -49,7 +48,6 @@ public class UpgradeManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
-            // Activate only the current level's icon container
             UpdateIconVisibility(true);
         }
     }
@@ -59,10 +57,11 @@ public class UpgradeManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            DropAllCoins(); // Drop all coins if the player leaves the trigger area
-            UpdateIconVisibility(false); // Optionally hide icons when player exits
+            DropAllCoins();
+            UpdateIconVisibility(false);
         }
     }
+
 
     private void DropAllCoins()
     {
@@ -79,54 +78,56 @@ public class UpgradeManager : MonoBehaviour
 
     private void PlaceCoin()
     {
-        int upgradeCost = currentLevel < upgradeCosts.Count ? upgradeCosts[currentLevel] : upgradeCosts[upgradeCosts.Count - 1];
-
-        if (coinsPlaced < upgradeCost && CoinManager.Instance.CanAfford(1))
+        // Ensure the player can afford to place a coin
+        if (CoinManager.Instance.CanAfford(1))
         {
+            // Deduct a coin from the player's balance
             CoinManager.Instance.SpendCoins(1);
+
+            // Check if there's a spot for the new coin
             if (levelIconContainers[currentLevel].transform.childCount > coinsPlaced)
             {
+                // Get the position where the new coin should be placed
                 Transform coinPosition = levelIconContainers[currentLevel].transform.GetChild(coinsPlaced);
+                // Instantiate the coin at the specified position
                 GameObject coin = Instantiate(prefabCoin, coinPosition.position, Quaternion.identity);
-                coin.GetComponent<Rigidbody2D>().isKinematic = true;
-                instantiatedCoins.Add(coin);
+                coin.GetComponent<Rigidbody2D>().isKinematic = true; // Make the coin static
+                instantiatedCoins.Add(coin); // Keep track of the coin
+                coinsPlaced++; // Increment the number of coins placed
             }
 
-            coinsPlaced++;
-
-            if (coinsPlaced == upgradeCost)
+            // Check if the current level is fully upgraded
+            if (coinsPlaced >= levelIconContainers[currentLevel].transform.childCount)
             {
-                CompleteUpgrade();
+                CompleteUpgrade(); // Trigger the upgrade completion logic
             }
         }
+        else
+        {
+            Debug.Log("Not enough coins to place!");
+        }
     }
+
 
     private void CompleteUpgrade()
     {
         Debug.Log("Upgrade complete!");
         wall.UpgradeWall();
-        currentLevel++; // Increase the level after successful upgrade
+        currentLevel++; // Increment the level
+        coinsPlaced = 0; // Reset coins placed
+        instantiatedCoins.ForEach(Destroy); // Destroy all coins
+        instantiatedCoins.Clear(); // Clear the list of instantiated coins
 
-        foreach (var coin in instantiatedCoins)
-        {
-            Destroy(coin);
-        }
-        instantiatedCoins.Clear();
-        coinsPlaced = 0;
-
-        // Update the icon visibility based on the new level, if player is still in range
-        if (playerInRange) UpdateIconVisibility(true);
+        if (playerInRange) UpdateIconVisibility(true); // Update icon visibility if the player is still in range
     }
 
     private void UpdateIconVisibility(bool isVisible)
     {
-        // Ensure all containers are initially disabled
         foreach (var container in levelIconContainers)
         {
             container.SetActive(false);
         }
 
-        // Then, based on visibility flag, enable the current level's container
         if (isVisible && currentLevel < levelIconContainers.Count)
         {
             levelIconContainers[currentLevel].SetActive(true);
