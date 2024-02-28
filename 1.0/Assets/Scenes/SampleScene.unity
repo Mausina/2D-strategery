@@ -711,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &262104499
 Transform:
   m_ObjectHideFlags: 0
@@ -1455,7 +1455,6 @@ MonoBehaviour:
   - {fileID: 2078544165}
   - {fileID: 960801975}
   - {fileID: 1727540827}
-  - {fileID: 262104498}
   wall: {fileID: 802912998}
   prefabCoin: {fileID: 2731523164008856927, guid: 4055fcac05e2808408875cc1b207d54e, type: 3}
 --- !u!61 &434647062
