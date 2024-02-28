@@ -13,13 +13,22 @@ public class CoinPickup : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            CoinManager.Instance.AddCoins(value); // Add the coin to the player's total                
+            Destroy(gameObject);
+        }
+    }
 
     private void Update()
     {
+        
         if (player != null && !isBeingCollected)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
-            if (distance <= 4.5f) // If the player is within 4.5 units
+            if (distance <= 1.5f) // If the player is within 4.5 units
             {
                 if (!playerIsNearby)
                 {
@@ -47,7 +56,7 @@ public class CoinPickup : MonoBehaviour
         isBeingCollected = true; // The coin is being collected, so set the flag
 
         // Optional: Add a sound effect or particle effect here
-
+        
         float duration = 0.3f; // The duration of the movement towards the player
         float elapsedTime = 0;
         Vector3 startPosition = transform.position;

@@ -3,8 +3,10 @@ using System.Collections;
 
 public class CoinToUpgradeSlot : MonoBehaviour
 {
+    /*
     public GameObject upgradeSlot; // Assign the upgrade slot in the inspector
     public int value = 1;
+
 
     private GameObject player;
     private bool isBeingUsedForUpgrade = false;
@@ -22,6 +24,7 @@ public class CoinToUpgradeSlot : MonoBehaviour
             StartCoroutine(MoveCoinToUpgradeSlot());
         }
     }
+
 
     private IEnumerator MoveCoinToUpgradeSlot()
     {
@@ -47,4 +50,5 @@ public class CoinToUpgradeSlot : MonoBehaviour
 
         Destroy(gameObject); // Destroy the coin object after it moves to the slot
     }
+    */
 }
