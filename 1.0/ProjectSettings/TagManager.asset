@@ -6,6 +6,10 @@ TagManager:
   tags:
   - UpgradeSlot
   - Wall
+  - ArcherPointEnd
+  - Tree
+  - 'Animal '
+  - Animal
   layers:
   - Default
   - TransparentFX

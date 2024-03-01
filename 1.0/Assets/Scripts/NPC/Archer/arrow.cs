@@ -3,20 +3,27 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public float destroyAfterSeconds = 5f; // Time to auto-destroy the arrow
 
-    void Awake()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, destroyAfterSeconds); // Destroy the arrow after some time to clean up
     }
 
-    public void Launch(Vector2 targetPosition)
+    void Update()
     {
-        Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
-        float speed = 20f; // Set this to the desired arrow speed
-        rb.velocity = direction * speed;
+        if (rb.velocity != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
 
-        // Optional: Adjust arrow rotation to match the flight direction
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Example collision logic
+        Debug.Log($"Hit {collision.gameObject.name}");
+        Destroy(gameObject); // Destroy the arrow on collision
     }
 }

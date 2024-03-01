@@ -1,123 +1,86 @@
+using System.Security.Cryptography;
 using UnityEngine;
-using System;
 
-public class Archer : MonoBehaviour
+public class ArcherController : MonoBehaviour
 {
-    public float moveSpeed = 3f;
-    public Transform defenseWall; // Assign this in the Inspector to specify the wall
-    public GameObject arrowPrefab;
-    public Transform shootPoint;
-    private float shootCooldown = 2f;
-    private float shootTimer = 0f;
-    private bool isNight = false;
-    private Vector2 defensePosition;
-    public LayerMask enemyLayer;
-    public float detectionRadius = 5f;
-    private Transform targetEnemy = null;
-    public float patrolRange = 2f; // Distance the archer patrols from the defense position
-    private Vector2 patrolTarget;
-    private bool isPatrolling = false;
-    private float patrolCooldown = 5f; // Time between patrol movements
-    private float patrolTimer = 0f;
-
-    void Start()
-    {
-        // Your existing start logic...
-        if (defenseWall != null)
-        {
-            CalculateDefensePosition();
-            patrolTarget = defensePosition; // Initialize patrol target to defense position
-        }
-    }
-
+    public GameObject arrowPrefab; // Assign your arrow prefab in the inspector
+    public Transform firePoint; // Assign the position from which arrows are fired
+    public AnimationCurve curve; // Assign an Animation Curve in the inspector
+    public float launchForce = 20f; // Adjustable force to apply for arrow shooting
+    public float launchAngle = 45f; // Angle at which the arrow is launched
     void Update()
     {
-        // Your existing update logic...
-        TimeCheck();
-        shootTimer += Time.deltaTime;
-        patrolTimer += Time.deltaTime;
-
-        if (isNight)
+        if (Input.GetKeyDown(KeyCode.U)) // Trigger the shooting with the U key
         {
-            // Move to the defense position at night
-            MoveToPosition(defensePosition);
-        }
-        else
-        {
-            // During the day, remain alert but stay near the defense position
-            StayAlert();
-        }
-
-        if (shootTimer >= shootCooldown && targetEnemy != null)
-        {
-            ShootArrow(targetEnemy.position);
-            shootTimer = 0;
+            ShootArrow2();
         }
     }
 
-    void FixedUpdate()
+    private void ShootArrow()
     {
-        DetectEnemies();
-    }
-
-    private void TimeCheck()
-    {
-        // Simple placeholder for time check; replace with your WorldTime system as needed
-        var time = DateTime.Now.Hour;
-        isNight = time >= 21 || time < 6;
-    }
-
-    private void CalculateDefensePosition()
-    {
-        // Stand on the right side of the wall, a fixed distance away
-        defensePosition = new Vector2(defenseWall.position.x + 1.5f, defenseWall.position.y);
-    }
-
-    private void MoveToPosition(Vector2 position)
-    {
-        transform.position = Vector2.MoveTowards(transform.position, position, moveSpeed * Time.deltaTime);
-    }
-
-    private void StayAlert()
-    {
-        if (!isPatrolling && patrolTimer >= patrolCooldown)
+        if (arrowPrefab && firePoint)
         {
-            // Choose a new patrol target within range of the defense position
-            float patrolX = UnityEngine.Random.Range(defensePosition.x - patrolRange, defensePosition.x + patrolRange);
-            patrolTarget = new Vector2(patrolX, defensePosition.y);
-            isPatrolling = true;
-            patrolTimer = 0f; // Reset patrol timer
-        }
-        else if (isPatrolling)
-        {
-            // Move towards the patrol target
-            MoveToPosition(patrolTarget);
-
-            if (Vector2.Distance(transform.position, patrolTarget) < 0.1f)
+            GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                isPatrolling = false; // Stop patrolling once the target is reached
+                rb.AddForce(firePoint.right * launchForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
+            }
+        }
+    }
+    private void ShootArrow2()
+    {
+        if (arrowPrefab && firePoint)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                Vector3 targetPosition = player.transform.position;
+                Vector3 startPosition = firePoint.position;
+                float gravity = Physics2D.gravity.magnitude;
+
+                // Increase the launch angle for a higher trajectory
+                float desiredLaunchAngle = 80f; // Example: Increase to 60 degrees for a higher shot
+
+                // Calculate the distance to the target (ignoring height for now)
+                float distanceToTarget = Vector2.Distance(new Vector2(startPosition.x, startPosition.y), new Vector2(targetPosition.x, targetPosition.y));
+
+                // Adjust the launch force to ensure the arrow can reach the target at a higher launch angle
+                float adjustedLaunchForce = CalculateLaunchForce(desiredLaunchAngle, distanceToTarget, gravity);
+
+                // Set the arrow's position and rotation
+                GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.Euler(0, 0, desiredLaunchAngle));
+                Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    // Calculate the launch velocity vector with the adjusted force and angle
+                    Vector2 launchVelocity = new Vector2(adjustedLaunchForce * Mathf.Cos(desiredLaunchAngle * Mathf.Deg2Rad), adjustedLaunchForce * Mathf.Sin(desiredLaunchAngle * Mathf.Deg2Rad));
+                    rb.velocity = launchVelocity;
+                }
+                else
+                {
+                    Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
+                }
+            }
+            else
+            {
+                Debug.LogError("Player object not found.");
             }
         }
     }
 
-    private void DetectEnemies()
+    // Helper method to calculate the required launch force for a given angle and distance
+    private float CalculateLaunchForce(float angle, float distance, float gravity)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, detectionRadius, enemyLayer);
-        foreach (var hit in hits)
-        {
-            if (hit.gameObject.CompareTag("Enemy"))
-            {
-                targetEnemy = hit.transform;
-                return; // Target the first enemy within range
-            }
-        }
-        targetEnemy = null; // Reset if no enemies are detected
+        float angleRad = angle * Mathf.Deg2Rad;
+        float force = Mathf.Sqrt((gravity * distance * distance) / (distance * Mathf.Sin(2 * angleRad)));
+        return force;
     }
 
-    private void ShootArrow(Vector2 targetPosition)
-    {
-        GameObject arrow = Instantiate(arrowPrefab, shootPoint.position, Quaternion.identity);
-        // Direct the arrow towards the target
-        arrow.GetComponent<Rigidbody2D>().velocity = (targetPosition - (Vector2)shootPoint.position).normalized * 10f; // Adjust speed as necessary
-    }
+
+
 }

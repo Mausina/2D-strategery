@@ -6,12 +6,24 @@ namespace WorldTimeSystem
 {
     public class WorldTime : MonoBehaviour
     {
+        public static WorldTime Instance { get; private set; }
         // Define the event using the generic EventHandler delegate with your custom EventArgs
         public event EventHandler<TimeSpan> WorldTimeChanged;
-
+        
         [SerializeField]
         private float _dayLength; // 150 _dayLength
-
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
         private TimeSpan _currentTime;
         private float _minuteLength => _dayLength / WorlTimeConstans.MinutesInDay; // Make sure the constant is correctly named and accessible
 
