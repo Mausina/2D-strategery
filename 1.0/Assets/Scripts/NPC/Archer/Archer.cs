@@ -14,26 +14,35 @@ public class ArcherController : MonoBehaviour
     public DetectionZone detectionZone;
     private bool isMovingRight = true;
     private bool isNight = false;
+    public float shootCooldownSeconds = 1f; // Time in seconds between shots
+    private float lastShotTime = 0f; // When the last shot was fired
 
 
     private void Start()
     {
         StartCoroutine(CheckTimeOfDay());
     }
+
     private void Update()
     {
-        if (isNight && RallyPointManager.Instance.CurrentRallyPoint != null && !IsAtRallyPoint())
+        // Perform actions based on time of day
+        if (WorldTimeSystem.WorldTime.Instance != null)
         {
-            MoveTowardsRallyPoint();
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-           // ShootArrow();
-            CheckDetectionZone();
-        }
+            TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
+            bool isNight = currentTime.Hours < 6 || currentTime.Hours >= 18;
 
-
+            if (isNight && RallyPointManager.Instance.CurrentRallyPoint != null && !IsAtRallyPoint())
+            {
+                MoveTowardsRallyPoint();
+            }
+            else if (!isNight)
+            {
+               
+            }
+        }
+        CheckDetectionZone();
     }
+
     private void DaytimeBehavior()
     {
         // Implement hunting behavior and other daytime activities
@@ -63,15 +72,26 @@ public class ArcherController : MonoBehaviour
             }
             else if (collider.CompareTag("Animal"))
             {
-                //float angleOflaunch = 15f;
-                //ShootArrowAtTarget(collider.transform.position, angleOflaunch);
-                //ShootArrow();
+                float angleOflaunch = 15f;
+                ShootArrowAtTarget(collider.transform.position, angleOflaunch);
                 // Logic for encountering an animal (e.g., stop and shoot)
             }
-            else if (collider.CompareTag("Enemy")) // Check if the detected object is an enemy
+            else if (collider.CompareTag("Enemy") && Time.time >= lastShotTime + shootCooldownSeconds)
             {
-                float angleOflaunch = 80f;
-                ShootArrowAtTarget(collider.transform.position, angleOflaunch); // Shoot an arrow at the enemy
+                if (IsAtRallyPoint() == true )
+                {
+                    float angleOflaunch = 80f;
+                    ShootArrowAtTarget(collider.transform.position, angleOflaunch); // Shoot an arrow at the enemy
+                    lastShotTime = Time.time; // Reset the last shot time
+                    break; // Add this if you want to shoot only one arrow per check
+                }
+                else
+                {
+                    float angleOflaunch = 15f;
+                    ShootArrowAtTarget(collider.transform.position, angleOflaunch);
+                    lastShotTime = Time.time; // Reset the last shot time
+                    break; // Add this if you want to shoot only one arrow per chec
+                }
             }
         }
     }
@@ -119,31 +139,6 @@ public class ArcherController : MonoBehaviour
     {
         if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
         return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.2f;
-    }
-    /*
-    private void FlipDirection()
-    {
-        isMovingRight = !isMovingRight;
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
-    }
-    */
-    private void ShootArrow()
-    {
-        if (arrowPrefab && firePoint)
-        {
-            GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.AddForce(firePoint.right * launchForce, ForceMode2D.Impulse);
-            }
-            else
-            {
-                Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
-            }
-        }
     }
     private void ShootArrowAtTarget(Vector3 targetPosition, float angleOflaunch)
     {
@@ -195,7 +190,32 @@ public class ArcherController : MonoBehaviour
         // Return velocity vector
         return new Vector2(velocityX * sign, velocityY) * direction.magnitude;
     }
+    private void ShootArrow()
+    {
+        if (arrowPrefab && firePoint)
+        {
+            GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.AddForce(firePoint.right * launchForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
+            }
+        }
+    }
 
+    /*
+    private void FlipDirection()
+    {
+        isMovingRight = !isMovingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
+    }
+    */
 
 
 }
