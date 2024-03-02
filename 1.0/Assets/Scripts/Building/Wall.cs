@@ -17,7 +17,7 @@ public class Wall : MonoBehaviour
         // Notify that a new wall has been constructed
         OnWallConstructed?.Invoke(this);
     }
-
+    public int Level { get; private set; } = 1;
     // Use this event to notify when the wall level changes
     public event EventHandler LevelChanged;
     public bool IsMaxLevel
@@ -31,7 +31,7 @@ public class Wall : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateWallVisual();
         InitializeCoins();
-        RallyPointManager.Instance.UpdateRallyPoint(transform);
+       // RallyPointManager.Instance.UpdateRallyPoint(transform);
     }
     private void InitializeCoins()
     {
@@ -63,7 +63,7 @@ public class Wall : MonoBehaviour
     {
         if (level < maxLevel)
         {
-            WallLevel nextLevelInfo = wallLevels[level]; // Assuming level starts from 1 and wallLevels is zero-based
+            WallLevel nextLevelInfo = wallLevels[level - 1]; // Correct indexing
             int upgradeCost = nextLevelInfo.upgradeCost;
 
             if (CoinManager.Instance.CanAfford(upgradeCost))
@@ -71,10 +71,14 @@ public class Wall : MonoBehaviour
                 CoinManager.Instance.SpendCoins(upgradeCost);
                 level++;
                 UpdateWallVisual();
-                // Invoke the LevelChanged event with this instance as sender and EventArgs.Empty since we're not passing any additional data
                 LevelChanged?.Invoke(this, EventArgs.Empty);
-                coins[level - 1].isFilled = true;
-                RallyPointManager.Instance.UpdateRallyPoint(transform);
+                coins[level - 1].isFilled = true; // Assuming this is correct since coins array is likely 0-indexed
+
+                // Check if the rally point should be updated
+                if (level == 2) // After increment, which means it was level 1 before increment
+                {
+                    RallyPointManager.Instance.UpdateRallyPoint(this);
+                }
             }
             else
             {
@@ -86,6 +90,8 @@ public class Wall : MonoBehaviour
             Debug.Log("Wall is already at maximum level!");
         }
     }
+
+
 
     private GameObject currentWallInstance; // Holds the current wall instance
 

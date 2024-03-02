@@ -21,12 +21,17 @@ public class ArcherController : MonoBehaviour
     }
     private void Update()
     {
-        CheckTimeOfDay(); // Simplify this method if necessary
-
         if (isNight && RallyPointManager.Instance.CurrentRallyPoint != null && !IsAtRallyPoint())
         {
             MoveTowardsRallyPoint();
         }
+
+        /*
+        else if (RallyPointManager.Instance.CurrentRallyPoint == null)
+        {
+            MoveArcher();
+        }
+        */
     }
     IEnumerator CheckTimeOfDay()
     {
@@ -70,9 +75,10 @@ public class ArcherController : MonoBehaviour
 
     private bool IsAtRallyPoint()
     {
-        // Increase the threshold distance to ensure the Archer gets closer to the rally point
-        return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 1.5f; // Adjust this value as needed
+        if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
+        return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 1.5f;
     }
+
 
 
     private void DaytimeBehavior()
