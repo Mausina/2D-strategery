@@ -44,7 +44,12 @@ namespace WorldTimeSystem
                 yield return new WaitForSeconds(_minuteLength);
             }
         }
+        public TimeSpan GetCurrentTime()
+        {
+            return _currentTime;
+        }
     }
+
 
     // Custom EventArgs class to hold the TimeSpan data
     

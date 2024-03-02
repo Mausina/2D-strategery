@@ -24,6 +24,23 @@ public class Arrow : MonoBehaviour
     {
         // Example collision logic
         Debug.Log($"Hit {collision.gameObject.name}");
-        Destroy(gameObject); // Destroy the arrow on collision
+
+        // Make the arrow stick to the object it collides with
+        StickArrow(collision);
+    }
+
+    void StickArrow(Collision2D collision)
+    {
+        // Disable the Rigidbody2D to stop the arrow
+        rb.isKinematic = true;
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+
+        // Optionally, make the arrow a child of the collided object so it moves with it
+        // Remove this line if you don't want the arrow to become a child of what it hits
+        transform.parent = collision.transform;
+
+        // Disable this script (if it only controls flight) to stop further updates
+        this.enabled = false;
     }
 }

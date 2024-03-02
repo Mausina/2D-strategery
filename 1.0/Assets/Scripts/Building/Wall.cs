@@ -10,6 +10,13 @@ public class Wall : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private int currentHealth;
+    public static event Action<Wall> OnWallConstructed;
+
+    private void Awake()
+    {
+        // Notify that a new wall has been constructed
+        OnWallConstructed?.Invoke(this);
+    }
 
     // Use this event to notify when the wall level changes
     public event EventHandler LevelChanged;
@@ -18,11 +25,13 @@ public class Wall : MonoBehaviour
         get { return level >= maxLevel; }
     }
 
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateWallVisual();
         InitializeCoins();
+        RallyPointManager.Instance.UpdateRallyPoint(transform);
     }
     private void InitializeCoins()
     {
@@ -65,6 +74,7 @@ public class Wall : MonoBehaviour
                 // Invoke the LevelChanged event with this instance as sender and EventArgs.Empty since we're not passing any additional data
                 LevelChanged?.Invoke(this, EventArgs.Empty);
                 coins[level - 1].isFilled = true;
+                RallyPointManager.Instance.UpdateRallyPoint(transform);
             }
             else
             {
@@ -77,15 +87,37 @@ public class Wall : MonoBehaviour
         }
     }
 
+    private GameObject currentWallInstance; // Holds the current wall instance
+
     void UpdateWallVisual()
     {
         if (wallLevels != null && level - 1 < wallLevels.Length)
         {
-            WallLevel currentLevel = wallLevels[level - 1]; // Adjust for zero-based indexing
-            spriteRenderer.sprite = currentLevel.wallSprite;
-            currentHealth = currentLevel.health;
+            WallLevel currentLevel = wallLevels[level - 1];
+
+            // Ensure the old wall instance is removed.
+            if (currentWallInstance != null)
+            {
+                Destroy(currentWallInstance);
+            }
+
+            // Instantiate the new wall prefab, ensuring it's at the correct position and scale.
+            if (currentLevel.wallPrefab != null)
+            {
+                currentWallInstance = Instantiate(currentLevel.wallPrefab, transform.position, transform.rotation);
+                // Optionally, set the parent of the wall to organize your scene hierarchy.
+                // currentWallInstance.transform.SetParent(transform, false);
+
+                // Ensure the new prefab instance has the correct scale.
+                // If your prefab needs to be scaled, adjust it here. Example:
+                // currentWallInstance.transform.localScale = new Vector3(1, 1, 1);
+
+                currentHealth = currentLevel.health;
+            }
         }
     }
+
+
 
     public void TakeDamage(int damage)
     {
@@ -113,10 +145,11 @@ public class Wall : MonoBehaviour
 [System.Serializable]
 public class WallLevel
 {
-    public Sprite wallSprite;
+    public GameObject wallPrefab; // This is the prefab for the wall at each level
     public int health;
     public int upgradeCost;
 }
+
 [System.Serializable]
 public class Coin
 {

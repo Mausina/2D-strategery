@@ -371,7 +371,7 @@ public class PlayerController : MonoBehaviour
         
         // Set the animator boolean parameter "IsNight" based on the isNight condition
         animator.SetBool(AnimationStrings.isNightBool, isNight);
-       // Debug.Log($"Time changed. Current hour: {currentTime.Hours}, IsNight: {isNight}");
+      // Debug.Log($"Time changed. Current hour: {currentTime.Hours}, IsNight: {isNight}");
 
     }
 
