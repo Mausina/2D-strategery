@@ -4,6 +4,7 @@ public class Arrow : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float destroyAfterSeconds = 5f; // Time to auto-destroy the arrow
+    private bool isFlying = true; // To check if the arrow is flying
 
     void Start()
     {
@@ -13,19 +14,19 @@ public class Arrow : MonoBehaviour
 
     void Update()
     {
-        if (rb.velocity != Vector2.zero)
+        if (isFlying && rb.velocity != Vector2.zero)
         {
+            // Calculate the rotation angle of the arrow based on its velocity
             float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            // Apply the rotation to the arrow
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Example collision logic
-        Debug.Log($"Hit {collision.gameObject.name}");
-
-        // Make the arrow stick to the object it collides with
+        // Once the arrow collides, make it stick and stop rotating it
+        isFlying = false; // The arrow is no longer flying
         StickArrow(collision);
     }
 
@@ -36,11 +37,10 @@ public class Arrow : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
 
-        // Optionally, make the arrow a child of the collided object so it moves with it
-        // Remove this line if you don't want the arrow to become a child of what it hits
+        // Make the arrow a child of the collided object
         transform.parent = collision.transform;
 
-        // Disable this script (if it only controls flight) to stop further updates
+        // Disable this script to stop further updates
         this.enabled = false;
     }
 }

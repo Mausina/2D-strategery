@@ -15,6 +15,7 @@ public class ArcherController : MonoBehaviour
     private bool isMovingRight = true;
     private bool isNight = false;
 
+
     private void Start()
     {
         StartCoroutine(CheckTimeOfDay());
@@ -25,13 +26,58 @@ public class ArcherController : MonoBehaviour
         {
             MoveTowardsRallyPoint();
         }
-
-        /*
-        else if (RallyPointManager.Instance.CurrentRallyPoint == null)
+        if (Input.GetKeyDown(KeyCode.U))
         {
-            MoveArcher();
+           // ShootArrow();
+            CheckDetectionZone();
         }
-        */
+
+
+    }
+    private void DaytimeBehavior()
+    {
+        // Implement hunting behavior and other daytime activities
+    }
+
+    private void AdjustFacingDirection()
+    {
+        // Adjust the facing direction of the NPC based on isMovingRight
+        Vector3 localScale = transform.localScale;
+        localScale.x = isMovingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+        transform.localScale = localScale;
+    }
+    private void CheckDetectionZone()
+    {
+        int treeCount = 0;
+
+        foreach (Collider2D collider in detectionZone.detectedColliders)
+        {
+            if (collider.CompareTag("Tree"))
+            {
+                treeCount++;
+                if (treeCount >= 3)
+                {
+                    AdjustFacingDirection();
+                    break;
+                }
+            }
+            else if (collider.CompareTag("Animal"))
+            {
+                //float angleOflaunch = 15f;
+                //ShootArrowAtTarget(collider.transform.position, angleOflaunch);
+                //ShootArrow();
+                // Logic for encountering an animal (e.g., stop and shoot)
+            }
+            else if (collider.CompareTag("Enemy")) // Check if the detected object is an enemy
+            {
+                float angleOflaunch = 80f;
+                ShootArrowAtTarget(collider.transform.position, angleOflaunch); // Shoot an arrow at the enemy
+            }
+        }
+    }
+    private void MoveArcher()
+    {
+        transform.Translate(Vector2.right * (isMovingRight ? 1 : -1) * speed * Time.deltaTime);
     }
     IEnumerator CheckTimeOfDay()
     {
@@ -55,7 +101,6 @@ public class ArcherController : MonoBehaviour
             yield return null; // This ensures the check runs continuously
         }
     }
-
     private void MoveTowardsRallyPoint()
     {
         if (RallyPointManager.Instance.CurrentRallyPoint != null)
@@ -70,57 +115,12 @@ public class ArcherController : MonoBehaviour
             AdjustFacingDirection();
         }
     }
-
-
-
     private bool IsAtRallyPoint()
     {
         if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
-        return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 1.5f;
+        return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.2f;
     }
-
-
-
-    private void DaytimeBehavior()
-    {
-        // Implement hunting behavior and other daytime activities
-    }
-
-    private void AdjustFacingDirection()
-    {
-        // Adjust the facing direction of the NPC based on isMovingRight
-        Vector3 localScale = transform.localScale;
-        localScale.x = isMovingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
-        transform.localScale = localScale;
-    }
-
-
-    private void CheckDetectionZone()
-    {
-        int treeCount = 0;
-
-        foreach (Collider2D collider in detectionZone.detectedColliders)
-        {
-            if (collider.CompareTag("Tree"))
-            {
-                treeCount++;
-                if (treeCount >= 3)
-                {
-                    FlipDirection();
-                    break;
-                }
-            }
-            else if (collider.CompareTag("Animal"))
-            {
-                // Logic for encountering an animal (e.g., stop and shoot)
-            }
-        }
-    }
-    private void MoveArcher()
-    {
-        transform.Translate(Vector2.right * (isMovingRight ? 1 : -1) * speed * Time.deltaTime);
-    }
-
+    /*
     private void FlipDirection()
     {
         isMovingRight = !isMovingRight;
@@ -128,9 +128,7 @@ public class ArcherController : MonoBehaviour
         localScale.x *= -1;
         transform.localScale = localScale;
     }
-
-
-
+    */
     private void ShootArrow()
     {
         if (arrowPrefab && firePoint)
@@ -147,54 +145,57 @@ public class ArcherController : MonoBehaviour
             }
         }
     }
-    private void ShootArrow2()
+    private void ShootArrowAtTarget(Vector3 targetPosition, float angleOflaunch)
     {
         if (arrowPrefab && firePoint)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
+            // The starting point of the arrow
+            Vector3 startPosition = firePoint.position;
+
+            // The gravity value; assuming Physics2D.gravity.y is being used
+            float gravity = Physics2D.gravity.magnitude;
+
+            // The desired angle of launch
+            float angle = angleOflaunch; // You can adjust this angle as needed
+
+            // Calculate the velocity needed to throw the object to the target point
+            Vector2 velocity = CalculateVelocity(targetPosition, startPosition, gravity, angle);
+
+            // Instantiate the arrow and set its velocity
+            GameObject arrow = Instantiate(arrowPrefab, startPosition, Quaternion.identity); // Use Quaternion.identity for initial rotation
+            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                Vector3 targetPosition = player.transform.position;
-                Vector3 startPosition = firePoint.position;
-                float gravity = Physics2D.gravity.magnitude;
-
-                // Increase the launch angle for a higher trajectory
-                float desiredLaunchAngle = 80f; // Example: Increase to 60 degrees for a higher shot
-
-                // Calculate the distance to the target (ignoring height for now)
-                float distanceToTarget = Vector2.Distance(new Vector2(startPosition.x, startPosition.y), new Vector2(targetPosition.x, targetPosition.y));
-
-                // Adjust the launch force to ensure the arrow can reach the target at a higher launch angle
-                float adjustedLaunchForce = CalculateLaunchForce(desiredLaunchAngle, distanceToTarget, gravity);
-
-                // Set the arrow's position and rotation
-                GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.Euler(0, 0, desiredLaunchAngle));
-                Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    // Calculate the launch velocity vector with the adjusted force and angle
-                    Vector2 launchVelocity = new Vector2(adjustedLaunchForce * Mathf.Cos(desiredLaunchAngle * Mathf.Deg2Rad), adjustedLaunchForce * Mathf.Sin(desiredLaunchAngle * Mathf.Deg2Rad));
-                    rb.velocity = launchVelocity;
-                }
-                else
-                {
-                    Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
-                }
-            }
-            else
-            {
-                Debug.LogError("Player object not found.");
+                rb.velocity = velocity;
+                float angleDegrees = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+                arrow.transform.rotation = Quaternion.AngleAxis(angleDegrees, Vector3.forward); // Adjust rotation based on velocity
             }
         }
     }
 
-    // Helper method to calculate the required launch force for a given angle and distance
-    private float CalculateLaunchForce(float angle, float distance, float gravity)
+    private Vector2 CalculateVelocity(Vector3 target, Vector3 source, float gravity, float angle)
     {
+        // Distance between target and source
+        float distance = Vector2.Distance(target, source);
+
+        // Convert angle to radians
         float angleRad = angle * Mathf.Deg2Rad;
-        float force = Mathf.Sqrt((gravity * distance * distance) / (distance * Mathf.Sin(2 * angleRad)));
-        return force;
+
+        // Calculate velocity
+        float velocity = Mathf.Sqrt(distance * gravity / Mathf.Sin(2 * angleRad));
+
+        // Get velocity components in 2D
+        float velocityX = velocity * Mathf.Cos(angleRad);
+        float velocityY = velocity * Mathf.Sin(angleRad);
+
+        // Adjust direction based on target and source positions
+        Vector2 direction = (target - source).normalized;
+        float sign = (target.x > source.x) ? 1f : -1f;
+
+        // Return velocity vector
+        return new Vector2(velocityX * sign, velocityY) * direction.magnitude;
     }
+
 
 
 }

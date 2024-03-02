@@ -10,6 +10,7 @@ TagManager:
   - Tree
   - 'Animal '
   - Animal
+  - Enemy
   layers:
   - Default
   - TransparentFX
