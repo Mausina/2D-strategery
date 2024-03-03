@@ -16,7 +16,11 @@ public class ArcherController : MonoBehaviour
     private bool isNight = false;
     public float shootCooldownSeconds = 1f; // Time in seconds between shots
     private float lastShotTime = 0f; // When the last shot was fired
+    public float chanceToIdle = 0.1f; // Chance to idle every 10 seconds
+    public float chanceToTurnAround = 0.3f; // Chance to turn around after idling
+    public float idleDuration = 3f; // How long to idle
 
+    private bool isIdling = false;
 
     private void Start()
     {
@@ -37,17 +41,82 @@ public class ArcherController : MonoBehaviour
             }
             else if (!isNight)
             {
-               
+                DaytimeBehavior();
             }
         }
         CheckDetectionZone();
     }
 
+    private float idleCheckTimer = 10f; // Timer to check for idle
+
     private void DaytimeBehavior()
     {
-        // Implement hunting behavior and other daytime activities
+        // If the archer is idling, don't do anything else
+        if (isIdling) return;
+
+        // Decrease the timer
+        idleCheckTimer -= Time.deltaTime;
+
+        // Every 10 seconds, check if the archer should idle
+        if (idleCheckTimer <= 0f)
+        {
+            idleCheckTimer = 10f; // Reset the timer
+
+            // Randomly decide to idle
+            if (UnityEngine.Random.value < chanceToIdle)
+            {
+                StartCoroutine(IdleRoutine());
+            }
+        }
+
+        // Continue moving the archer
+        MoveArcher();
     }
 
+    private IEnumerator IdleRoutine()
+    {
+        // Start idling
+        isIdling = true;
+        // Trigger idle animation
+        // animator.SetBool("IsIdling", true);
+
+        // Wait for the duration of the idle
+        yield return new WaitForSeconds(idleDuration);
+
+        // Optionally turn around with a certain chance
+        if (UnityEngine.Random.value < chanceToTurnAround)
+        {
+            AdjustFacingDirection();
+        }
+
+        // Stop idling
+        isIdling = false;
+        // Trigger walking animation
+        // animator.SetBool("IsIdling", false);
+    }
+
+    private void MoveArcher()
+    {
+        // Only move if not at rally point and not idling
+        if (!IsAtRallyPoint() && !isIdling)
+        {
+            transform.Translate(Vector2.right * (isMovingRight ? 1 : -1) * speed * Time.deltaTime);
+        }
+    }
+
+    private bool IsAtRallyPoint()
+    {
+        if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
+        bool atRallyPoint = Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.5f;
+
+        // If at rally point and it's daytime, start idling
+        if (atRallyPoint && !isNight && !isIdling)
+        {
+            StartCoroutine(IdleRoutine());
+        }
+
+        return atRallyPoint;
+    }
     private void AdjustFacingDirection()
     {
         // Adjust the facing direction of the NPC based on isMovingRight
@@ -95,10 +164,6 @@ public class ArcherController : MonoBehaviour
             }
         }
     }
-    private void MoveArcher()
-    {
-        transform.Translate(Vector2.right * (isMovingRight ? 1 : -1) * speed * Time.deltaTime);
-    }
     IEnumerator CheckTimeOfDay()
     {
         while (true)
@@ -135,11 +200,13 @@ public class ArcherController : MonoBehaviour
             AdjustFacingDirection();
         }
     }
+    /*
     private bool IsAtRallyPoint()
     {
         if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
         return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.2f;
     }
+    */
     private void ShootArrowAtTarget(Vector3 targetPosition, float angleOflaunch)
     {
         if (arrowPrefab && firePoint)
