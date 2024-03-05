@@ -36,6 +36,7 @@ public class CoinManager : MonoBehaviour
     public void SubtractCoins(int amount)
     {
         coins -= amount;
+        Debug.Log(coins);
         if (coins < 0) coins = 0;
         UpdateCoinText(); // Update the UI whenever coins are subtracted
     }

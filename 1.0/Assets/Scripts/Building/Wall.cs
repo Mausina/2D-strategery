@@ -7,7 +7,7 @@ public class Wall : MonoBehaviour
     public int maxLevel = 3;
     public Coin[] coins;
     public WallLevel[] wallLevels;
-
+    public BuilderController BuilderController;
     private SpriteRenderer spriteRenderer;
     private int currentHealth;
     public static event Action<Wall> OnWallConstructed;
@@ -61,29 +61,38 @@ public class Wall : MonoBehaviour
 
     public void UpgradeWall()
     {
+
         if (level < maxLevel)
         {
-            WallLevel nextLevelInfo = wallLevels[level - 1]; // Correct indexing
-            int upgradeCost = nextLevelInfo.upgradeCost;
-
-            if (CoinManager.Instance.CanAfford(upgradeCost))
+            //Update 05.03
+            if (BuilderController != null)
             {
-                CoinManager.Instance.SpendCoins(upgradeCost);
-                level++;
-                UpdateWallVisual();
-                LevelChanged?.Invoke(this, EventArgs.Empty);
-                coins[level - 1].isFilled = true; // Assuming this is correct since coins array is likely 0-indexed
+                //Update 05.03
+                BuilderController.MoveToConstructionSite(transform.position, wallLevels[level - 1].TimeForUpgrade);
+                WallLevel nextLevelInfo = wallLevels[level - 1]; // Correct indexing
+                int upgradeCost = nextLevelInfo.upgradeCost;
 
-                // Check if the rally point should be updated
-                if (level == 2) // After increment, which means it was level 1 before increment
+                if (CoinManager.Instance.CanAfford(upgradeCost))
                 {
-                    RallyPointManager.Instance.UpdateRallyPoint(this);
+                    CoinManager.Instance.SpendCoins(upgradeCost);
+                    level++;
+                    UpdateWallVisual();
+                    LevelChanged?.Invoke(this, EventArgs.Empty);
+                    coins[level - 1].isFilled = true; // Assuming this is correct since coins array is likely 0-indexed
+
+
+                    // Check if the rally point should be updated
+                    if (level == 2) // After increment, which means it was level 1 before increment
+                    {
+                        RallyPointManager.Instance.UpdateRallyPoint(this);
+                    }
+                }
+                else
+                {
+                    Debug.Log("Not enough coins to upgrade!");
                 }
             }
-            else
-            {
-                Debug.Log("Not enough coins to upgrade!");
-            }
+            
         }
         else
         {
@@ -101,27 +110,41 @@ public class Wall : MonoBehaviour
         {
             WallLevel currentLevel = wallLevels[level - 1];
 
-            // Ensure the old wall instance is removed.
             if (currentWallInstance != null)
             {
                 Destroy(currentWallInstance);
             }
 
-            // Instantiate the new wall prefab, ensuring it's at the correct position and scale.
             if (currentLevel.wallPrefab != null)
             {
-                currentWallInstance = Instantiate(currentLevel.wallPrefab, transform.position, transform.rotation);
-                // Optionally, set the parent of the wall to organize your scene hierarchy.
-                // currentWallInstance.transform.SetParent(transform, false);
-
-                // Ensure the new prefab instance has the correct scale.
-                // If your prefab needs to be scaled, adjust it here. Example:
-                // currentWallInstance.transform.localScale = new Vector3(1, 1, 1);
-
+                Vector3 spawnPosition = GetGroundPosition(transform.position);
+                currentWallInstance = Instantiate(currentLevel.wallPrefab, spawnPosition, transform.rotation);
                 currentHealth = currentLevel.health;
             }
         }
     }
+
+    Vector3 GetGroundPosition(Vector3 startPosition)
+    {
+        RaycastHit hit;
+        // Adjust the ray start point to be slightly above the object. You might need to adjust the "rayStartHeight" based on your game.
+        float rayStartHeight = 10f;
+        Vector3 rayStart = new Vector3(startPosition.x, startPosition.y + rayStartHeight, startPosition.z);
+        // Define the maximum distance the ray should check for the ground
+        float maxDistance = 20f;
+
+        if (Physics.Raycast(rayStart, Vector3.down, out hit, maxDistance))
+        {
+            // Return the hit point if the ground is detected
+            return hit.point;
+        }
+        else
+        {
+            // Return original position if ground is not detected (fallback)
+            return startPosition;
+        }
+    }
+
 
 
 
@@ -154,6 +177,7 @@ public class WallLevel
     public GameObject wallPrefab; // This is the prefab for the wall at each level
     public int health;
     public int upgradeCost;
+    public int TimeForUpgrade;
 }
 
 [System.Serializable]
