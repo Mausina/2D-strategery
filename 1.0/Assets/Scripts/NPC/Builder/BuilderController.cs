@@ -1,55 +1,39 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI; // For NavMeshAgent
 
 public class BuilderController : MonoBehaviour
 {
-    public Animator animator; // Ensure this is assigned, e.g., via the inspector or automatically via GetComponent<Animator>() in Start() method.
-    public DetectionZone detectionZone; // Reference to the DetectionZone script, assign it in the inspector or find it automatically if it's on the same object.
+    public Animator animator;
+    private NavMeshAgent agent;
 
-    private void Start()
+    private void Awake()
     {
-        if (animator == null)
-            animator = GetComponent<Animator>();
-
-        // Optional: Automatically find the DetectionZone component if it's not assigned.
-        if (detectionZone == null)
-            detectionZone = GetComponentInChildren<DetectionZone>();
+        agent = GetComponent<NavMeshAgent>(); // Make sure your Builder has a NavMeshAgent component
     }
 
-    public void MoveToConstructionSite(Vector3 position, float buildTime)
+    public void MoveToConstructionSite(Vector3 sitePosition, float buildTime)
     {
-        StartCoroutine(BuildConstruction(position, buildTime));
+        StartCoroutine(MoveAndBuild(sitePosition, buildTime));
     }
 
-    IEnumerator BuildConstruction(Vector3 position, float buildTime)
+    private IEnumerator MoveAndBuild(Vector3 sitePosition, float buildTime)
     {
-        // Logic to move to the position (if needed)
-        // Here you can also start a "move" animation if you have one
-        animator.SetBool("isMoving", true);
+        agent.SetDestination(sitePosition); // Set the destination to the construction site
 
-        // Wait until the builder reaches the construction site
-        // This is a simplified approach. You may want to actually check the distance in a loop.
-        yield return new WaitForSeconds(1); // Simulate the time it takes to move to the construction site
+        // Wait until the builder has reached the destination
+        while (Vector3.Distance(transform.position, sitePosition) > agent.stoppingDistance)
+        {
+            yield return null; // Wait for the next frame before continuing the loop
+        }
 
-        animator.SetBool("isMoving", false);
+        // Upon arrival, trigger the building animation
+        animator.SetBool("IsBuilding", true); // Assumes you have a bool parameter named 'IsBuilding' in your Animator
 
-        // Now at the construction site, start building
-        animator.SetTrigger("Build");
-
-        // Wait for build time to complete the construction
+        // Simulate building time
         yield return new WaitForSeconds(buildTime);
 
-        // Optionally notify the Wall about the completion of construction
-        // This could be done via an event or a direct method call if you have a reference to the Wall
-    }
-
-    private void Update()
-    {
-        // Use detectionZone to check if the player is within the zone and trigger animations or counters accordingly
-        //if (detectionZone != null && detectionZone.IsPlayerInside)
-        {
-            // Player is inside the zone, you can count the time or trigger certain animations
-            // This could be a good place to start an "interact" animation or increment some timer
-        }
+        // Stop building animation
+        animator.SetBool("IsBuilding", false);
     }
 }

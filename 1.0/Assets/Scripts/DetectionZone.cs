@@ -6,6 +6,7 @@ public class DetectionZone : MonoBehaviour
 {
     public List<Collider2D> detectedColliders = new List<Collider2D>();
     private Collider2D col;
+    public Wall wall; // Set this reference in the Unity Inspector
 
     private void Awake()
     {
@@ -24,6 +25,25 @@ public class DetectionZone : MonoBehaviour
         detectedColliders.Remove(collision);
         float objectHeight = CalculateObjectHeight(collision);
         Debug.Log($"Object Exited: {collision.name}, Height: {objectHeight}");
+    }
+    public void CheckForBuilder()
+    {
+        foreach (var collider in detectedColliders)
+        {
+            if (collider.CompareTag("Builder")) // Assuming your builders have a tag "Builder"
+            {
+                // Now call the instance method on the wall instance
+                if (wall != null) // Check to ensure wall is not null
+                {
+                   // wall.StartUpgradeProcess(); // This should now be an instance method call
+                }
+                else
+                {
+                    Debug.LogError("Wall reference not set in the DetectionZone.");
+                }
+                return;
+            }
+        }
     }
 
     public float CalculateObjectHeight(Collider2D collider)

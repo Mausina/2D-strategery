@@ -7,7 +7,7 @@ public class UpgradeManager : MonoBehaviour
     private int currentLevel = 0; // Tracks the current level
     private bool playerInRange = false;
     private int coinsPlaced = 0; // Tracks how many coins have been placed
-    public Wall wall;
+    [SerializeField] private Wall wall;
     [SerializeField] private GameObject prefabCoin; // The coin prefab
     private List<GameObject> instantiatedCoins = new List<GameObject>(); // Tracks instantiated coins
     private float timeSinceLastCoin = 0f; // Timer for dropping coins
@@ -20,6 +20,8 @@ public class UpgradeManager : MonoBehaviour
         {
             container.SetActive(false);
         }
+        // Subscribe to the wall's event when it's upgraded
+        wall.OnWallUpgraded += WallUpgradeHandler;
     }
 
     void Update()
@@ -111,15 +113,21 @@ public class UpgradeManager : MonoBehaviour
 
     private void CompleteUpgrade()
     {
-        Debug.Log("Upgrade complete!");
         wall.UpgradeWall();
-        currentLevel++; // Increment the level
-        coinsPlaced = 0; // Reset coins placed
-        instantiatedCoins.ForEach(Destroy); // Destroy all coins
-        instantiatedCoins.Clear(); // Clear the list of instantiated coins
-
-        if (playerInRange) UpdateIconVisibility(true); // Update icon visibility if the player is still in range
+        // The actual increment of currentLevel will now be handled in WallUpgradeHandler
     }
+
+    private void WallUpgradeHandler()
+    {
+        // Handle the upgrade completion logic here
+        Debug.Log("Upgrade complete!");
+        currentLevel++;
+        coinsPlaced = 0;
+        instantiatedCoins.ForEach(Destroy);
+        instantiatedCoins.Clear();
+        if (playerInRange) UpdateIconVisibility(true);
+    }
+
 
     private void UpdateIconVisibility(bool isVisible)
     {
@@ -131,6 +139,14 @@ public class UpgradeManager : MonoBehaviour
         if (isVisible && currentLevel < levelIconContainers.Count)
         {
             levelIconContainers[currentLevel].SetActive(true);
+        }
+    }
+    void OnDestroy()
+    {
+        // Unsubscribe to prevent memory leaks
+        if (wall != null)
+        {
+            wall.OnWallUpgraded -= WallUpgradeHandler;
         }
     }
 }

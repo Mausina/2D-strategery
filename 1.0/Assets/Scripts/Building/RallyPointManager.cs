@@ -20,20 +20,20 @@ public class RallyPointManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Wall.OnWallConstructed += UpdateRallyPoint;
+        // Update this line to use the correct method name
+        //Wall.OnWallConstructed += UpdateRallyPointToTransform;
     }
 
     private void OnDisable()
     {
-        Wall.OnWallConstructed -= UpdateRallyPoint;
+        // Update this line to use the correct method name
+       // Wall.OnWallConstructed -= UpdateRallyPointToTransform;
     }
 
-    // Adjust the method to check the wall's level before updating the rally point
-    public void UpdateRallyPoint(Wall newWall)
+    public void UpdateRallyPointToTransform(Transform newRallyPointTransform)
     {
-        CurrentRallyPoint = newWall.transform;
-        Debug.Log("Updated Rally Point to " + newWall.gameObject.name);
+        CurrentRallyPoint = newRallyPointTransform;
+        Debug.Log("Updated Rally Point to " + newRallyPointTransform.gameObject.name);
     }
-
 
 }
