@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+
 
 public class Wall : MonoBehaviour
 {
@@ -94,7 +95,7 @@ public class Wall : MonoBehaviour
                 if (level == 2)
                 {
                     // Ensure RallyPointManager is implemented
-                    RallyPointManager.Instance.UpdateRallyPointToTransform(nightPoint.transform);
+                   // RallyPointManager.Instance.UpdateRallyPointToTransform(nightPoint.transform);
                 }
             }
             else
@@ -178,3 +179,5 @@ public class Coin
     public bool isFilled;
     // Implement additional properties as needed
 }
+
+

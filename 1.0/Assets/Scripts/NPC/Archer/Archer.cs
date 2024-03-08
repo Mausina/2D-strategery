@@ -194,7 +194,7 @@ public class ArcherController : MonoBehaviour
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position, step);
             float distance = Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position);
-            Debug.Log($"Distance to Rally Point: {distance}, IsAtRallyPoint: {IsAtRallyPoint()}");
+           // Debug.Log($"Distance to Rally Point: {distance}, IsAtRallyPoint: {IsAtRallyPoint()}");
             // Continuously adjust facing direction based on movement direction
             isMovingRight = RallyPointManager.Instance.CurrentRallyPoint.position.x > transform.position.x;
             AdjustFacingDirection();
