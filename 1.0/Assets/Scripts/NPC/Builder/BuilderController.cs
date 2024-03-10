@@ -3,53 +3,109 @@ using UnityEngine;
 
 public class BuilderController : MonoBehaviour
 {
-    public Animator animator; // Ensure this is assigned, e.g., via the inspector or automatically via GetComponent<Animator>() in Start() method.
-    public DetectionZone detectionZone; // Reference to the DetectionZone script, assign it in the inspector or find it automatically if it's on the same object.
+    public float speed = 5f; // The speed at which the builder moves.
+    private BuildingList buildingList; // Reference to BuildingList component.
+    private Animator animator; // Animator to control the builder's animations.
+    private bool isMoving = false; // Track if the builder is currently moving.
+    private bool isMovingRight = true; // Default direction.
+    private bool isUpgrading = false; // Flag to indicate if currently upgrading.
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
-        if (animator == null)
-            animator = GetComponent<Animator>();
-
-        // Optional: Automatically find the DetectionZone component if it's not assigned.
-        if (detectionZone == null)
-            detectionZone = GetComponentInChildren<DetectionZone>();
+        buildingList = FindObjectOfType<BuildingList>();
+        if (buildingList == null)
+        {
+            Debug.LogError("BuildingList not found in the scene.");
+        }
+        else
+        {
+            StartCoroutine(MoveAndUpgradeBuildings());
+        }
     }
 
-    public void MoveToConstructionSite(Vector3 position, float buildTime)
+    private IEnumerator MoveAndUpgradeBuildings()
     {
-        StartCoroutine(BuildConstruction(position, buildTime));
+        while (true)
+        {
+            if (buildingList.buildingsToUpgrade.Count > 0 && !isMoving && !isUpgrading)
+            {
+                isMoving = true;
+                animator.SetBool("isMoving", true);
+                Transform targetBuilding = buildingList.buildingsToUpgrade[0];
+
+                yield return StartCoroutine(MoveToBuilding(targetBuilding));
+
+                ActivateBuilding(targetBuilding);
+                yield return new WaitUntil(() => !isMoving && !isUpgrading);
+            }
+            yield return null;
+        }
     }
 
-    IEnumerator BuildConstruction(Vector3 position, float buildTime)
+    private IEnumerator MoveToBuilding(Transform targetBuilding)
     {
-        // Logic to move to the position (if needed)
-        // Here you can also start a "move" animation if you have one
-        animator.SetBool("isMoving", true);
+        while (Vector3.Distance(transform.position, targetBuilding.position) > 0.1f)
+        {
+            isMovingRight = (targetBuilding.position.x > transform.position.x);
+            AdjustFacingDirection();
 
-        // Wait until the builder reaches the construction site
-        // This is a simplified approach. You may want to actually check the distance in a loop.
-        yield return new WaitForSeconds(1); // Simulate the time it takes to move to the construction site
+            Vector3 step = Vector3.MoveTowards(transform.position, targetBuilding.position, speed * Time.deltaTime);
+            transform.position = step;
+            yield return null;
+        }
 
         animator.SetBool("isMoving", false);
-
-        // Now at the construction site, start building
-        animator.SetTrigger("Build");
-
-        // Wait for build time to complete the construction
-        yield return new WaitForSeconds(buildTime);
-
-        // Optionally notify the Wall about the completion of construction
-        // This could be done via an event or a direct method call if you have a reference to the Wall
+        isMoving = false;
     }
 
-    private void Update()
+    private void ActivateBuilding(Transform building)
     {
-        // Use detectionZone to check if the player is within the zone and trigger animations or counters accordingly
-        //if (detectionZone != null && detectionZone.IsPlayerInside)
+        Debug.Log($"Activating Building: {building.name}");
+        var upgradeBuildingAnimatio = building.GetComponent<UpgradeBuildingAnimatio>();
+        if (upgradeBuildingAnimatio != null)
         {
-            // Player is inside the zone, you can count the time or trigger certain animations
-            // This could be a good place to start an "interact" animation or increment some timer
+            // Find the index of the current building
+            int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
+            if (buildingIndex != -1)
+            {
+                // Ensure the index is valid and there is a corresponding upgrade time
+                float upgradeTime = buildingList.buildingUpgradeTimeList[buildingIndex];
+                Debug.Log("Activating upgrade animation with duration: " + upgradeTime);
+
+                // Start the upgrade animation with the specific duration
+                upgradeBuildingAnimatio.StartUpgradeAnimation(true, upgradeTime);
+                upgradeBuildingAnimatio.OnUpgradeComplete += () => OnBuildingUpgradeComplete(building);
+            }
+            else
+            {
+                Debug.LogError($"Index for {building.name} not found in upgrade time list.");
+            }
         }
+        else
+        {
+            Debug.LogError($"UpgradeBuildingAnimatio component not found on {building.name}.");
+        }
+    }
+
+
+
+    private void OnBuildingUpgradeComplete(Transform building)
+    {
+        animator.SetBool("isBuilding", false);
+        isUpgrading = false;
+
+        buildingList.buildingsToUpgrade.Remove(building);
+    }
+
+    private void AdjustFacingDirection()
+    {
+        Vector3 localScale = transform.localScale;
+        localScale.x = isMovingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+        transform.localScale = localScale;
     }
 }

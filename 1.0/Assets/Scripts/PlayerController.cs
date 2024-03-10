@@ -322,7 +322,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+    /*
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.started && touchingDirection.isGround && CanMove)
@@ -331,7 +331,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpInpulse);
         }
     }
-
+    */
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.started)

@@ -8,13 +8,16 @@ public class Wall : MonoBehaviour
     public int maxLevel = 3;
     public Coin[] coins;
     public WallLevel[] wallLevels;
-    public BuilderController builderController; // Ensure this has the necessary logic for building/upgrading
+    private BuilderController builderController; // Ensure this has the necessary logic for building/upgrading
+    private BuildingList buildingList;
+    private UpgradeBuildingAnimatio buildingAnimatio;
     [SerializeField] public GameObject nightPoint; // Corrected naming convention
     private SpriteRenderer spriteRenderer;
     private int currentHealth;
     public static event Action<Wall> OnWallConstructed;
     public event Action OnWallUpgraded;
     private GameObject currentWallInstance; // Add this line near the top of your Wall class
+    private bool Preparation = true;
 
     private void Awake()
     {
@@ -81,22 +84,52 @@ public class Wall : MonoBehaviour
             WallLevel nextLevelInfo = wallLevels[level - 1];
             int upgradeCost = nextLevelInfo.upgradeCost;
 
-            // CoinManager check here. Make sure CoinManager is correctly implemented and accessible
             if (CoinManager.Instance.CanAfford(upgradeCost))
             {
                 CoinManager.Instance.SpendCoins(upgradeCost);
                 level++;
+
+                // Efficiently get BuildingList component if not already referenced
+                if (buildingList == null)
+                {
+                    buildingList = FindObjectOfType<BuildingList>();
+                    if (buildingList == null)
+                    {
+                        Debug.LogError("BuildingList component not found in the scene.");
+                        return; // Early return if BuildingList is not found to avoid further execution
+                    }
+                }
+
+                
+                // Unsubscribe to prevent calling it multiple times
+
+                // Upgrade complete, update visuals and logic
                 UpdateWallVisual();
+                GameObject newWallInstance = UpdateWallVisual();
+                if (newWallInstance != null)
+                {
+                    // Now that we have a new building instance, add it to the list
+                    buildingList.AddBuildingToUpgradeList(newWallInstance.transform, nextLevelInfo.timeForUpgrade);
+                    if (buildingAnimatio != null)
+                    {
+                        Debug.Log("buildingAnimatio: "+ nextLevelInfo.timeForUpgrade);
+                        // Start the upgrade animation with the specified duration
+                       // buildingAnimatio.StartUpgradeAnimation(true, nextLevelInfo.timeForUpgrade);
+                    }
+                }
                 LevelChanged?.Invoke(this, EventArgs.Empty);
                 OnWallUpgraded?.Invoke();
-                // Update coins logic here
                 coins[level - 1].isFilled = true;
-                // Update RallyPoint if necessary
+
                 if (level == 2)
                 {
+                    // Update RallyPoint if necessary
                     // Ensure RallyPointManager is implemented
-                   // RallyPointManager.Instance.UpdateRallyPointToTransform(nightPoint.transform);
+                    // RallyPointManager.Instance.UpdateRallyPointToTransform(nightPoint.transform);
                 }
+
+
+
             }
             else
             {
@@ -109,25 +142,31 @@ public class Wall : MonoBehaviour
         }
     }
 
-    void UpdateWallVisual()
+
+    GameObject UpdateWallVisual()
     {
-        // Implement the logic to visually represent wall upgrades
+        // Destroy the old instance if it exists
+        if (currentWallInstance != null)
+        {
+            Destroy(currentWallInstance);
+        }
+
+        // Create a new instance of the wall
         if (wallLevels != null && level - 1 < wallLevels.Length)
         {
             WallLevel currentLevel = wallLevels[level - 1];
-            if (currentWallInstance != null)
-            {
-                Destroy(currentWallInstance);
-            }
-
             if (currentLevel.wallPrefab != null)
             {
                 Vector3 spawnPosition = GetGroundPosition(transform.position);
+                // Instantiate the new wall and assign it to currentWallInstance
                 currentWallInstance = Instantiate(currentLevel.wallPrefab, spawnPosition, Quaternion.identity);
                 currentHealth = currentLevel.health;
             }
         }
+        return currentWallInstance; // Return the new instance
     }
+
+
 
     Vector3 GetGroundPosition(Vector3 startPosition)
     {

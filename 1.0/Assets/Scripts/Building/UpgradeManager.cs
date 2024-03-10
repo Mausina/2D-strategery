@@ -12,6 +12,7 @@ public class UpgradeManager : MonoBehaviour
     private List<GameObject> instantiatedCoins = new List<GameObject>(); // Tracks instantiated coins
     private float timeSinceLastCoin = 0f; // Timer for dropping coins
     private float coinDropDelay = 1f; // Delay before dropping coins
+    
 
     void Start()
     {
