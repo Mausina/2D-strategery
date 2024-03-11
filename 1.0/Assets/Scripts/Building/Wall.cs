@@ -10,7 +10,7 @@ public class Wall : MonoBehaviour
     public WallLevel[] wallLevels;
     private BuilderController builderController; // Ensure this has the necessary logic for building/upgrading
     private BuildingList buildingList;
-    private UpgradeBuildingAnimatio buildingAnimatio;
+    private UpgradeBuildingAnimation buildingAnimatio;
     [SerializeField] public GameObject nightPoint; // Corrected naming convention
     private SpriteRenderer spriteRenderer;
     private int currentHealth;

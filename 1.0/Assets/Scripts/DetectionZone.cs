@@ -6,11 +6,11 @@ public class DetectionZone : MonoBehaviour
 {
     public List<Collider2D> detectedColliders = new List<Collider2D>();
     private Collider2D col;
-    public UpgradeBuildingAnimatio upgradeBuildingAnimatio;
+    public UpgradeBuildingAnimation upgradeBuildingAnimatio;
     private void Awake()
     {
         col = GetComponent<Collider2D>();
-        upgradeBuildingAnimatio = GetComponentInParent<UpgradeBuildingAnimatio>();
+        upgradeBuildingAnimatio = GetComponentInParent<UpgradeBuildingAnimation>();
     }
 
 
