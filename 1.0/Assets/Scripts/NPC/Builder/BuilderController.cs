@@ -6,13 +6,11 @@ public class BuilderController : MonoBehaviour
     public float speed = 5f; // Movement speed of the builder.
     public float stamina = 10f; // Builder's stamina for continuous movement.
     public float staminaThreshold = 3f; // Minimum stamina required to start moving.
-    public float patrolDistance = 5f; // Distance the builder will patrol around the camp.
-    private BuildingList buildingList; // Reference to the BuildingList component.
-    private Animator animator; // Reference to the animator component.
-    private bool isMoving = false; // Indicates if the builder is currently moving.
-    private bool isMovingRight = true; // Indicates if the builder is moving to the right (for sprite direction).
+    private BuildingList buildingList; // Reference to the BuildingList component containing buildings to upgrade.
+    private Animator animator; // Animator component for controlling the builder's animations.
+    private bool isMoving = false; // Flag to track if the builder is currently moving.
+    private bool isMovingRight = true; // Indicates the builder's current moving direction.
     private bool isUpgrading = false; // Indicates if the builder is currently upgrading a building.
-    private Vector3 campPosition; // The position of the camp.
 
     private void Awake()
     {
@@ -27,68 +25,26 @@ public class BuilderController : MonoBehaviour
             Debug.LogError("BuildingList not found in the scene.");
             return;
         }
-        GameObject camp = GameObject.FindGameObjectWithTag("Camp");
-        if (camp != null)
-        {
-            campPosition = camp.transform.position;
-        }
-        else
-        {
-            Debug.LogError("Camp not found in the scene.");
-            return;
-        }
         StartCoroutine(MoveAndUpgradeBuildings());
     }
 
     private IEnumerator MoveAndUpgradeBuildings()
     {
-        Vector3 patrolTarget = campPosition;
-        bool isPatrolling = false;
-
         while (true)
         {
             if (buildingList.buildingsToUpgrade.Count > 0 && !isMoving && !isUpgrading && stamina > staminaThreshold)
             {
-                isPatrolling = false;
                 Transform targetBuilding = buildingList.buildingsToUpgrade[0];
-                yield return StartCoroutine(MoveToPosition(targetBuilding.position)); // Adjusted for Vector3 position
+                yield return StartCoroutine(MoveToPosition(targetBuilding.position));
                 ActivateBuilding(targetBuilding);
                 yield return new WaitUntil(() => !isMoving && !isUpgrading);
             }
-            else if (buildingList.buildingsToUpgrade.Count == 0 && !isMoving)
-            {
-                if (!isPatrolling || Vector3.Distance(transform.position, patrolTarget) < 0.7f)
-                {
-                    patrolTarget = GetNewPatrolTarget();
-                    isPatrolling = true;
-                }
-                yield return StartCoroutine(MoveToPosition(patrolTarget)); // Correctly call MoveToPosition for Vector3
-            }
-
-            // Stamina management
-            if (isMoving)
-            {
-                stamina -= Time.deltaTime;
-                if (stamina <= 0)
-                {
-                    yield return new WaitUntil(() => stamina > staminaThreshold);
-                }
-            }
-            else
+            if (!isMoving)
             {
                 stamina = Mathf.Min(stamina + Time.deltaTime * 2, 10f);
             }
-
             yield return null;
         }
-    }
-
-    private Vector3 GetNewPatrolTarget()
-    {
-        // Randomly select a direction (left or right) and a distance within the patrol range
-        float direction = Random.Range(0, 2) * 2 - 1; // -1 for left, 1 for right
-        float distance = Random.Range(3f, patrolDistance);
-        return campPosition + new Vector3(direction * distance, 0, 0);
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition)
@@ -97,7 +53,7 @@ public class BuilderController : MonoBehaviour
         animator.SetBool("isMoving", true);
         while (Vector3.Distance(transform.position, targetPosition) > 0.7f)
         {
-            isMovingRight = (targetPosition.x > transform.position.x);
+            isMovingRight = targetPosition.x > transform.position.x;
             AdjustFacingDirection();
             Vector3 step = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             transform.position = step;
@@ -107,20 +63,20 @@ public class BuilderController : MonoBehaviour
         isMoving = false;
     }
 
-
     private void ActivateBuilding(Transform building)
     {
         Debug.Log($"Activating Building: {building.name}");
-        var upgradeBuildingAnimatio = building.GetComponent<UpgradeBuildingAnimatio>();
-        if (upgradeBuildingAnimatio != null)
+        var upgradeBuildingAnimation = building.GetComponent<UpgradeBuildingAnimatio>();
+        if (upgradeBuildingAnimation != null)
         {
             animator.SetBool("isBuilding", true);
+            isUpgrading = true;
             int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
             if (buildingIndex != -1)
             {
                 float upgradeTime = buildingList.buildingUpgradeTimeList[buildingIndex];
                 Debug.Log("Activating upgrade animation with duration: " + upgradeTime);
-                StartCoroutine(RepeatUpgradeAnimation(upgradeTime, upgradeBuildingAnimatio));
+                StartCoroutine(RepeatUpgradeAnimation(upgradeTime, upgradeBuildingAnimation, building));
             }
             else
             {
@@ -133,19 +89,37 @@ public class BuilderController : MonoBehaviour
         }
     }
 
-    private IEnumerator RepeatUpgradeAnimation(float duration, UpgradeBuildingAnimatio upgradeAnim)
+    private IEnumerator RepeatUpgradeAnimation(float duration, UpgradeBuildingAnimatio upgradeAnim, Transform building)
     {
         float timeLeft = duration;
         while (timeLeft > 0)
         {
             upgradeAnim.SetUpgradeAnimationState(true);
-            yield return new WaitForSeconds(1); // Duration for each animation burst
+            yield return new WaitForSeconds(1);
             upgradeAnim.SetUpgradeAnimationState(false);
             timeLeft -= 1;
-            yield return new WaitForSeconds(0); // Immediate continuation for demonstration, adjust as needed.
         }
         upgradeAnim.CompleteUpgrade();
+        OnUpgradeComplete(building);
     }
+
+    public void OnUpgradeComplete(Transform building)
+    {
+        animator.SetBool("isBuilding", false);
+        isUpgrading = false;
+        int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
+        if (buildingIndex != -1)
+        {
+            // Remove the building from the list of buildings to upgrade.
+            buildingList.buildingsToUpgrade.Remove(building);
+            // Also remove the corresponding upgrade time using the same index.
+            if (buildingList.buildingUpgradeTimeList.Count > buildingIndex) // Check to avoid IndexOutOfRange exception.
+            {
+                buildingList.buildingUpgradeTimeList.RemoveAt(buildingIndex);
+            }
+        }
+    }
+
 
     private void AdjustFacingDirection()
     {

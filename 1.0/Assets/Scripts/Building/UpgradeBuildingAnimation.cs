@@ -14,12 +14,14 @@ public class UpgradeBuildingAnimatio : MonoBehaviour
 
     public void SetUpgradeAnimationState(bool isUpgrading)
     {
+        
         // Запуск или остановка анимации на 1 секунду
         animator.SetBool("isUpgrading", isUpgrading);
-        if (isUpgrading)
+        if (isUpgrading = false)
         {
-            // Если необходимо, можно добавить задержку или другую логику здесь
+            animator.speed = 0;
         }
+
     }
 
     public void CompleteUpgrade()
