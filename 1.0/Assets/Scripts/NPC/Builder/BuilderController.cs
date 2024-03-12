@@ -69,13 +69,18 @@ public class BuilderController : MonoBehaviour
         var upgradeBuildingAnimation = building.GetComponent<UpgradeBuildingAnimatio>();
         if (upgradeBuildingAnimation != null)
         {
+            buildingList.UpdateBuilderCount(building, true); // Increment builder count
+            float animationSpeedMultiplier = buildingList.CalculateAnimationSpeedMultiplier(building); // Calculate speed multiplier
+
+            upgradeBuildingAnimation.SetAnimatorSpeed(animationSpeedMultiplier); // Adjust animator speed based on builder count
+
             animator.SetBool("isBuilding", true);
             isUpgrading = true;
             int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
             if (buildingIndex != -1)
             {
                 float upgradeTime = buildingList.buildingUpgradeTimeList[buildingIndex];
-                Debug.Log("Activating upgrade animation with duration: " + upgradeTime);
+                Debug.Log($"Activating upgrade animation with duration: {upgradeTime}, speed multiplier: {animationSpeedMultiplier}");
                 StartCoroutine(RepeatUpgradeAnimation(upgradeTime, upgradeBuildingAnimation, building));
             }
             else
@@ -88,6 +93,8 @@ public class BuilderController : MonoBehaviour
             Debug.LogError($"UpgradeBuildingAnimatio component not found on {building.name}.");
         }
     }
+
+
 
     private IEnumerator RepeatUpgradeAnimation(float duration, UpgradeBuildingAnimatio upgradeAnim, Transform building)
     {
@@ -110,15 +117,15 @@ public class BuilderController : MonoBehaviour
         int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
         if (buildingIndex != -1)
         {
-            // Remove the building from the list of buildings to upgrade.
             buildingList.buildingsToUpgrade.Remove(building);
-            // Also remove the corresponding upgrade time using the same index.
-            if (buildingList.buildingUpgradeTimeList.Count > buildingIndex) // Check to avoid IndexOutOfRange exception.
+            if (buildingList.buildingUpgradeTimeList.Count > buildingIndex)
             {
                 buildingList.buildingUpgradeTimeList.RemoveAt(buildingIndex);
             }
+            buildingList.UpdateBuilderCount(building, false); // Decrement the builder count.
         }
     }
+
 
 
     private void AdjustFacingDirection()
