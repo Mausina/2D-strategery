@@ -12,8 +12,9 @@ public class UpgradeManager : MonoBehaviour
     private List<GameObject> instantiatedCoins = new List<GameObject>(); // Tracks instantiated coins
     private float timeSinceLastCoin = 0f; // Timer for dropping coins
     private float coinDropDelay = 1f; // Delay before dropping coins
-    
+    public UpgradeBuildingAnimatio upgradeBuildingAnimation;
 
+    public bool isUpgrading;
     void Start()
     {
         // Initially disable all level icon containers
@@ -21,10 +22,24 @@ public class UpgradeManager : MonoBehaviour
         {
             container.SetActive(false);
         }
+
+        // Find and cache the UpgradeBuildingAnimatio component
+        upgradeBuildingAnimation = FindObjectOfType<UpgradeBuildingAnimatio>();
+
+        if (upgradeBuildingAnimation != null)
+        {
+            Debug.Log("Subscribe to the OnUpgradeComplete event");
+
+        }
+        else
+        {
+            Debug.LogError("No UpgradeBuildingAnimatio component found in the scene.");
+        }
     }
 
     void Update()
     {
+        isUpgrading = upgradeBuildingAnimation.IsUpgrading1;
         if (playerInRange && !wall.IsMaxLevel)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -79,6 +94,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void PlaceCoin()
     {
+
         // Ensure the player can afford to place a coin
         if (CoinManager.Instance.CanAfford(1))
         {
@@ -124,16 +140,26 @@ public class UpgradeManager : MonoBehaviour
 
     private void UpdateIconVisibility(bool isVisible)
     {
+        // Assume IsCompleted is a new property in UpgradeBuildingAnimatio indicating the completion state
+        bool isCompleted = upgradeBuildingAnimation.animator.GetBool("isCompleted");
+
+        // Hide all icons initially
         foreach (var container in levelIconContainers)
         {
             container.SetActive(false);
         }
 
-        if (isVisible && currentLevel < levelIconContainers.Count)
+        // If the player is in range, the wall is not at its max level, and the upgrade is not completed,
+        // then show the icon for the current level
+        if (isVisible && !wall.IsMaxLevel && !isCompleted && currentLevel < levelIconContainers.Count)
         {
             levelIconContainers[currentLevel].SetActive(true);
         }
     }
+
+
+
+
 }
 
 

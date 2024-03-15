@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class BuildingList : MonoBehaviour
@@ -6,14 +7,20 @@ public class BuildingList : MonoBehaviour
     public List<Transform> buildingsToUpgrade = new List<Transform>();
     public List<float> buildingUpgradeTimeList = new List<float>();
     public Dictionary<Transform, int> buildersPerBuilding = new Dictionary<Transform, int>();
+    public Dictionary<Transform, Coroutine> upgradeCoroutines = new Dictionary<Transform, Coroutine>();
+    public Dictionary<Transform, float> remainingUpgradeTimes = new Dictionary<Transform, float>();
+    public Dictionary<Transform, bool> buildingUpgradePending = new Dictionary<Transform, bool>();
 
     public void AddBuildingToUpgradeList(Transform building, float timeForUpgrade)
     {
         if (!buildingsToUpgrade.Contains(building))
         {
+            buildingUpgradePending[building] = true;
             buildingsToUpgrade.Add(building);
             buildingUpgradeTimeList.Add(timeForUpgrade);
             buildersPerBuilding[building] = 0; // Initialize builder count for this building.
+            remainingUpgradeTimes[building] = timeForUpgrade; // Set the initial remaining time for upgrade.
+            Debug.Log($"Added building {building.name} with initial upgrade time: {timeForUpgrade}");
         }
     }
 
@@ -32,6 +39,7 @@ public class BuildingList : MonoBehaviour
         {
             buildersPerBuilding[building] = Mathf.Max(buildersPerBuilding[building] - 1, 0); // Prevent negative count
         }
+        Debug.Log($"{(adding ? "Added" : "Removed")} builder for '{building.name}'. Total builders now: {buildersPerBuilding[building]}");
     }
 
     public int GetBuilderCount(Transform building)
@@ -43,7 +51,6 @@ public class BuildingList : MonoBehaviour
         return 0;
     }
 
-    // Utility method to calculate animation speed multiplier
     public float CalculateAnimationSpeedMultiplier(Transform building)
     {
         int numberOfBuilders = GetBuilderCount(building);
@@ -51,11 +58,11 @@ public class BuildingList : MonoBehaviour
 
         switch (numberOfBuilders)
         {
-            case 1: multiplier = 1f; break; // Normal speed
-            case 2: multiplier = 1.25f; break; // 25% faster
-            case 3: multiplier = 1.5f; break; // 50% faster
-            case 4: multiplier = 1.75f; break; // 75% faster
-            default: multiplier = 1f; break; // Default to normal speed if out of expected range
+            case 1: multiplier = 1f; break;
+            case 2: multiplier = 1.25f; break;
+            case 3: multiplier = 1.5f; break;
+            case 4: multiplier = 1.75f; break;
+            default: multiplier = 1f; break;
         }
 
         Debug.Log($"Calculated Animation Speed Multiplier: x{multiplier} for {numberOfBuilders} builders.");

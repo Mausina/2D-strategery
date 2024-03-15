@@ -88,7 +88,7 @@ public class Wall : MonoBehaviour
             {
                 CoinManager.Instance.SpendCoins(upgradeCost);
                 level++;
-
+                
                 // Efficiently get BuildingList component if not already referenced
                 if (buildingList == null)
                 {
@@ -110,6 +110,7 @@ public class Wall : MonoBehaviour
                 {
                     // Now that we have a new building instance, add it to the list
                     buildingList.AddBuildingToUpgradeList(newWallInstance.transform, nextLevelInfo.timeForUpgrade);
+
                     if (buildingAnimatio != null)
                     {
                         Debug.Log("buildingAnimatio: "+ nextLevelInfo.timeForUpgrade);

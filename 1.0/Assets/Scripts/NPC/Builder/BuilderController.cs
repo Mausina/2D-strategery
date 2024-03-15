@@ -65,8 +65,10 @@ public class BuilderController : MonoBehaviour
 
     private void ActivateBuilding(Transform building)
     {
+       
         Debug.Log($"Activating Building: {building.name}");
         var upgradeBuildingAnimation = building.GetComponent<UpgradeBuildingAnimatio>();
+       
         if (upgradeBuildingAnimation != null)
         {
             buildingList.UpdateBuilderCount(building, true); // Increment builder count
@@ -76,16 +78,31 @@ public class BuilderController : MonoBehaviour
 
             animator.SetBool("isBuilding", true);
             isUpgrading = true;
-            int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
-            if (buildingIndex != -1)
+
+            // Check if there's an ongoing upgrade coroutine and update its speed and remaining time accordingly.
+            if (buildingList.upgradeCoroutines.ContainsKey(building))
             {
-                float upgradeTime = buildingList.buildingUpgradeTimeList[buildingIndex];
-                Debug.Log($"Activating upgrade animation with duration: {upgradeTime}, speed multiplier: {animationSpeedMultiplier}");
-                StartCoroutine(RepeatUpgradeAnimation(upgradeTime, upgradeBuildingAnimation, building));
+                // Update the remaining time with the time that has already passed, considering the new speed multiplier.
+                float timePassed = buildingList.buildingUpgradeTimeList[buildingList.buildingsToUpgrade.IndexOf(building)] - buildingList.remainingUpgradeTimes[building];
+                float newRemainingTime = buildingList.remainingUpgradeTimes[building] - (timePassed * (animationSpeedMultiplier - 1));
+                buildingList.remainingUpgradeTimes[building] = Mathf.Max(newRemainingTime, 0); // Ensuring we don't go negative
+
+                Debug.Log($"Building '{building.name}' already upgrading. Time passed: {timePassed}, New Remaining Time: {buildingList.remainingUpgradeTimes[building]}");
             }
             else
             {
-                Debug.LogError($"Index for {building.name} not found in upgrade time list.");
+                int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
+                if (buildingIndex != -1)
+                {
+                    float upgradeTime = buildingList.buildingUpgradeTimeList[buildingIndex];
+                    buildingList.remainingUpgradeTimes[building] = upgradeTime; // Set initial remaining time
+                    Coroutine upgradeCoroutine = StartCoroutine(RepeatUpgradeAnimation(building));
+                    buildingList.upgradeCoroutines[building] = upgradeCoroutine; // Store the coroutine reference
+                }
+                else
+                {
+                    Debug.LogError($"Index for {building.name} not found in upgrade time list.");
+                }
             }
         }
         else
@@ -96,19 +113,76 @@ public class BuilderController : MonoBehaviour
 
 
 
-    private IEnumerator RepeatUpgradeAnimation(float duration, UpgradeBuildingAnimatio upgradeAnim, Transform building)
+
+
+    private IEnumerator RepeatUpgradeAnimation(Transform building)
     {
-        float timeLeft = duration;
-        while (timeLeft > 0)
+        var upgradeBuildingAnimation = building.GetComponent<UpgradeBuildingAnimatio>();
+
+        if (upgradeBuildingAnimation == null)
         {
-            upgradeAnim.SetUpgradeAnimationState(true);
-            yield return new WaitForSeconds(1);
-            upgradeAnim.SetUpgradeAnimationState(false);
-            timeLeft -= 1;
+            Debug.LogError($"UpgradeBuildingAnimation component not found on {building.name}. Coroutine will not run.");
+            yield break;
         }
-        upgradeAnim.CompleteUpgrade();
-        OnUpgradeComplete(building);
+
+        Debug.Log($"Starting RepeatUpgradeAnimation coroutine for {building.name}.");
+
+        while (buildingList.remainingUpgradeTimes[building] > 0)
+        {
+            // Set the upgrade animation state to true, indicating that the upgrade is in progress.
+            upgradeBuildingAnimation.SetUpgradeAnimationState(true);
+
+            // Calculate the current animation speed multiplier based on the number of builders.
+            float animationSpeedMultiplier = buildingList.CalculateAnimationSpeedMultiplier(building);
+            // Log the current animation speed setting.
+            Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Animation speed set to {animationSpeedMultiplier}.");
+
+            // Wait for an adjusted amount of time based on the current speed multiplier.
+            // This effectively speeds up or slows down the upgrade process based on the number of builders.
+            float timeToWait = 1 / animationSpeedMultiplier;
+            float adjustedRemainingTime = buildingList.remainingUpgradeTimes[building] * animationSpeedMultiplier;
+
+            // Check if the adjusted remaining time is less than 0.6 seconds.
+            if (adjustedRemainingTime <= 0.6)
+            {
+                // If less than 0.6 seconds are left, skip the wait and set the remaining time to 0 to complete the upgrade.
+                buildingList.remainingUpgradeTimes[building] = 0;
+                Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Less than 0.6 seconds remaining. Skipping to end of upgrade.");
+            }
+            else
+            {
+                // If more than 0.6 seconds are left, wait for the adjusted amount of time.
+                yield return new WaitForSeconds(timeToWait);
+                // Decrement the remaining upgrade time by the adjusted time.
+                buildingList.remainingUpgradeTimes[building] -= timeToWait;
+                Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Decreased remaining time by {timeToWait}, new remaining time: {buildingList.remainingUpgradeTimes[building]}");
+            }
+            // Decrement the remaining upgrade time by the adjusted time, accounting for the speed multiplier.
+            buildingList.remainingUpgradeTimes[building] -= timeToWait;
+            // Log the updated remaining time after the adjustment.
+            Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Decreased remaining time by {timeToWait}, new remaining time: {buildingList.remainingUpgradeTimes[building]}");
+
+            upgradeBuildingAnimation.SetUpgradeAnimationState(false);
+
+            if (buildingList.remainingUpgradeTimes[building] <= 0)
+            {
+                Debug.Log($"Upgrade complete for {building.name}. Exiting coroutine.");
+                break; // Exit loop if timeLeft has been exhausted.
+            }
+        }
+
+        upgradeBuildingAnimation.CompleteUpgrade();
+        buildingList.upgradeCoroutines.Remove(building); // Clean up the coroutine reference
+        buildingList.remainingUpgradeTimes.Remove(building); // Clean up the remaining time
+        buildingList.buildingUpgradePending[building] = false;
+        OnUpgradeComplete(building); // Trigger upgrade completion event or logic
+        Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Coroutine finished. Upgrade and cleanup done.");
     }
+
+
+
+
+
 
     public void OnUpgradeComplete(Transform building)
     {
