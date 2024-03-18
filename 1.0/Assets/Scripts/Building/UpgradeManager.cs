@@ -23,23 +23,10 @@ public class UpgradeManager : MonoBehaviour
             container.SetActive(false);
         }
 
-        // Find and cache the UpgradeBuildingAnimatio component
-        upgradeBuildingAnimation = FindObjectOfType<UpgradeBuildingAnimatio>();
-
-        if (upgradeBuildingAnimation != null)
-        {
-            Debug.Log("Subscribe to the OnUpgradeComplete event");
-
-        }
-        else
-        {
-            Debug.LogError("No UpgradeBuildingAnimatio component found in the scene.");
-        }
     }
 
     void Update()
     {
-        isUpgrading = upgradeBuildingAnimation.IsUpgrading1;
         if (playerInRange && !wall.IsMaxLevel)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -141,7 +128,6 @@ public class UpgradeManager : MonoBehaviour
     private void UpdateIconVisibility(bool isVisible)
     {
         // Assume IsCompleted is a new property in UpgradeBuildingAnimatio indicating the completion state
-        bool isCompleted = upgradeBuildingAnimation.animator.GetBool("isCompleted");
 
         // Hide all icons initially
         foreach (var container in levelIconContainers)
@@ -151,7 +137,7 @@ public class UpgradeManager : MonoBehaviour
 
         // If the player is in range, the wall is not at its max level, and the upgrade is not completed,
         // then show the icon for the current level
-        if (isVisible && !wall.IsMaxLevel && !isCompleted && currentLevel < levelIconContainers.Count)
+        if (isVisible && !wall.IsMaxLevel && currentLevel < levelIconContainers.Count)
         {
             levelIconContainers[currentLevel].SetActive(true);
         }

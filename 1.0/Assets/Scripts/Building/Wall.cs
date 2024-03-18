@@ -30,6 +30,7 @@ public class Wall : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateWallVisual();
+        DontDestroyOnLoad(nightPoint);
     }
 
     public int Level { get; private set; } = 1;
@@ -122,12 +123,16 @@ public class Wall : MonoBehaviour
                 OnWallUpgraded?.Invoke();
                 coins[level - 1].isFilled = true;
 
-                if (level == 2)
+                if (level == 2 && nightPoint != null)
                 {
-                    // Update RallyPoint if necessary
-                    // Ensure RallyPointManager is implemented
-                    // RallyPointManager.Instance.UpdateRallyPointToTransform(nightPoint.transform);
+                    Debug.Log("new nightPoint instalizaided");
+                    RallyPointManager.Instance.UpdateRallyPoint(nightPoint.transform);
                 }
+                else
+                {
+                    Debug.Log("nightPoint is null");
+                }
+                
 
 
 

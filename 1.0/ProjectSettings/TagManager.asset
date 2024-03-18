@@ -20,15 +20,15 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Coin
+  - shells
+  - Wall
   - playerLayer
+  - Builder
+  - Wariaor
   - Enemy
+  - Wariaor
   - PlayerHitbox
   - EnemyHitbox
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 

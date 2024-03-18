@@ -1,32 +1,14 @@
-﻿using System.Collections;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneMove : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
-    public string sceneToLoad;
-    ScenaLoader scenaLoader;
-    public float transitionTime = 1f;
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        scenaLoader = new ScenaLoader();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        if (collision.CompareTag("Player"))
         {
-            StartCoroutine(StartTransit());
+            // Assuming worldSceneIndexes[0] is the index of the first world and worldSceneIndexes[1] is the index of the second world
+            WorldsManager.Instance.SwitchWorld();
         }
     }
-
-    private IEnumerator StartTransit()
-    {
-        scenaLoader.StartAnimation();
-        yield return new WaitForSeconds(scenaLoader.transitionTime);
-
-        // Load the new scene
-        SceneManager.LoadScene(sceneToLoad);
-    }
 }
-

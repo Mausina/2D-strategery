@@ -7,6 +7,7 @@ public class RallyPointManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (Instance == null)
         {
             Instance = this;
@@ -17,23 +18,23 @@ public class RallyPointManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void OnEnable()
+    public void Start()
     {
-        Wall.OnWallConstructed += UpdateRallyPoint;
+        DontDestroyOnLoad(gameObject);
+    }
+    private void OnDestroy()
+    {
+        // When the singleton instance is destroyed, clear the static reference
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
-    private void OnDisable()
+    // Updates the rally point to the specified transform
+    public void UpdateRallyPoint(Transform nightPoint)
     {
-        Wall.OnWallConstructed -= UpdateRallyPoint;
+        CurrentRallyPoint = nightPoint;
+        Debug.Log("Updated Rally Point to " + nightPoint.gameObject.name);
     }
-
-    // Adjust the method to check the wall's level before updating the rally point
-    public void UpdateRallyPoint(Wall newWall)
-    {
-        CurrentRallyPoint = newWall.transform;
-        Debug.Log("Updated Rally Point to " + newWall.gameObject.name);
-    }
-
-
 }

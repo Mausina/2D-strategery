@@ -14,18 +14,22 @@ public class ArcherController : MonoBehaviour
     public DetectionZone detectionZone;
     private bool isMovingRight = true;
     private bool isNight = false;
+    private float fireDelay =1f;
     public float shootCooldownSeconds = 1f; // Time in seconds between shots
     private float lastShotTime = 0f; // When the last shot was fired
     public float chanceToIdle = 0.1f; // Chance to idle every 10 seconds
     public float chanceToTurnAround = 0.3f; // Chance to turn around after idling
     public float idleDuration = 3f; // How long to idle
-
     private bool isIdling = false;
+    private Animator animator;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         StartCoroutine(CheckTimeOfDay());
+        lastShotTime = Time.time; // Initialize lastShotTime with the current time
     }
+
 
     private void Update()
     {
@@ -101,6 +105,14 @@ public class ArcherController : MonoBehaviour
         if (!IsAtRallyPoint() && !isIdling)
         {
             transform.Translate(Vector2.right * (isMovingRight ? 1 : -1) * speed * Time.deltaTime);
+            animator.SetBool("isMove", true);
+            // Example for isRun - this is just an example condition
+            animator.SetBool("isRun", speed > 1.0f); // Assuming 'speed > 1.0f' indicates running
+        }
+        else
+        {
+            animator.SetBool("isMove", false);
+            animator.SetBool("isRun", false);
         }
     }
 
@@ -149,15 +161,21 @@ public class ArcherController : MonoBehaviour
             {
                 if (IsAtRallyPoint() == true )
                 {
-                    float angleOflaunch = 80f;
+                    animator.SetBool("isMove", false);
+                    animator.SetBool("isRun", false);
+                    float angleOflaunch = 72f;
                     ShootArrowAtTarget(collider.transform.position, angleOflaunch); // Shoot an arrow at the enemy
                     lastShotTime = Time.time; // Reset the last shot time
                     break; // Add this if you want to shoot only one arrow per check
                 }
                 else
                 {
-                    float angleOflaunch = 15f;
-                    ShootArrowAtTarget(collider.transform.position, angleOflaunch);
+                   // animator.SetBool("isFire", true);
+                   // animator.SetBool("isMove", false);
+                   // animator.SetBool("isRun", false);
+                    ShootArrow();
+                   // float angleOflaunch = 5f;
+                   // ShootArrowAtTarget(collider.transform.position, angleOflaunch);
                     lastShotTime = Time.time; // Reset the last shot time
                     break; // Add this if you want to shoot only one arrow per chec
                 }
@@ -211,28 +229,40 @@ public class ArcherController : MonoBehaviour
     {
         if (arrowPrefab && firePoint)
         {
-            // The starting point of the arrow
-            Vector3 startPosition = firePoint.position;
-
-            // The gravity value; assuming Physics2D.gravity.y is being used
-            float gravity = Physics2D.gravity.magnitude;
-
-            // The desired angle of launch
-            float angle = angleOflaunch; // You can adjust this angle as needed
-
-            // Calculate the velocity needed to throw the object to the target point
-            Vector2 velocity = CalculateVelocity(targetPosition, startPosition, gravity, angle);
-
-            // Instantiate the arrow and set its velocity
-            GameObject arrow = Instantiate(arrowPrefab, startPosition, Quaternion.identity); // Use Quaternion.identity for initial rotation
-            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.velocity = velocity;
-                float angleDegrees = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
-                arrow.transform.rotation = Quaternion.AngleAxis(angleDegrees, Vector3.forward); // Adjust rotation based on velocity
-            }
+            animator.SetBool("isFire", true);
+            StartCoroutine(FireArrowAfterDelay(targetPosition, angleOflaunch, fireDelay));
+           
         }
+    }
+    IEnumerator FireArrowAfterDelay(Vector3 targetPosition, float angleOfLaunch, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        // The starting point of the arrow
+        Vector3 startPosition = firePoint.position;
+
+        // The gravity value; assuming Physics2D.gravity.y is being used
+        float gravity = Physics2D.gravity.magnitude;
+
+        // The desired angle of launch
+        float angle = angleOfLaunch; // You can adjust this angle as needed
+
+        // Calculate the velocity needed to throw the object to the target point
+        Vector2 velocity = CalculateVelocity(targetPosition, startPosition, gravity, angle);
+
+        // Instantiate the arrow and set its velocity
+        GameObject arrow = Instantiate(arrowPrefab, startPosition, Quaternion.identity); // Use Quaternion.identity for initial rotation
+        Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = velocity;
+            float angleDegrees = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+            arrow.transform.rotation = Quaternion.AngleAxis(angleDegrees, Vector3.forward); // Adjust rotation based on velocity
+        }
+        //StartCoroutine(ResetFireState());
+        Debug.Log($"Trying to shoot: Time={Time.time}, LastShot={lastShotTime}, Cooldown={shootCooldownSeconds}, CanShoot={Time.time >= lastShotTime + shootCooldownSeconds}");
+
+        // Make sure to reset the isFire flag after the delay if it's not being reset elsewhere
+        animator.SetBool("isFire", false);
     }
 
     private Vector2 CalculateVelocity(Vector3 target, Vector3 source, float gravity, float angle)
@@ -274,15 +304,6 @@ public class ArcherController : MonoBehaviour
         }
     }
 
-    /*
-    private void FlipDirection()
-    {
-        isMovingRight = !isMovingRight;
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
-    }
-    */
 
 
 }

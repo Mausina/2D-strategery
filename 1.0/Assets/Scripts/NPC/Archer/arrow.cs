@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public int damage = 25; // The amount of damage the arrow does
     private Rigidbody2D rb;
     public float destroyAfterSeconds = 5f; // Time to auto-destroy the arrow
     private bool isFlying = true; // To check if the arrow is flying
@@ -25,6 +26,14 @@ public class Arrow : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // Check if the collided object has a Health component
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            // If so, apply damage
+            health.TakeDamage(damage);
+        }
+
         // Once the arrow collides, make it stick and stop rotating it
         isFlying = false; // The arrow is no longer flying
         StickArrow(collision);

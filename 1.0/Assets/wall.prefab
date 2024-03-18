@@ -462,6 +462,8 @@ MonoBehaviour:
   - {fileID: 444832088259743376}
   wall: {fileID: 7840109157948324104}
   prefabCoin: {fileID: 2731523164008856927, guid: 4055fcac05e2808408875cc1b207d54e, type: 3}
+  upgradeBuildingAnimation: {fileID: 0}
+  isUpgrading: 0
 --- !u!50 &3430308488933866266
 Rigidbody2D:
   serializedVersion: 4

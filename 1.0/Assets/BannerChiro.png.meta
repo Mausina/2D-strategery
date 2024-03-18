@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BannerChiro_0: 2379403443816371272
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
