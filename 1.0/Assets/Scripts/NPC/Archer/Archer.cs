@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using WorldTimeSystem;
-
+using Random = UnityEngine.Random;
 public class ArcherController : MonoBehaviour
 {
     public GameObject arrowPrefab; // Assign your arrow prefab in the inspector
@@ -15,7 +16,7 @@ public class ArcherController : MonoBehaviour
     private bool isMovingRight = true;
     private bool isNight = false;
     private float fireDelay =1f;
-    public float shootCooldownSeconds = 1f; // Time in seconds between shots
+    public float shootCooldownSeconds; // Time in seconds between shots
     private float lastShotTime = 0f; // When the last shot was fired
     public float chanceToIdle = 0.1f; // Chance to idle every 10 seconds
     public float chanceToTurnAround = 0.3f; // Chance to turn around after idling
@@ -115,73 +116,6 @@ public class ArcherController : MonoBehaviour
             animator.SetBool("isRun", false);
         }
     }
-
-    private bool IsAtRallyPoint()
-    {
-        if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
-        bool atRallyPoint = Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.5f;
-
-        // If at rally point and it's daytime, start idling
-        if (atRallyPoint && !isNight && !isIdling)
-        {
-            StartCoroutine(IdleRoutine());
-        }
-
-        return atRallyPoint;
-    }
-    private void AdjustFacingDirection()
-    {
-        // Adjust the facing direction of the NPC based on isMovingRight
-        Vector3 localScale = transform.localScale;
-        localScale.x = isMovingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
-        transform.localScale = localScale;
-    }
-    private void CheckDetectionZone()
-    {
-        int treeCount = 0;
-
-        foreach (Collider2D collider in detectionZone.detectedColliders)
-        {
-            if (collider.CompareTag("Tree"))
-            {
-                treeCount++;
-                if (treeCount >= 3)
-                {
-                    AdjustFacingDirection();
-                    break;
-                }
-            }
-            else if (collider.CompareTag("Animal"))
-            {
-                float angleOflaunch = 15f;
-                ShootArrowAtTarget(collider.transform.position, angleOflaunch);
-                // Logic for encountering an animal (e.g., stop and shoot)
-            }
-            else if (collider.CompareTag("Enemy") && Time.time >= lastShotTime + shootCooldownSeconds)
-            {
-                if (IsAtRallyPoint() == true )
-                {
-                    animator.SetBool("isMove", false);
-                    animator.SetBool("isRun", false);
-                    float angleOflaunch = 72f;
-                    ShootArrowAtTarget(collider.transform.position, angleOflaunch); // Shoot an arrow at the enemy
-                    lastShotTime = Time.time; // Reset the last shot time
-                    break; // Add this if you want to shoot only one arrow per check
-                }
-                else
-                {
-                   // animator.SetBool("isFire", true);
-                   // animator.SetBool("isMove", false);
-                   // animator.SetBool("isRun", false);
-                    ShootArrow();
-                   // float angleOflaunch = 5f;
-                   // ShootArrowAtTarget(collider.transform.position, angleOflaunch);
-                    lastShotTime = Time.time; // Reset the last shot time
-                    break; // Add this if you want to shoot only one arrow per chec
-                }
-            }
-        }
-    }
     IEnumerator CheckTimeOfDay()
     {
         while (true)
@@ -212,7 +146,7 @@ public class ArcherController : MonoBehaviour
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position, step);
             float distance = Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position);
-           // Debug.Log($"Distance to Rally Point: {distance}, IsAtRallyPoint: {IsAtRallyPoint()}");
+            // Debug.Log($"Distance to Rally Point: {distance}, IsAtRallyPoint: {IsAtRallyPoint()}");
             // Continuously adjust facing direction based on movement direction
             isMovingRight = RallyPointManager.Instance.CurrentRallyPoint.position.x > transform.position.x;
             AdjustFacingDirection();
@@ -225,6 +159,102 @@ public class ArcherController : MonoBehaviour
         return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.2f;
     }
     */
+    private bool IsAtRallyPoint()
+    {
+        if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
+        bool atRallyPoint = Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.5f;
+
+        // If at rally point and it's daytime, start idling
+        if (atRallyPoint && !isNight && !isIdling)
+        {
+            StartCoroutine(IdleRoutine());
+        }
+
+        return atRallyPoint;
+    }
+    private void AdjustFacingDirection()
+    {
+        // Adjust the facing direction of the NPC based on isMovingRight
+        Vector3 localScale = transform.localScale;
+        localScale.x = isMovingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+        transform.localScale = localScale;
+    }
+    private void CheckDetectionZone()
+    {
+        List<Transform> enemies = new List<Transform>();
+        int treeCount = 0;
+
+        foreach (Collider2D collider in detectionZone.detectedColliders)
+        {
+            if (collider.CompareTag("Tree"))
+            {
+                treeCount++;
+                if (treeCount >= 3)
+                {
+                    AdjustFacingDirection();
+                    break;
+                }
+            }
+            else if (collider.CompareTag("Animal"))
+            {
+                float angleOflaunch = 15f;
+                ShootArrowAtTarget(collider.transform.position, angleOflaunch);
+                // Logic for encountering an animal (e.g., stop and shoot)
+            }
+            else if (collider.CompareTag("Enemy"))
+            {
+                enemies.Add(collider.transform);
+            }
+
+        }
+        // Check if there are any enemies detected
+        if (enemies.Count > 0 && Time.time >= lastShotTime + shootCooldownSeconds)
+        {
+            // Randomly select one enemy from the list if more than one enemy is present
+            Transform targetEnemy = enemies[Random.Range(0, enemies.Count)];
+
+            // Proceed to target the selected enemy
+            if (IsAtRallyPoint() == true)
+            {
+                animator.SetBool("isMove", false);
+                animator.SetBool("isRun", false);
+                float angleOflaunch = 72f; // Example angle, adjust as needed
+                ShootArrowAtTarget(targetEnemy.position, angleOflaunch);
+                lastShotTime = Time.time;
+            }
+            else
+            {
+                ShootArrow();
+                lastShotTime = Time.time;
+            }
+        }
+    }
+
+    private void ShootArrow()
+    {
+        if (arrowPrefab && firePoint)
+        {
+            GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                float angleVariation = Random.Range(-2f, 2f);
+                Vector2 adjustedDirection = (Quaternion.Euler(0, 0, 5 + angleVariation) * firePoint.right).normalized;
+                float forceVariation = Random.Range(-1f, 1f);
+                rb.AddForce(adjustedDirection * (launchForce + forceVariation), ForceMode2D.Impulse);
+
+                // Update the lastShotTime and randomly adjust shootCooldownSeconds
+                lastShotTime = Time.time;
+                shootCooldownSeconds = Random.Range(1f, 2.5f); // Random cooldown between 1 and 2.5 seconds
+            }
+            else
+            {
+                Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
+            }
+        }
+    }
+
+
     private void ShootArrowAtTarget(Vector3 targetPosition, float angleOflaunch)
     {
         if (arrowPrefab && firePoint)
@@ -237,33 +267,31 @@ public class ArcherController : MonoBehaviour
     IEnumerator FireArrowAfterDelay(Vector3 targetPosition, float angleOfLaunch, float delay)
     {
         yield return new WaitForSeconds(delay);
-        // The starting point of the arrow
+
+        // Here, the arrow is about to be fired...
         Vector3 startPosition = firePoint.position;
-
-        // The gravity value; assuming Physics2D.gravity.y is being used
         float gravity = Physics2D.gravity.magnitude;
+        float angleVariation = Random.Range(-3f, 3f);
+        float angle = angleOfLaunch + angleVariation; // Adjusted angle with randomness
 
-        // The desired angle of launch
-        float angle = angleOfLaunch; // You can adjust this angle as needed
-
-        // Calculate the velocity needed to throw the object to the target point
         Vector2 velocity = CalculateVelocity(targetPosition, startPosition, gravity, angle);
-
-        // Instantiate the arrow and set its velocity
-        GameObject arrow = Instantiate(arrowPrefab, startPosition, Quaternion.identity); // Use Quaternion.identity for initial rotation
+        GameObject arrow = Instantiate(arrowPrefab, startPosition, Quaternion.identity);
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             rb.velocity = velocity;
             float angleDegrees = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
-            arrow.transform.rotation = Quaternion.AngleAxis(angleDegrees, Vector3.forward); // Adjust rotation based on velocity
+            arrow.transform.rotation = Quaternion.AngleAxis(angleDegrees, Vector3.forward);
         }
-        //StartCoroutine(ResetFireState());
-        Debug.Log($"Trying to shoot: Time={Time.time}, LastShot={lastShotTime}, Cooldown={shootCooldownSeconds}, CanShoot={Time.time >= lastShotTime + shootCooldownSeconds}");
 
-        // Make sure to reset the isFire flag after the delay if it's not being reset elsewhere
+        // Arrow has been fired; now adjust the shoot cooldown for the next shot.
+        lastShotTime = Time.time;
+        shootCooldownSeconds = Random.Range(1f, 2.5f); // Set new random cooldown between 1 and 2.5 seconds
+
         animator.SetBool("isFire", false);
     }
+
+
 
     private Vector2 CalculateVelocity(Vector3 target, Vector3 source, float gravity, float angle)
     {
@@ -286,22 +314,6 @@ public class ArcherController : MonoBehaviour
 
         // Return velocity vector
         return new Vector2(velocityX * sign, velocityY) * direction.magnitude;
-    }
-    private void ShootArrow()
-    {
-        if (arrowPrefab && firePoint)
-        {
-            GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.AddForce(firePoint.right * launchForce, ForceMode2D.Impulse);
-            }
-            else
-            {
-                Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
-            }
-        }
     }
 
 
