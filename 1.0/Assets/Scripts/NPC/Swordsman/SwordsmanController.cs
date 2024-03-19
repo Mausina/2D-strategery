@@ -14,7 +14,7 @@ public class SwordsmanController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        ChooseTarget();
+        ChooseTarget(initial: true); // Ensure the initial target is chosen
         StartCoroutine(MoveAndStopRoutine());
     }
 
@@ -31,6 +31,7 @@ public class SwordsmanController : MonoBehaviour
             if (Random.Range(0, 100) < 60)
             {
                 // 60% chance to move forward
+                Debug.Log("move forward");
                 Transform newTarget;
                 do
                 {
@@ -40,8 +41,12 @@ public class SwordsmanController : MonoBehaviour
             }
             else
             {
-                // 40% chance to turn around and go back to the start position
-                target = null; // Clear the target, as we'll use startPosition as the target
+                // 40% chance to turn around
+                Debug.Log("turn around");
+                isMovingRight = !isMovingRight; // Simply reverse the direction flag
+                // Choose a target in the new direction if applicable
+                // This logic assumes you might have targets suitable for turning around.
+                // If your targets are not positioned for this, you might need a different approach.
             }
         }
         else
@@ -54,36 +59,27 @@ public class SwordsmanController : MonoBehaviour
 
     IEnumerator MoveAndStopRoutine()
     {
-        while (true) // Continuous loop to keep the NPC moving and stopping
+        while (true)
         {
-                //yield return new WaitForSeconds(Random.Range(2f, 5f)); // Initial delay before moving
-
-            
-                float moveTime = Random.Range(4f, 7f);
-                float startTime = Time.time;
-                float turnTime = Random.Range(4f, 7f);
-                while (!hasReachedTarget && Time.time - startTime < moveTime )
-                {
-                    
-                    MoveTowardsTarget();
-                    yield return null; // Wait for the next frame
-                }
-                
+            float moveTime = Random.Range(4f, 7f);
+            float startTime = Time.time;
+            while (!hasReachedTarget && Time.time - startTime < moveTime)
+            {
                 MoveTowardsTarget();
                 yield return null; // Wait for the next frame
+            }
 
+            MoveTowardsTarget();
+            yield return null; // Wait for the next frame
 
             // NPC has reached the target, stop moving
             isMoving = false;
             animator.SetBool("isMoving", isMoving);
-            float stopTime = Random.Range(5f, 8f);
+            float stopTime = Random.Range(4f, 8f);
             yield return new WaitForSeconds(stopTime);
 
             // After stopping, choose a new target to simulate walking near objects randomly
             ChooseTarget();
-
-           
-
         }
     }
 
