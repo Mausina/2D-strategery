@@ -1,0 +1,3412 @@
+fileFormatVersion: 2
+guid: b925bf16eb092dd468af87100e86e006
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 353339948783433435
+    second: Rabbit sprite sheet Butterfly Full_0
+  - first:
+      213: 9108909961520491481
+    second: Rabbit sprite sheet Butterfly Full_1
+  - first:
+      213: -3622353715628927381
+    second: Rabbit sprite sheet Butterfly Full_2
+  - first:
+      213: 6342986981486882569
+    second: Rabbit sprite sheet Butterfly Full_3
+  - first:
+      213: -1075552684502245405
+    second: Rabbit sprite sheet Butterfly Full_4
+  - first:
+      213: -7167868123153239782
+    second: Rabbit sprite sheet Butterfly Full_5
+  - first:
+      213: -1257733605363248083
+    second: Rabbit sprite sheet Butterfly Full_6
+  - first:
+      213: -9080544506869297829
+    second: Rabbit sprite sheet Butterfly Full_7
+  - first:
+      213: 7377720078988636891
+    second: Rabbit sprite sheet Butterfly Full_8
+  - first:
+      213: 8189325694784692255
+    second: Rabbit sprite sheet Butterfly Full_9
+  - first:
+      213: 3443058529370463657
+    second: Rabbit sprite sheet Butterfly Full_10
+  - first:
+      213: 1879520796455101334
+    second: Rabbit sprite sheet Butterfly Full_11
+  - first:
+      213: 553218588145227190
+    second: Rabbit sprite sheet Butterfly Full_12
+  - first:
+      213: -1460588450729236429
+    second: Rabbit sprite sheet Butterfly Full_13
+  - first:
+      213: -2971919837788730473
+    second: Rabbit sprite sheet Butterfly Full_14
+  - first:
+      213: 4150261317616275439
+    second: Rabbit sprite sheet Butterfly Full_15
+  - first:
+      213: 8656400729210408854
+    second: Rabbit sprite sheet Butterfly Full_16
+  - first:
+      213: 8456800650751936505
+    second: Rabbit sprite sheet Butterfly Full_17
+  - first:
+      213: -2563741365718593213
+    second: Rabbit sprite sheet Butterfly Full_18
+  - first:
+      213: -6452407427460504424
+    second: Rabbit sprite sheet Butterfly Full_19
+  - first:
+      213: -4938985722367028397
+    second: Rabbit sprite sheet Butterfly Full_20
+  - first:
+      213: 8826673803809841926
+    second: Rabbit sprite sheet Butterfly Full_21
+  - first:
+      213: 7819346985778869789
+    second: Rabbit sprite sheet Butterfly Full_22
+  - first:
+      213: -4350722282100062027
+    second: Rabbit sprite sheet Butterfly Full_23
+  - first:
+      213: -7928993617265496471
+    second: Rabbit sprite sheet Butterfly Full_24
+  - first:
+      213: 8463901979214289104
+    second: Rabbit sprite sheet Butterfly Full_25
+  - first:
+      213: -2265713322498738283
+    second: Rabbit sprite sheet Butterfly Full_26
+  - first:
+      213: 7712931610965646406
+    second: Rabbit sprite sheet Butterfly Full_27
+  - first:
+      213: -3340420245003772622
+    second: Rabbit sprite sheet Butterfly Full_28
+  - first:
+      213: -6695397735971689482
+    second: Rabbit sprite sheet Butterfly Full_29
+  - first:
+      213: -3985482255720880904
+    second: Rabbit sprite sheet Butterfly Full_30
+  - first:
+      213: -9073341594773789452
+    second: Rabbit sprite sheet Butterfly Full_31
+  - first:
+      213: -4245601339122326931
+    second: Rabbit sprite sheet Butterfly Full_32
+  - first:
+      213: 369432377505351396
+    second: Rabbit sprite sheet Butterfly Full_33
+  - first:
+      213: 2121551332697830340
+    second: Rabbit sprite sheet Butterfly Full_34
+  - first:
+      213: -1229952991411299609
+    second: Rabbit sprite sheet Butterfly Full_35
+  - first:
+      213: 8624820633470050641
+    second: Rabbit sprite sheet Butterfly Full_36
+  - first:
+      213: -1631394009892760732
+    second: Rabbit sprite sheet Butterfly Full_37
+  - first:
+      213: -7835274778148413677
+    second: Rabbit sprite sheet Butterfly Full_38
+  - first:
+      213: -3608281287696525624
+    second: Rabbit sprite sheet Butterfly Full_39
+  - first:
+      213: 6242178433613508808
+    second: Rabbit sprite sheet Butterfly Full_40
+  - first:
+      213: -2719897470005962616
+    second: Rabbit sprite sheet Butterfly Full_41
+  - first:
+      213: 6242483189258374232
+    second: Rabbit sprite sheet Butterfly Full_42
+  - first:
+      213: 6948348764111605392
+    second: Rabbit sprite sheet Butterfly Full_43
+  - first:
+      213: -5139408698434857619
+    second: Rabbit sprite sheet Butterfly Full_44
+  - first:
+      213: -1356033805838467248
+    second: Rabbit sprite sheet Butterfly Full_45
+  - first:
+      213: 8257498145579111299
+    second: Rabbit sprite sheet Butterfly Full_46
+  - first:
+      213: 2142714886996427328
+    second: Rabbit sprite sheet Butterfly Full_47
+  - first:
+      213: -6736928724208143621
+    second: Rabbit sprite sheet Butterfly Full_48
+  - first:
+      213: 367627864721172472
+    second: Rabbit sprite sheet Butterfly Full_49
+  - first:
+      213: -6420534538746463312
+    second: Rabbit sprite sheet Butterfly Full_50
+  - first:
+      213: 2988761962743153405
+    second: Rabbit sprite sheet Butterfly Full_51
+  - first:
+      213: -621352817575275874
+    second: Rabbit sprite sheet Butterfly Full_52
+  - first:
+      213: -1448630721672966719
+    second: Rabbit sprite sheet Butterfly Full_53
+  - first:
+      213: -9199986973289685981
+    second: Rabbit sprite sheet Butterfly Full_54
+  - first:
+      213: -2800219419738122300
+    second: Rabbit sprite sheet Butterfly Full_55
+  - first:
+      213: -4524579315752428759
+    second: Rabbit sprite sheet Butterfly Full_56
+  - first:
+      213: 476619420280500757
+    second: Rabbit sprite sheet Butterfly Full_57
+  - first:
+      213: -6460508052848747212
+    second: Rabbit sprite sheet Butterfly Full_58
+  - first:
+      213: -8727461848117241813
+    second: Rabbit sprite sheet Butterfly Full_59
+  - first:
+      213: -4467906924636578389
+    second: Rabbit sprite sheet Butterfly Full_60
+  - first:
+      213: -2964418284697510668
+    second: Rabbit sprite sheet Butterfly Full_61
+  - first:
+      213: -2070076088869657598
+    second: Rabbit sprite sheet Butterfly Full_62
+  - first:
+      213: 1131093389571595463
+    second: Rabbit sprite sheet Butterfly Full_63
+  - first:
+      213: -359679332139233090
+    second: Rabbit sprite sheet Butterfly Full_64
+  - first:
+      213: -1835953703055288878
+    second: Rabbit sprite sheet Butterfly Full_65
+  - first:
+      213: 8598654090471099303
+    second: Rabbit sprite sheet Butterfly Full_66
+  - first:
+      213: -4097470518001815780
+    second: Rabbit sprite sheet Butterfly Full_67
+  - first:
+      213: -4269727041590598088
+    second: Rabbit sprite sheet Butterfly Full_68
+  - first:
+      213: -8901884251641229299
+    second: Rabbit sprite sheet Butterfly Full_69
+  - first:
+      213: 7456756913705598201
+    second: Rabbit sprite sheet Butterfly Full_70
+  - first:
+      213: -8092170687039061711
+    second: Rabbit sprite sheet Butterfly Full_71
+  - first:
+      213: 4296143239639506686
+    second: Rabbit sprite sheet Butterfly Full_72
+  - first:
+      213: -8288365440748557211
+    second: Rabbit sprite sheet Butterfly Full_73
+  - first:
+      213: 2759749070878770149
+    second: Rabbit sprite sheet Butterfly Full_74
+  - first:
+      213: -747623818445437904
+    second: Rabbit sprite sheet Butterfly Full_75
+  - first:
+      213: 1999575719022202330
+    second: Rabbit sprite sheet Butterfly Full_76
+  - first:
+      213: 750694703479983107
+    second: Rabbit sprite sheet Butterfly Full_77
+  - first:
+      213: 2708255130836097356
+    second: Rabbit sprite sheet Butterfly Full_78
+  - first:
+      213: -1902009459513772366
+    second: Rabbit sprite sheet Butterfly Full_79
+  - first:
+      213: -2374332063057004372
+    second: Rabbit sprite sheet Butterfly Full_80
+  - first:
+      213: 5814382134714128369
+    second: Rabbit sprite sheet Butterfly Full_81
+  - first:
+      213: -2988735459126437119
+    second: Rabbit sprite sheet Butterfly Full_82
+  - first:
+      213: 4434009520152997872
+    second: Rabbit sprite sheet Butterfly Full_83
+  - first:
+      213: -3457329582599543597
+    second: Rabbit sprite sheet Butterfly Full_84
+  - first:
+      213: 6756067471337715511
+    second: Rabbit sprite sheet Butterfly Full_85
+  - first:
+      213: 8078882535086622236
+    second: Rabbit sprite sheet Butterfly Full_86
+  - first:
+      213: -4267434394326229051
+    second: Rabbit sprite sheet Butterfly Full_87
+  - first:
+      213: 6241995972237741692
+    second: Rabbit sprite sheet Butterfly Full_88
+  - first:
+      213: 3945250329652683670
+    second: Rabbit sprite sheet Butterfly Full_89
+  - first:
+      213: 4909451982876533928
+    second: Rabbit sprite sheet Butterfly Full_90
+  - first:
+      213: 2452912241739238043
+    second: Rabbit sprite sheet Butterfly Full_91
+  - first:
+      213: -1067940610927534049
+    second: Rabbit sprite sheet Butterfly Full_92
+  - first:
+      213: 8611024429094369177
+    second: Rabbit sprite sheet Butterfly Full_93
+  - first:
+      213: -7903089482365340079
+    second: Rabbit sprite sheet Butterfly Full_94
+  - first:
+      213: -5192400592254412852
+    second: Rabbit sprite sheet Butterfly Full_95
+  - first:
+      213: -8266028707533496517
+    second: Rabbit sprite sheet Butterfly Full_96
+  - first:
+      213: 7567424319156349476
+    second: Rabbit sprite sheet Butterfly Full_97
+  - first:
+      213: -6286075191786473038
+    second: Rabbit sprite sheet Butterfly Full_98
+  - first:
+      213: 2196811165271798708
+    second: Rabbit sprite sheet Butterfly Full_99
+  - first:
+      213: -4675640596083251691
+    second: Rabbit sprite sheet Butterfly Full_100
+  - first:
+      213: -2427485135439115924
+    second: Rabbit sprite sheet Butterfly Full_101
+  - first:
+      213: 120705019868355409
+    second: Rabbit sprite sheet Butterfly Full_102
+  - first:
+      213: -5179674421386194082
+    second: Rabbit sprite sheet Butterfly Full_103
+  - first:
+      213: -5647373835778870829
+    second: Rabbit sprite sheet Butterfly Full_104
+  - first:
+      213: 7045649024899008589
+    second: Rabbit sprite sheet Butterfly Full_105
+  - first:
+      213: -2048330666160396192
+    second: Rabbit sprite sheet Butterfly Full_106
+  - first:
+      213: -5643568485262738307
+    second: Rabbit sprite sheet Butterfly Full_107
+  - first:
+      213: 5185519918366034143
+    second: Rabbit sprite sheet Butterfly Full_108
+  - first:
+      213: -5473165904328224952
+    second: Rabbit sprite sheet Butterfly Full_109
+  - first:
+      213: 7461429963117043043
+    second: Rabbit sprite sheet Butterfly Full_110
+  - first:
+      213: 3499914473510867373
+    second: Rabbit sprite sheet Butterfly Full_111
+  - first:
+      213: -4667356016729090754
+    second: Rabbit sprite sheet Butterfly Full_112
+  - first:
+      213: -445692503015060191
+    second: Rabbit sprite sheet Butterfly Full_113
+  - first:
+      213: 1019344597932258425
+    second: Rabbit sprite sheet Butterfly Full_114
+  - first:
+      213: 6110193423512463546
+    second: Rabbit sprite sheet Butterfly Full_115
+  - first:
+      213: -9068576062851775558
+    second: Rabbit sprite sheet Butterfly Full_116
+  - first:
+      213: -3371145964580229667
+    second: Rabbit sprite sheet Butterfly Full_117
+  - first:
+      213: -54335146792550604
+    second: Rabbit sprite sheet Butterfly Full_118
+  - first:
+      213: 3061107810514989310
+    second: Rabbit sprite sheet Butterfly Full_119
+  - first:
+      213: -7234580824536944277
+    second: Rabbit sprite sheet Butterfly Full_120
+  - first:
+      213: -3342705659494960034
+    second: Rabbit sprite sheet Butterfly Full_121
+  - first:
+      213: -5949644318973160542
+    second: Rabbit sprite sheet Butterfly Full_122
+  - first:
+      213: -2086706467852121020
+    second: Rabbit sprite sheet Butterfly Full_123
+  - first:
+      213: -6518668649879485772
+    second: Rabbit sprite sheet Butterfly Full_124
+  - first:
+      213: 2940873091333397593
+    second: Rabbit sprite sheet Butterfly Full_125
+  - first:
+      213: 4069779943809155307
+    second: Rabbit sprite sheet Butterfly Full_126
+  - first:
+      213: -4966449855484447724
+    second: Rabbit sprite sheet Butterfly Full_127
+  - first:
+      213: 2497560497249681748
+    second: Rabbit sprite sheet Butterfly Full_128
+  - first:
+      213: 929024147819005685
+    second: Rabbit sprite sheet Butterfly Full_129
+  - first:
+      213: 7899409694897649679
+    second: Rabbit sprite sheet Butterfly Full_130
+  - first:
+      213: 5651340272203276643
+    second: Rabbit sprite sheet Butterfly Full_131
+  - first:
+      213: -296088272185664320
+    second: Rabbit sprite sheet Butterfly Full_132
+  - first:
+      213: -5533700871240646673
+    second: Rabbit sprite sheet Butterfly Full_133
+  - first:
+      213: 52319793439252279
+    second: Rabbit sprite sheet Butterfly Full_134
+  - first:
+      213: 8382320826115413342
+    second: Rabbit sprite sheet Butterfly Full_135
+  - first:
+      213: -2144166438601607386
+    second: Rabbit sprite sheet Butterfly Full_136
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_0
+      rect:
+        serializedVersion: 2
+        x: 4333
+        y: 38
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd6f034bfc057e400800000000000000
+      internalID: 353339948783433435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_1
+      rect:
+        serializedVersion: 2
+        x: 4384
+        y: 41
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9db22735959596e70800000000000000
+      internalID: 9108909961520491481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_2
+      rect:
+        serializedVersion: 2
+        x: 4435
+        y: 43
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b661f19dc70dabdc0800000000000000
+      internalID: -3622353715628927381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_3
+      rect:
+        serializedVersion: 2
+        x: 4486
+        y: 44
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90fe3769d01d60850800000000000000
+      internalID: 6342986981486882569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_4
+      rect:
+        serializedVersion: 2
+        x: 4537
+        y: 43
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef960f288ed211f0800000000000000
+      internalID: -1075552684502245405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_5
+      rect:
+        serializedVersion: 2
+        x: 4587
+        y: 43
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a11fa924bed968c90800000000000000
+      internalID: -7167868123153239782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_6
+      rect:
+        serializedVersion: 2
+        x: 4639
+        y: 44
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d24904e13f1ab8ee0800000000000000
+      internalID: -1257733605363248083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_7
+      rect:
+        serializedVersion: 2
+        x: 4689
+        y: 45
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5d4eecb1ec6bf180800000000000000
+      internalID: -9080544506869297829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_8
+      rect:
+        serializedVersion: 2
+        x: 4718
+        y: 9
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd27260b25de26660800000000000000
+      internalID: 7377720078988636891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_9
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 9
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10ee9b945456a170800000000000000
+      internalID: 8189325694784692255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_10
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 9
+        width: 33
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ad51088d7338cf20800000000000000
+      internalID: 3443058529370463657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_11
+      rect:
+        serializedVersion: 2
+        x: 3716
+        y: 9
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6936aacc436651a10800000000000000
+      internalID: 1879520796455101334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_12
+      rect:
+        serializedVersion: 2
+        x: 3917
+        y: 9
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b51a85ff5d6da700800000000000000
+      internalID: 553218588145227190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_13
+      rect:
+        serializedVersion: 2
+        x: 3967
+        y: 9
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 338ee37ea82fabbe0800000000000000
+      internalID: -1460588450729236429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_14
+      rect:
+        serializedVersion: 2
+        x: 4028
+        y: 34
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79b8aa747ae91c6d0800000000000000
+      internalID: -2971919837788730473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_15
+      rect:
+        serializedVersion: 2
+        x: 4079
+        y: 36
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef0099eda0b89930800000000000000
+      internalID: 4150261317616275439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_16
+      rect:
+        serializedVersion: 2
+        x: 4130
+        y: 37
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69fc4028996b12870800000000000000
+      internalID: 8656400729210408854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_17
+      rect:
+        serializedVersion: 2
+        x: 4181
+        y: 36
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f78c54c2679c5570800000000000000
+      internalID: 8456800650751936505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_18
+      rect:
+        serializedVersion: 2
+        x: 4231
+        y: 36
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3415e58afc2cb6cd0800000000000000
+      internalID: -2563741365718593213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_19
+      rect:
+        serializedVersion: 2
+        x: 4283
+        y: 37
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 894ef1c81a17476a0800000000000000
+      internalID: -6452407427460504424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_20
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 353569347a2357bb0800000000000000
+      internalID: -4938985722367028397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_21
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 603e4501f05ae7a70800000000000000
+      internalID: 8826673803809841926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_22
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d16fed6a7a6e38c60800000000000000
+      internalID: 7819346985778869789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_23
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b88c03b2212f93c0800000000000000
+      internalID: -4350722282100062027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_24
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96eec80905e86f190800000000000000
+      internalID: -7928993617265496471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_25
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d81bc4a102d57570800000000000000
+      internalID: 8463901979214289104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_26
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 597b799ccb19e80e0800000000000000
+      internalID: -2265713322498738283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_27
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c1d707f66d90b60800000000000000
+      internalID: 7712931610965646406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_28
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23dd6084c7174a1d0800000000000000
+      internalID: -3340420245003772622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_29
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fbe37d9b3b2513a0800000000000000
+      internalID: -6695397735971689482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_30
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f462212109b0b8c0800000000000000
+      internalID: -3985482255720880904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_31
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f46bb564e3051280800000000000000
+      internalID: -9073341594773789452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_32
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d62e0b383189415c0800000000000000
+      internalID: -4245601339122326931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_33
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e60cbd3acc702500800000000000000
+      internalID: 369432377505351396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_34
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c3f53652b3417d10800000000000000
+      internalID: 2121551332697830340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_35
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 9
+        width: 33
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ea108855445eeee0800000000000000
+      internalID: -1229952991411299609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_36
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 9
+        width: 33
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 151217d7ba481b770800000000000000
+      internalID: 8624820633470050641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_37
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 27
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46354af9acf1c59e0800000000000000
+      internalID: -1631394009892760732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_38
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31fd2e23a13834390800000000000000
+      internalID: -7835274778148413677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_39
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 27
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c6d82d494fccedc0800000000000000
+      internalID: -3608281287696525624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_40
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c03320863ca0a650800000000000000
+      internalID: 6242178433613508808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_41
+      rect:
+        serializedVersion: 2
+        x: 1049
+        y: 27
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8889fc269abf04ad0800000000000000
+      internalID: -2719897470005962616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_42
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85cc714f261c1a650800000000000000
+      internalID: 6242483189258374232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_43
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 27
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09e8564136e7d6060800000000000000
+      internalID: 6948348764111605392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_44
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65dc3eb4072da8b0800000000000000
+      internalID: -5139408698434857619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_45
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 26
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05fb39b20766e2de0800000000000000
+      internalID: -1356033805838467248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_46
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38390b430d6889270800000000000000
+      internalID: 8257498145579111299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_47
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 25
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0420d5e46d37cbd10800000000000000
+      internalID: 2142714886996427328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_48
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf2b274e40f9182a0800000000000000
+      internalID: -6736928724208143621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_49
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 23
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f7ad3e58931a1500800000000000000
+      internalID: 367627864721172472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_50
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bbf3edbadda5e6a0800000000000000
+      internalID: -6420534538746463312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_51
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 22
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df241838b273a7920800000000000000
+      internalID: 2988761962743153405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_52
+      rect:
+        serializedVersion: 2
+        x: 1315
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e92dc3c87e28067f0800000000000000
+      internalID: -621352817575275874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_53
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 22
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cd07f7a80e65ebe0800000000000000
+      internalID: -1448630721672966719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_54
+      rect:
+        serializedVersion: 2
+        x: 1365
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32cd8d66794135080800000000000000
+      internalID: -9199986973289685981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_55
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 22
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c7db51264f9329d0800000000000000
+      internalID: -2800219419738122300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_56
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92b1f76a5177531c0800000000000000
+      internalID: -4524579315752428759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_57
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 23
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5123fd666da4d9600800000000000000
+      internalID: 476619420280500757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_58
+      rect:
+        serializedVersion: 2
+        x: 1465
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43d5669b72aa756a0800000000000000
+      internalID: -6460508052848747212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_59
+      rect:
+        serializedVersion: 2
+        x: 1509
+        y: 22
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b28923070b3d1e680800000000000000
+      internalID: -8727461848117241813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_60
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bad5783f25ecef1c0800000000000000
+      internalID: -4467906924636578389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_61
+      rect:
+        serializedVersion: 2
+        x: 1559
+        y: 21
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fc9ee6b6454cd6d0800000000000000
+      internalID: -2964418284697510668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_62
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 204e4e0d3cc9543e0800000000000000
+      internalID: -2070076088869657598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_63
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cc153de17372bf00800000000000000
+      internalID: 1131093389571595463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_64
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 9
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb09ac69d89220bf0800000000000000
+      internalID: -359679332139233090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_65
+      rect:
+        serializedVersion: 2
+        x: 1711
+        y: 9
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d5935995d16586e0800000000000000
+      internalID: -1835953703055288878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_66
+      rect:
+        serializedVersion: 2
+        x: 1762
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ab4df0765e845770800000000000000
+      internalID: 8598654090471099303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_67
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1fadd0f54cd227c0800000000000000
+      internalID: -4097470518001815780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_68
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836ec1ea0e1eeb4c0800000000000000
+      internalID: -4269727041590598088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_69
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d00d745ff67267480800000000000000
+      internalID: -8901884251641229299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_70
+      rect:
+        serializedVersion: 2
+        x: 1962
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fc3cd9c7e8bb7760800000000000000
+      internalID: 7456756913705598201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_71
+      rect:
+        serializedVersion: 2
+        x: 2012
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 131453162a5d2bf80800000000000000
+      internalID: -8092170687039061711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_72
+      rect:
+        serializedVersion: 2
+        x: 2062
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efe98e6b387fe9b30800000000000000
+      internalID: 4296143239639506686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_73
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56cee879b8fc9fc80800000000000000
+      internalID: -8288365440748557211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_74
+      rect:
+        serializedVersion: 2
+        x: 2162
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e381fe78299c4620800000000000000
+      internalID: 2759749070878770149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_75
+      rect:
+        serializedVersion: 2
+        x: 2212
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03440f32918ef95f0800000000000000
+      internalID: -747623818445437904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_76
+      rect:
+        serializedVersion: 2
+        x: 2262
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: add80d1b58befbb10800000000000000
+      internalID: 1999575719022202330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_77
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30c01bffad00b6a00800000000000000
+      internalID: 750694703479983107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_78
+      rect:
+        serializedVersion: 2
+        x: 2362
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c495d9a41b7a59520800000000000000
+      internalID: 2708255130836097356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_79
+      rect:
+        serializedVersion: 2
+        x: 2412
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b6bf3e4974ba95e0800000000000000
+      internalID: -1902009459513772366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_80
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca8baa2819dac0fd0800000000000000
+      internalID: -2374332063057004372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_81
+      rect:
+        serializedVersion: 2
+        x: 2512
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f75300eeb5d0b050800000000000000
+      internalID: 5814382134714128369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_82
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10b97275fe0e586d0800000000000000
+      internalID: -2988735459126437119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_83
+      rect:
+        serializedVersion: 2
+        x: 2612
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ff6b6b8a24c88d30800000000000000
+      internalID: 4434009520152997872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_84
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d464b5ff091500d0800000000000000
+      internalID: -3457329582599543597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_85
+      rect:
+        serializedVersion: 2
+        x: 2712
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 737f7abe19f52cd50800000000000000
+      internalID: 6756067471337715511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_86
+      rect:
+        serializedVersion: 2
+        x: 2762
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1602f5acd4fd1070800000000000000
+      internalID: 8078882535086622236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_87
+      rect:
+        serializedVersion: 2
+        x: 2812
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cf96e7370707c4c0800000000000000
+      internalID: -4267434394326229051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_88
+      rect:
+        serializedVersion: 2
+        x: 2862
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7e46a6e34600a650800000000000000
+      internalID: 6241995972237741692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_89
+      rect:
+        serializedVersion: 2
+        x: 2912
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 693e0f0a54850c630800000000000000
+      internalID: 3945250329652683670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_90
+      rect:
+        serializedVersion: 2
+        x: 2962
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a461392190e12440800000000000000
+      internalID: 4909451982876533928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_91
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9a031210be7a0220800000000000000
+      internalID: 2452912241739238043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_92
+      rect:
+        serializedVersion: 2
+        x: 3062
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10637c2ca9ed21f0800000000000000
+      internalID: -1067940610927534049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_93
+      rect:
+        serializedVersion: 2
+        x: 3113
+        y: 9
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99771685811808770800000000000000
+      internalID: 8611024429094369177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_94
+      rect:
+        serializedVersion: 2
+        x: 3162
+        y: 9
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 156fc77fcf5925290800000000000000
+      internalID: -7903089482365340079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_95
+      rect:
+        serializedVersion: 2
+        x: 3215
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc7d52ffb23e0f7b0800000000000000
+      internalID: -5192400592254412852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_96
+      rect:
+        serializedVersion: 2
+        x: 3265
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3fd8409faa294d80800000000000000
+      internalID: -8266028707533496517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_97
+      rect:
+        serializedVersion: 2
+        x: 3315
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42a67f70354e40960800000000000000
+      internalID: 7567424319156349476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_98
+      rect:
+        serializedVersion: 2
+        x: 3365
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b9fb2a0bef53c8a0800000000000000
+      internalID: -6286075191786473038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_99
+      rect:
+        serializedVersion: 2
+        x: 3415
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b333a89d14ac7e10800000000000000
+      internalID: 2196811165271798708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_100
+      rect:
+        serializedVersion: 2
+        x: 3465
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 516ef0586a9cc1fb0800000000000000
+      internalID: -4675640596083251691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_101
+      rect:
+        serializedVersion: 2
+        x: 3515
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c694c947127df4ed0800000000000000
+      internalID: -2427485135439115924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_102
+      rect:
+        serializedVersion: 2
+        x: 3565
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15b1cd77394dca100800000000000000
+      internalID: 120705019868355409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_103
+      rect:
+        serializedVersion: 2
+        x: 3615
+        y: 9
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e53591d8e891e18b0800000000000000
+      internalID: -5179674421386194082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_104
+      rect:
+        serializedVersion: 2
+        x: 3665
+        y: 9
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d1b09cda6f70a1b0800000000000000
+      internalID: -5647373835778870829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_105
+      rect:
+        serializedVersion: 2
+        x: 3767
+        y: 9
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d48ce2d657c27c160800000000000000
+      internalID: 7045649024899008589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_106
+      rect:
+        serializedVersion: 2
+        x: 3818
+        y: 9
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06868f49c1ed293e0800000000000000
+      internalID: -2048330666160396192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_107
+      rect:
+        serializedVersion: 2
+        x: 3867
+        y: 9
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c33521d540ea1b0800000000000000
+      internalID: -5643568485262738307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_108
+      rect:
+        serializedVersion: 2
+        x: 4017
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd88be544eaa6f740800000000000000
+      internalID: 5185519918366034143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_109
+      rect:
+        serializedVersion: 2
+        x: 4067
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84f8cbbab986b04b0800000000000000
+      internalID: -5473165904328224952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_110
+      rect:
+        serializedVersion: 2
+        x: 4118
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36d1c04e4035c8760800000000000000
+      internalID: 7461429963117043043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_111
+      rect:
+        serializedVersion: 2
+        x: 4168
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da11dd99ba1329030800000000000000
+      internalID: 3499914473510867373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_112
+      rect:
+        serializedVersion: 2
+        x: 4217
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3594967e683a3fb0800000000000000
+      internalID: -4667356016729090754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_113
+      rect:
+        serializedVersion: 2
+        x: 4267
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12d8bb6a70590d9f0800000000000000
+      internalID: -445692503015060191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_114
+      rect:
+        serializedVersion: 2
+        x: 4317
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9743777d280752e00800000000000000
+      internalID: 1019344597932258425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_115
+      rect:
+        serializedVersion: 2
+        x: 4368
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab86365ab84cbc450800000000000000
+      internalID: 6110193423512463546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_116
+      rect:
+        serializedVersion: 2
+        x: 4418
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab30c134e12f52280800000000000000
+      internalID: -9068576062851775558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_117
+      rect:
+        serializedVersion: 2
+        x: 4467
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd24373b984731d0800000000000000
+      internalID: -3371145964580229667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_118
+      rect:
+        serializedVersion: 2
+        x: 4517
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43f7c9cc876fe3ff0800000000000000
+      internalID: -54335146792550604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_119
+      rect:
+        serializedVersion: 2
+        x: 4567
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef07be0d55d3b7a20800000000000000
+      internalID: 3061107810514989310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_120
+      rect:
+        serializedVersion: 2
+        x: 4617
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b617f9e021b999b90800000000000000
+      internalID: -7234580824536944277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_121
+      rect:
+        serializedVersion: 2
+        x: 4667
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e547d11c9e25c91d0800000000000000
+      internalID: -3342705659494960034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_122
+      rect:
+        serializedVersion: 2
+        x: 4768
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a31fa3b30e9e6da0800000000000000
+      internalID: -5949644318973160542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_123
+      rect:
+        serializedVersion: 2
+        x: 4817
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44c0a29f5878a03e0800000000000000
+      internalID: -2086706467852121020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_124
+      rect:
+        serializedVersion: 2
+        x: 4867
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b2457b76690985a0800000000000000
+      internalID: -6518668649879485772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_125
+      rect:
+        serializedVersion: 2
+        x: 4917
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95c9e62ce7410d820800000000000000
+      internalID: 2940873091333397593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_126
+      rect:
+        serializedVersion: 2
+        x: 4968
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be001c8db43ca7830800000000000000
+      internalID: 4069779943809155307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_127
+      rect:
+        serializedVersion: 2
+        x: 5018
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4143f097b20a31bb0800000000000000
+      internalID: -4966449855484447724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_128
+      rect:
+        serializedVersion: 2
+        x: 5067
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4518d932a0e19a220800000000000000
+      internalID: 2497560497249681748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_129
+      rect:
+        serializedVersion: 2
+        x: 5117
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f6038e4a8e84ec00800000000000000
+      internalID: 929024147819005685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_130
+      rect:
+        serializedVersion: 2
+        x: 5167
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f08b6afb34750ad60800000000000000
+      internalID: 7899409694897649679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_131
+      rect:
+        serializedVersion: 2
+        x: 5217
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 361298519089d6e40800000000000000
+      internalID: 5651340272203276643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_132
+      rect:
+        serializedVersion: 2
+        x: 5267
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ccd632094514ebf0800000000000000
+      internalID: -296088272185664320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_133
+      rect:
+        serializedVersion: 2
+        x: 5318
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef7e6c50685433b0800000000000000
+      internalID: -5533700871240646673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_134
+      rect:
+        serializedVersion: 2
+        x: 5368
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73f1bae2390e9b000800000000000000
+      internalID: 52319793439252279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_135
+      rect:
+        serializedVersion: 2
+        x: 5417
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e55d7f1416cf35470800000000000000
+      internalID: 8382320826115413342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Butterfly Full_136
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 19
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62736dffbf36e32e0800000000000000
+      internalID: -2144166438601607386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

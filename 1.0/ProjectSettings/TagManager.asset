@@ -19,16 +19,16 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - shells
-  - Wall
-  - playerLayer
-  - Builder
-  - Wariaor
-  - Enemy
-  - Wariaor
-  - PlayerHitbox
-  - EnemyHitbox
+  - GroundDungeons
+  - shellsDungeons
+  - WallDungeons
+  - playerLayerDungeons
+  - BuilderDungeons
+  - WariaorDungeons
+  - EnemyDungeons
+  - WariaorDungeons
+  - PlayerHitboxDungeons
+  - EnemyHitboxDungeons
   - 
   - 
   - 

@@ -91,7 +91,7 @@ public class ObjectGenerator : MonoBehaviour
                 return new Vector2(spawnPosition.x, spawnY);
             }
         }
-        Debug.LogError("ReferenceObject does not have a Collider2D component.");
+        //Debug.LogError("ReferenceObject does not have a Collider2D component.");
         return spawnPosition; // Fallback to the original position if no collider is found
     }
 

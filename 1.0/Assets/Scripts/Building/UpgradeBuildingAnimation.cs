@@ -21,7 +21,7 @@ public class UpgradeBuildingAnimatio : MonoBehaviour
 
     public void SetAnimatorSpeed(float speedMultiplier)
     {
-        Debug.Log(speedMultiplier);
+        Debug.Log("speedMultiplier:  " + speedMultiplier);
         animator.speed = speedMultiplier; // Adjust the animator's speed.
     }
 

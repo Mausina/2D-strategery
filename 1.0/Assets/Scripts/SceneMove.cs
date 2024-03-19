@@ -8,7 +8,7 @@ public class SceneLoader : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // Assuming worldSceneIndexes[0] is the index of the first world and worldSceneIndexes[1] is the index of the second world
-            WorldsManager.Instance.SwitchWorld();
+           // WorldsManager.Instance.SwitchWorld();
         }
     }
 }

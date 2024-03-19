@@ -1,0 +1,532 @@
+fileFormatVersion: 2
+guid: 032e6992a7a570142ba784052f3321f9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6687076750830833450
+    second: Rabbit sprite sheet Attack_0
+  - first:
+      213: -5189755288454988103
+    second: Rabbit sprite sheet Attack_1
+  - first:
+      213: -2785961193087814927
+    second: Rabbit sprite sheet Attack_2
+  - first:
+      213: 3578037758209308351
+    second: Rabbit sprite sheet Attack_3
+  - first:
+      213: -356609487935554825
+    second: Rabbit sprite sheet Attack_4
+  - first:
+      213: 182254000631311921
+    second: Rabbit sprite sheet Attack_5
+  - first:
+      213: -4530742333263861323
+    second: Rabbit sprite sheet Attack_6
+  - first:
+      213: -1972815204046558314
+    second: Rabbit sprite sheet Attack_7
+  - first:
+      213: -2341331301568438881
+    second: Rabbit sprite sheet Attack_8
+  - first:
+      213: 8051549878317849177
+    second: Rabbit sprite sheet Attack_9
+  - first:
+      213: 6925747655939474797
+    second: Rabbit sprite sheet Attack_10
+  - first:
+      213: 1029008395327836493
+    second: Rabbit sprite sheet Attack_11
+  - first:
+      213: 5616090100950970590
+    second: Rabbit sprite sheet Attack_12
+  - first:
+      213: 4870571912160653773
+    second: Rabbit sprite sheet Attack_13
+  - first:
+      213: -1170251984342505882
+    second: Rabbit sprite sheet Attack_14
+  - first:
+      213: 8929043151002979798
+    second: Rabbit sprite sheet Attack_15
+  - first:
+      213: 9137635945106012564
+    second: Rabbit sprite sheet Attack_16
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 9
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2f8b0f00e44dcc50800000000000000
+      internalID: 6687076750830833450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_1
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 9
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9be7f68cf094af7b0800000000000000
+      internalID: -5189755288454988103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_2
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 34
+        width: 17
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f23af73e074659d0800000000000000
+      internalID: -2785961193087814927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_3
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 9
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb63003426eb7a130800000000000000
+      internalID: 3578037758209308351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_4
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 9
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fa31146f811d0bf0800000000000000
+      internalID: -356609487935554825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_5
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 9
+        width: 31
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13ee5864c0f778200800000000000000
+      internalID: 182254000631311921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_6
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 26
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b9abf05ad19f11c0800000000000000
+      internalID: -4530742333263861323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_7
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 9
+        width: 30
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ba05b36072f94e0800000000000000
+      internalID: -1972815204046558314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_8
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 9
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9d928c069be18fd0800000000000000
+      internalID: -2341331301568438881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_9
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 9
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95a997494f9dcbf60800000000000000
+      internalID: 8051549878317849177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_10
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 9
+        width: 24
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6544448cc23d1060800000000000000
+      internalID: 6925747655939474797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_11
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 9
+        width: 39
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4119620fa5c74e00800000000000000
+      internalID: 1029008395327836493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_12
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 9
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed035c5013c50fd40800000000000000
+      internalID: 5616090100950970590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_13
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 9
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc1b455495fb79340800000000000000
+      internalID: 4870571912160653773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_14
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 9
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 666a19f350e62cfe0800000000000000
+      internalID: -1170251984342505882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_15
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 9
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ddcaaf00755aeb70800000000000000
+      internalID: 8929043151002979798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Attack_16
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 9
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49972e29a776fce70800000000000000
+      internalID: 9137635945106012564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

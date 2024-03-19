@@ -1,0 +1,449 @@
+fileFormatVersion: 2
+guid: bd2dc7fffe303024783d9be3c016d678
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6008354653288524300
+    second: Rabbit sprite sheet Idle_0
+  - first:
+      213: -7101328903796529766
+    second: Rabbit sprite sheet Idle_1
+  - first:
+      213: 1854802298501935248
+    second: Rabbit sprite sheet Idle_2
+  - first:
+      213: -3385861576414654061
+    second: Rabbit sprite sheet Idle_3
+  - first:
+      213: 6398407749108604533
+    second: Rabbit sprite sheet Idle_4
+  - first:
+      213: -7906054688370092314
+    second: Rabbit sprite sheet Idle_5
+  - first:
+      213: 3097597930234725309
+    second: Rabbit sprite sheet Idle_6
+  - first:
+      213: 7208938881512481201
+    second: Rabbit sprite sheet Idle_7
+  - first:
+      213: -7529512237727932146
+    second: Rabbit sprite sheet Idle_8
+  - first:
+      213: -6578879305736676941
+    second: Rabbit sprite sheet Idle_9
+  - first:
+      213: 5534226557580367250
+    second: Rabbit sprite sheet Idle_10
+  - first:
+      213: -5851746338503385010
+    second: Rabbit sprite sheet Idle_11
+  - first:
+      213: 4409014946732295331
+    second: Rabbit sprite sheet Idle_12
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f51c26c6490e9ca0800000000000000
+      internalID: -6008354653288524300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a956ef78cf2037d90800000000000000
+      internalID: -7101328903796529766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_2
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09039c20dd49db910800000000000000
+      internalID: 1854802298501935248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_3
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3911927d5d00301d0800000000000000
+      internalID: -3385861576414654061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_4
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e99b592f5bbc850800000000000000
+      internalID: 6398407749108604533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_5
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e693e4262d084290800000000000000
+      internalID: -7906054688370092314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_6
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db340a0e7e0ecfa20800000000000000
+      internalID: 3097597930234725309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_7
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b1ad08d7bb4b0460800000000000000
+      internalID: 7208938881512481201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_8
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e01254a438cc18790800000000000000
+      internalID: -7529512237727932146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_9
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b99569b02023b4a0800000000000000
+      internalID: -6578879305736676941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_10
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2955c178bb58dcc40800000000000000
+      internalID: 5534226557580367250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_11
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 9
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4020d185bb6acea0800000000000000
+      internalID: -5851746338503385010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rabbit sprite sheet Idle_12
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 9
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a4cd5debb7ff2d30800000000000000
+      internalID: 4409014946732295331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Rabbit sprite sheet Idle_0: -6008354653288524300
+      Rabbit sprite sheet Idle_1: -7101328903796529766
+      Rabbit sprite sheet Idle_10: 5534226557580367250
+      Rabbit sprite sheet Idle_11: -5851746338503385010
+      Rabbit sprite sheet Idle_12: 4409014946732295331
+      Rabbit sprite sheet Idle_2: 1854802298501935248
+      Rabbit sprite sheet Idle_3: -3385861576414654061
+      Rabbit sprite sheet Idle_4: 6398407749108604533
+      Rabbit sprite sheet Idle_5: -7906054688370092314
+      Rabbit sprite sheet Idle_6: 3097597930234725309
+      Rabbit sprite sheet Idle_7: 7208938881512481201
+      Rabbit sprite sheet Idle_8: -7529512237727932146
+      Rabbit sprite sheet Idle_9: -6578879305736676941
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
