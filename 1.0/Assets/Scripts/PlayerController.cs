@@ -328,6 +328,7 @@ public class PlayerController : MonoBehaviour
     }
     public void TryPlaceCoin(InputAction.CallbackContext context)
     {
+
         if (context.started)
         {
             UpgradeManager upgradeManager = detectionZoneForPlayer.FindUpgradeManager();
@@ -346,6 +347,8 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    
 
     private void DropCoin()
     {

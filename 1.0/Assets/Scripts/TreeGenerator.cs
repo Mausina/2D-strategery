@@ -19,6 +19,9 @@ public class ObjectGenerator : MonoBehaviour
     public GameObject PointBObject; // Assign your Point B GameObject in the inspector
     public float MinDistanceBetweenObjects = 2f; // Minimum distance between objects
     public GameObject ReferenceObject; // The object on which generated objects should spawn
+    public GameObject BushPrefab; // Assign your bush prefab in the inspector
+    public float MinDistanceBetweenBushes = 1f; // Minimum distance between bushes
+    public float MaxDistanceBetweenBushes = 13f; // Maximum distance between bushes
 
     private List<GameObject> generatedObjects;
 
@@ -29,8 +32,42 @@ public class ObjectGenerator : MonoBehaviour
         {
             GenerateObjects(objectToGenerate);
         }
+        GenerateBushesAlongReferenceObject();
     }
-    
+    void GenerateBushesAlongReferenceObject()
+    {
+        Collider2D referenceCollider = ReferenceObject.GetComponent<Collider2D>();
+        if (referenceCollider == null)
+        {
+            Debug.LogError("ReferenceObject does not have a Collider2D component.");
+            return;
+        }
+
+        Bounds bounds = referenceCollider.bounds;
+        float currentX = bounds.min.x;
+        bool firstBush = true; // Flag to track if the bush is the first one being spawned
+
+        while (currentX < bounds.max.x)
+        {
+            if (firstBush)
+            {
+                firstBush = false; // Ensure the first bush spawns at the very beginning
+            }
+            else
+            {
+                float randomDistance = Random.Range(MinDistanceBetweenBushes, MaxDistanceBetweenBushes);
+                currentX += randomDistance;
+            }
+
+            if (currentX <= bounds.max.x)
+            {
+                Vector2 spawnPosition = new Vector2(currentX, bounds.min.y + 1);
+                GameObject bush = Instantiate(BushPrefab, spawnPosition, Quaternion.identity);
+                generatedObjects.Add(bush);
+            }
+        }
+    }
+
     void GenerateObjects(ObjectToGenerate objectToGenerate)
     {
         Vector2 center = (PointAObject.transform.position + PointBObject.transform.position) / 2;

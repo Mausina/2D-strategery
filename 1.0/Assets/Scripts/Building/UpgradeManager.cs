@@ -45,6 +45,7 @@ public class UpgradeManager : MonoBehaviour
             if (timeSinceLastCoin >= coinDropDelay)
             {
                 DropAllCoins();
+                coinRecentlyPlaced = true;
                 CanPlaceCoin = false; // Prevent further coin placement until new interaction
             }
         }

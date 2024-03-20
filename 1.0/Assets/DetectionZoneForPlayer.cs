@@ -7,7 +7,7 @@ public class DetectionZoneForPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("CoinUI")) // Using a more appropriate tag
+        if (collision.CompareTag("Upgradable")) // Using a more appropriate tag
         {
             var upgradeManager = collision.GetComponent<UpgradeManager>();
             if (upgradeManager != null && !detectedUpgradeManagers.Contains(upgradeManager))
@@ -19,7 +19,7 @@ public class DetectionZoneForPlayer : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("CoinUI")) // Ensuring tag consistency
+        if (collision.CompareTag("Upgradable")) // Ensuring tag consistency
         {
             var upgradeManager = collision.GetComponent<UpgradeManager>();
             if (upgradeManager != null)
