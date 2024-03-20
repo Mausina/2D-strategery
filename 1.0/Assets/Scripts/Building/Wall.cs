@@ -132,10 +132,6 @@ public class Wall : MonoBehaviour
                 {
                     Debug.Log("nightPoint is null");
                 }
-                
-
-
-
             }
             else
             {

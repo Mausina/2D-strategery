@@ -13,6 +13,7 @@ public class UpgradeManager : MonoBehaviour
     private float timeSinceLastCoin = 0f; // Timer for dropping coins
     private float coinDropDelay = 1f; // Delay before dropping coins
     public UpgradeBuildingAnimatio upgradeBuildingAnimation;
+    private bool coinRecentlyPlaced = false;
 
     public bool CanPlaceCoin { get; private set; } = false;
     public bool isUpgrading;
@@ -28,25 +29,33 @@ public class UpgradeManager : MonoBehaviour
 
     void Update()
     {
+        // If a coin has recently been placed, start or reset the timer
+        if (coinRecentlyPlaced)
+        {
+            timeSinceLastCoin = 0f;
+            coinRecentlyPlaced = false; // Reset the flag
+            CanPlaceCoin = true; // Allow placing more coins
+        }
+        else if (playerInRange && coinsPlaced > 0)
+        {
+            // If the player is in range and has placed at least one coin, increment the timer
+            timeSinceLastCoin += Time.deltaTime;
 
+            // If the timer exceeds the delay, drop all coins and reset the timer
+            if (timeSinceLastCoin >= coinDropDelay)
+            {
+                DropAllCoins();
+                CanPlaceCoin = false; // Prevent further coin placement until new interaction
+            }
+        }
     }
+
     public void AttemptPlaceOrDropCoin()
     {
-        if (playerInRange && !wall.IsMaxLevel)
+        if (playerInRange && !wall.IsMaxLevel && CanPlaceCoin)
         {
             PlaceCoin();
-            timeSinceLastCoin = 0f;
-        }
-        else
-        {
-            if (coinsPlaced > 0)
-            {
-                timeSinceLastCoin += Time.deltaTime;
-                if (timeSinceLastCoin >= coinDropDelay)
-                {
-                    DropAllCoins();
-                }
-            }
+            coinRecentlyPlaced = true;
         }
     }
 
