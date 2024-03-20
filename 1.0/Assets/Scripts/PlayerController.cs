@@ -337,8 +337,12 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Drop coin on the Ground");
-                DropCoin();
+                if (CoinManager.Instance.CanAfford(1))
+                {
+                    Debug.Log("Drop coin on the Ground");
+                    CoinManager.Instance.SpendCoins(1);
+                    DropCoin();
+                }
             }
         }
     }
