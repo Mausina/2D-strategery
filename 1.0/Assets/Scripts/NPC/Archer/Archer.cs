@@ -10,7 +10,7 @@ public class ArcherController : MonoBehaviour
     public GameObject arrowPrefab; // Assign your arrow prefab in the inspector
     public Transform firePoint; // Assign the position from which arrows are fired
     public float launchForce = 20f; // Adjustable force to apply for arrow shooting
-    public float launchAngle = 45f; // Angle at which the arrow is launched
+    public float launchAngle = 45f; // Angle at which the arrow is launched  
     public float speed = 0.5f; // Reduced speed for a slow and deliberate pace
     public DetectionZone detectionZone;
     private bool isMovingRight = true;
@@ -159,6 +159,9 @@ public class ArcherController : MonoBehaviour
         return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.2f;
     }
     */
+
+
+
     private bool IsAtRallyPoint()
     {
         if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
@@ -172,6 +175,9 @@ public class ArcherController : MonoBehaviour
 
         return atRallyPoint;
     }
+
+
+
     private void AdjustFacingDirection()
     {
         // Adjust the facing direction of the NPC based on isMovingRight
@@ -197,9 +203,8 @@ public class ArcherController : MonoBehaviour
             }
             else if (collider.CompareTag("Animal"))
             {
-                float angleOflaunch = 15f;
-                ShootArrowAtTarget(collider.transform.position, angleOflaunch);
-                // Logic for encountering an animal (e.g., stop and shoot)
+                ShootArrow();
+                lastShotTime = Time.time;
             }
             else if (collider.CompareTag("Enemy"))
             {

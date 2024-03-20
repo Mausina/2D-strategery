@@ -10,6 +10,7 @@ public class DetectionZone : MonoBehaviour
     private void Awake()
     {
         col = GetComponent<Collider2D>();
+
         upgradeBuildingAnimatio = GetComponentInParent<UpgradeBuildingAnimation>();
     }
 

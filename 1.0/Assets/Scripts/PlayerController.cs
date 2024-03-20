@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public HealthBar healthBar;
     public float maxStamina = 30f; // Maximum stamina
-
+    public UpgradeManager upgradeManager;
+    [SerializeField] private GameObject prefabCoin;
+    [SerializeField] private DetectionZoneForPlayer detectionZoneForPlayer;
     private float currentStamina; // Current stamina level
     private bool showStaminaWarning = false; // Flag to control the stamina warning animation
     private float staminaWarningDuration = 5f; // Duration to show the stamina warning animation
@@ -26,7 +28,9 @@ public class PlayerController : MonoBehaviour
     private bool isExhausted = false; // Is the player exhausted?
     public bool _isFacingRight = true;
 
+
     Vector2 moveInput;
+
     Damageable damageable;
     [SerializeField]
     WorldTimeSystem.WorldTime myWorldTime;
@@ -322,6 +326,39 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    public void TryPlaceCoin(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            UpgradeManager upgradeManager = detectionZoneForPlayer.FindUpgradeManager();
+            if (upgradeManager != null && upgradeManager.CanPlaceCoin)
+            {
+                upgradeManager.AttemptPlaceOrDropCoin();
+            }
+            else
+            {
+                Debug.Log("Drop coin on the Ground");
+                DropCoin();
+            }
+        }
+    }
+
+    private void DropCoin()
+    {
+        if (prefabCoin != null)
+        {
+            Vector3 coinPosition = transform.position + new Vector3(0, -0.5f, 0); // Adjust as needed
+            Instantiate(prefabCoin, coinPosition, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("PrefabCoin is not assigned in PlayerController.");
+        }
+    }
+
+
+
+
     /*
     public void OnJump(InputAction.CallbackContext context)
     {

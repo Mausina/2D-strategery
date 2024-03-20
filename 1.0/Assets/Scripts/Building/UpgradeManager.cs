@@ -14,6 +14,7 @@ public class UpgradeManager : MonoBehaviour
     private float coinDropDelay = 1f; // Delay before dropping coins
     public UpgradeBuildingAnimatio upgradeBuildingAnimation;
 
+    public bool CanPlaceCoin { get; private set; } = false;
     public bool isUpgrading;
     void Start()
     {
@@ -27,14 +28,17 @@ public class UpgradeManager : MonoBehaviour
 
     void Update()
     {
+
+    }
+    public void AttemptPlaceOrDropCoin()
+    {
         if (playerInRange && !wall.IsMaxLevel)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                PlaceCoin();
-                timeSinceLastCoin = 0f;
-            }
-
+            PlaceCoin();
+            timeSinceLastCoin = 0f;
+        }
+        else
+        {
             if (coinsPlaced > 0)
             {
                 timeSinceLastCoin += Time.deltaTime;
@@ -51,6 +55,7 @@ public class UpgradeManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            CanPlaceCoin = true;
             UpdateIconVisibility(true);
         }
     }
@@ -60,6 +65,7 @@ public class UpgradeManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            CanPlaceCoin = false;
             DropAllCoins();
             UpdateIconVisibility(false);
         }
@@ -142,9 +148,6 @@ public class UpgradeManager : MonoBehaviour
             levelIconContainers[currentLevel].SetActive(true);
         }
     }
-
-
-
 
 }
 
