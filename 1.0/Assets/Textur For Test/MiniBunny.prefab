@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1175573245662094808}
   - component: {fileID: 693459558465433207}
   - component: {fileID: 467015743579017389}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MiniBunny
-  m_TagString: Untagged
+  m_TagString: 'Animal '
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

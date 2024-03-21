@@ -12,6 +12,8 @@ TagManager:
   - Animal
   - Enemy
   - Camp
+  - Upgradable
+  - Bush
   layers:
   - Default
   - TransparentFX

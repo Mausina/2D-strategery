@@ -3,13 +3,35 @@ using UnityEngine;
 
 public class AnimalController : MonoBehaviour
 {
+
     private Animator animator;
     public float speed = 5f;
     private bool isMoving = true;
     private bool isMovingRight = true;
+    public delegate void AnimalDeactivatedHandler(GameObject animal);
+    public event AnimalDeactivatedHandler OnAnimalDeactivated;
 
+    public void Deactivate()
+    {
+        // Set isAlive to false to play death animation
+        animator.SetBool("isAlive", false);
+
+        // Optional: Wait for animation to finish before deactivating
+        StartCoroutine(DeactivateAfterAnimation());
+    }
+
+    IEnumerator DeactivateAfterAnimation()
+    {
+        // Wait for the death animation to finish. Adjust the time according to your animation's length
+        yield return new WaitForSeconds(1.5f); // Assuming the death animation is about 1.5 seconds long
+        Debug.Log("DeactivateAfterAnimation complete", gameObject);
+        OnAnimalDeactivated?.Invoke(gameObject);
+        gameObject.SetActive(false);
+    }
     void Start()
     {
+        animator = GetComponent<Animator>();
+        animator.SetBool("isAlive", true);
         animator = GetComponent<Animator>();
         animator.SetBool("isMoving", isMoving);
         StartCoroutine(MoveRoutine());
@@ -18,6 +40,12 @@ public class AnimalController : MonoBehaviour
     void Update()
     {
         AdjustFacingDirection();
+
+
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
+            Deactivate();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
