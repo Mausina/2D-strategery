@@ -1,0 +1,599 @@
+fileFormatVersion: 2
+guid: efea05024990c574aa316655813d6cd8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3726097235653515970
+    second: turkey_sprite_sheet_png_0
+  - first:
+      213: -1895308949102862795
+    second: turkey_sprite_sheet_png_1
+  - first:
+      213: 5922189052711962260
+    second: turkey_sprite_sheet_png_2
+  - first:
+      213: -8603288614520750017
+    second: turkey_sprite_sheet_png_3
+  - first:
+      213: -5183017589734093953
+    second: turkey_sprite_sheet_png_4
+  - first:
+      213: -3576422067487171730
+    second: turkey_sprite_sheet_png_5
+  - first:
+      213: -3602601303072869435
+    second: turkey_sprite_sheet_png_6
+  - first:
+      213: -4762811996545371500
+    second: turkey_sprite_sheet_png_7
+  - first:
+      213: 8824414767995917646
+    second: turkey_sprite_sheet_png_8
+  - first:
+      213: 3498866756324886879
+    second: turkey_sprite_sheet_png_9
+  - first:
+      213: 7526955750509066495
+    second: turkey_sprite_sheet_png_10
+  - first:
+      213: 2356240486218626075
+    second: turkey_sprite_sheet_png_11
+  - first:
+      213: 2780790457983146248
+    second: turkey_sprite_sheet_png_12
+  - first:
+      213: 5427103655931598058
+    second: turkey_sprite_sheet_png_13
+  - first:
+      213: -4377195745876493382
+    second: turkey_sprite_sheet_png_14
+  - first:
+      213: 3380887964477525362
+    second: turkey_sprite_sheet_png_15
+  - first:
+      213: -2874606243441796177
+    second: turkey_sprite_sheet_png_16
+  - first:
+      213: -8411930646420234884
+    second: turkey_sprite_sheet_png_17
+  - first:
+      213: -3453630828669651568
+    second: turkey_sprite_sheet_png_18
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 143
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca51b1b1b1c5b330800000000000000
+      internalID: 3726097235653515970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 143
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53eda157d8282b5e0800000000000000
+      internalID: -1895308949102862795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 143
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4968a9bf097df2250800000000000000
+      internalID: 5922189052711962260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_3
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 143
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f300457569afa9880800000000000000
+      internalID: -8603288614520750017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_4
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 111
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7b4c4386f83218b0800000000000000
+      internalID: -5183017589734093953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_5
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 111
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6b1f8c041ffd5ec0800000000000000
+      internalID: -3576422067487171730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_6
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 111
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c37bf6c33df00ec0800000000000000
+      internalID: -3602601303072869435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_7
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 79
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 492b1fd39b717edb0800000000000000
+      internalID: -4762811996545371500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 79
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e459b1d4a7e967a70800000000000000
+      internalID: 8824414767995917646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_9
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 79
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f590b2fe6c87e8030800000000000000
+      internalID: 3498866756324886879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_10
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 79
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff83d25206e157860800000000000000
+      internalID: 7526955750509066495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_11
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 79
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1474720d3c03b020800000000000000
+      internalID: 2356240486218626075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_12
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 79
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80991e2303a579620800000000000000
+      internalID: 2780790457983146248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_13
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 47
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae4d6036502f05b40800000000000000
+      internalID: 5427103655931598058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_14
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 47
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb3ea619a31143c0800000000000000
+      internalID: -4377195745876493382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_15
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 47
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27d8314e0b35bee20800000000000000
+      internalID: 3380887964477525362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_16
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 47
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fab18861ad85b18d0800000000000000
+      internalID: -2874606243441796177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_17
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 17
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7d56e835a1d24b80800000000000000
+      internalID: -8411930646420234884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turkey_sprite_sheet_png_18
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 17
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 095bec73f0d3210d0800000000000000
+      internalID: -3453630828669651568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      turkey_sprite_sheet_png_0: 3726097235653515970
+      turkey_sprite_sheet_png_1: -1895308949102862795
+      turkey_sprite_sheet_png_10: 7526955750509066495
+      turkey_sprite_sheet_png_11: 2356240486218626075
+      turkey_sprite_sheet_png_12: 2780790457983146248
+      turkey_sprite_sheet_png_13: 5427103655931598058
+      turkey_sprite_sheet_png_14: -4377195745876493382
+      turkey_sprite_sheet_png_15: 3380887964477525362
+      turkey_sprite_sheet_png_16: -2874606243441796177
+      turkey_sprite_sheet_png_17: -8411930646420234884
+      turkey_sprite_sheet_png_18: -3453630828669651568
+      turkey_sprite_sheet_png_2: 5922189052711962260
+      turkey_sprite_sheet_png_3: -8603288614520750017
+      turkey_sprite_sheet_png_4: -5183017589734093953
+      turkey_sprite_sheet_png_5: -3576422067487171730
+      turkey_sprite_sheet_png_6: -3602601303072869435
+      turkey_sprite_sheet_png_7: -4762811996545371500
+      turkey_sprite_sheet_png_8: 8824414767995917646
+      turkey_sprite_sheet_png_9: 3498866756324886879
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
