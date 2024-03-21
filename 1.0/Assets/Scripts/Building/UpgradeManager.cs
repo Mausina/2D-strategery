@@ -132,7 +132,7 @@ public class UpgradeManager : MonoBehaviour
     private void CompleteUpgrade()
     {
         Debug.Log("Upgrade complete!");
-        wall.UpgradeWall();
+        wall.Upgrade();
         currentLevel++; // Increment the level
         coinsPlaced = 0; // Reset coins placed
         instantiatedCoins.ForEach(Destroy); // Destroy all coins
@@ -160,12 +160,6 @@ public class UpgradeManager : MonoBehaviour
     }
 
 }
-
-
-
-
-
-
 
 
 

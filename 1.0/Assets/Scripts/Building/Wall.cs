@@ -57,28 +57,8 @@ public class Wall : MonoBehaviour
         }
         return 0;
     }
-    public bool CanPlaceCoin()
-    {
-        // Example logic: Check if the current level has room for more coins
-        return coins.Length > level - 1 && !coins[level - 1].isFilled;
-    }
 
-    public Vector3 GetNextCoinPosition()
-    {
-        // Example logic: Return a position for the next coin
-        // This is a placeholder. You need to implement according to your game's design
-        return transform.position + new Vector3(0, 1, 0); // Adjust this based on your needs
-    }
-
-    public bool CheckIfUpgradeComplete(int coinsPlaced)
-    {
-        // Example logic: Check if the number of placed coins completes the upgrade for the current level
-        // This assumes each level requires a fixed number of coins equal to 'coinsNeededPerLevel'
-        int coinsNeededPerLevel = 1; // Placeholder, adjust as necessary
-        return coinsPlaced >= coinsNeededPerLevel;
-    }
-
-    public void UpgradeWall()
+    public void Upgrade()
     {
         if (level < maxLevel)
         {
@@ -193,16 +173,7 @@ public class Wall : MonoBehaviour
         }
     }
 
-    public void PlayerStoppedFilling()
-    {
-        foreach (var coin in coins)
-        {
-            if (!coin.isFilled)
-            {
-                // Logic for making unfilled coins fall or handling player stop action
-            }
-        }
-    }
+
 }
 
 [System.Serializable]
