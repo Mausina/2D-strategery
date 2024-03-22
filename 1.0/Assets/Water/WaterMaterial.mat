@@ -44,7 +44,7 @@ Material:
     - _Displacement:
         m_Texture: {fileID: 2800000, guid: 5e51437fb2bebdd4aaa7ddec7ab5de46, type: 3}
         m_Scale: {x: 8, y: 8}
-        m_Offset: {x: 0.13378161, y: 0}
+        m_Offset: {x: 0.12289756, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}

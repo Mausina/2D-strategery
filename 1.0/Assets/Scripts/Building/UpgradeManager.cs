@@ -29,7 +29,6 @@ public class UpgradeManager : MonoBehaviour
 
     void Update()
     {
-        Test();
         // If a coin has recently been placed, start or reset the timer
         if (coinRecentlyPlaced)
         {
@@ -129,14 +128,6 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void Test()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-
-            PlaceCoin();
-        }
-    }
 
     private void CompleteUpgrade()
     {
