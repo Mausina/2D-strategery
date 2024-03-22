@@ -25,10 +25,10 @@ public class PlayerController : MonoBehaviour
     private float staminaWarningDuration = 5f; // Duration to show the stamina warning animation
     private float staminaWarningTimer = 0f; // Timer for the stamina warning animation
     private bool _isDefending = false;
-    private bool isExhausted = false; // Is the player exhausted?
+    private bool isExhausted = false; // Is the player exhausted?1
     public bool _isFacingRight = true;
 
-
+    
     Vector2 moveInput;
 
     Damageable damageable;

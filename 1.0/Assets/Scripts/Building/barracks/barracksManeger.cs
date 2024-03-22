@@ -13,47 +13,55 @@ public class barracksManager : MonoBehaviour
 
     void Update()
     {
-        // Check if the "R" key was pressed to request unit spawn
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            // Allow new spawn requests up to the maximum limit of the queue
-            if (spawnRequests < maxQueue)
-            {
-                spawnRequests++; // Add a new request to the queue
-                Debug.Log($"Spawn requested. {spawnRequests} units in queue.");
-
-                // If a spawn isn't already scheduled, start the process
-                if (!isSpawnScheduled)
-                {
-                    StartCoroutine(SpawnUnitWithDelay());
-                }
-            }
-            else
-            {
-                Debug.Log("Maximum queue capacity reached. Wait for units to spawn.");
-            }
-        }
-
         // Remove null references if units are destroyed, to keep the list clean
         spawnedUnits.RemoveAll(item => item == null);
     }
 
+    public bool CanAddToQueue()
+    {
+        // Check if new units can be added to the queue
+        return spawnRequests < maxQueue;
+    }
+
+    public void AddToQueue()
+    {
+        // Add a new request to the queue and start the spawning process if not already started
+        if (CanAddToQueue())
+        {
+            spawnRequests++;
+            Debug.Log($"Spawn requested. {spawnRequests} units in queue.");
+            if (!isSpawnScheduled)
+            {
+                StartCoroutine(SpawnUnitWithDelay());
+            }
+        }
+        else
+        {
+            Debug.Log("Maximum queue capacity reached. Wait for units to spawn.");
+        }
+    }
+
+    public int GetQueueSize()
+    {
+        // Return the total size of the queue, including units waiting to spawn and units already spawned
+        return spawnRequests;
+    }
+
     IEnumerator SpawnUnitWithDelay()
     {
-        isSpawnScheduled = true; // Prevent multiple spawns from overlapping
+        isSpawnScheduled = true;
 
-        // As long as there are requests in the queue, continue spawning
         while (spawnRequests > 0)
         {
-            yield return new WaitForSeconds(spawnDelay); // Wait for the spawn delay
+            yield return new WaitForSeconds(spawnDelay);
 
-            // Spawn a unit and adjust the queue
             GameObject newUnit = Instantiate(unitPrefab, transform.position, Quaternion.identity);
-            spawnedUnits.Add(newUnit); // Add the new unit to the spawned list
-            spawnRequests--; // Decrement the number of spawn requests as one has been fulfilled
-            Debug.Log($"Unit spawned. Remaining requests in queue: {spawnRequests}. Total units spawned: {spawnedUnits.Count}");
+            spawnedUnits.Add(newUnit);
+            spawnRequests--;
+            Debug.Log($"Unit spawned. {spawnRequests} units remain in queue. Total units spawned: {spawnedUnits.Count}");
         }
 
-        isSpawnScheduled = false; // Allow new spawns to be scheduled
+        isSpawnScheduled = false;
     }
 }
+
