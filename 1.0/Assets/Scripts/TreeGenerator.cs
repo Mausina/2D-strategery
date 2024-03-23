@@ -20,8 +20,8 @@ public class ObjectGenerator : MonoBehaviour
     public float MinDistanceBetweenObjects = 2f; // Minimum distance between objects
     public GameObject ReferenceObject; // The object on which generated objects should spawn
     public GameObject BushPrefab; // Assign your bush prefab in the inspector
-    public float MinDistanceBetweenBushes = 1f; // Minimum distance between bushes
-    public float MaxDistanceBetweenBushes = 13f; // Maximum distance between bushes
+    public float MinDistanceBetweenBushes = 13f; // Minimum distance between bushes
+    public float MaxDistanceBetweenBushes = 20f; // Maximum distance between bushes
 
     private List<GameObject> generatedObjects;
 

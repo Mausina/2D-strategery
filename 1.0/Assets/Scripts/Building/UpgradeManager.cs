@@ -9,7 +9,7 @@ public class UpgradeManager : MonoBehaviour
     private bool playerInRange = false;
     private int coinsPlaced = 0; // Tracks how many coins have been placed
     public ObjectUpgrade ObjectUpgrade;
-     public TreeManager TreeManager;
+    public TreeManager TreeManager;
     [SerializeField] private GameObject prefabCoin; // The coin prefab
     private List<GameObject> instantiatedCoins = new List<GameObject>(); // Tracks instantiated coins
     private float timeSinceLastCoin = 0f; // Timer for dropping coins
