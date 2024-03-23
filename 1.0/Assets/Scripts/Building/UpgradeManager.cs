@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -7,7 +8,8 @@ public class UpgradeManager : MonoBehaviour
     private int currentLevel = 0; // Tracks the current level
     private bool playerInRange = false;
     private int coinsPlaced = 0; // Tracks how many coins have been placed
-    public Wall wall;
+    public ObjectUpgrade ObjectUpgrade;
+     public TreeManager TreeManager;
     [SerializeField] private GameObject prefabCoin; // The coin prefab
     private List<GameObject> instantiatedCoins = new List<GameObject>(); // Tracks instantiated coins
     private float timeSinceLastCoin = 0f; // Timer for dropping coins
@@ -53,7 +55,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void AttemptPlaceOrDropCoin()
     {
-        if (playerInRange && !wall.IsMaxLevel && CanPlaceCoin)
+        if (playerInRange && (!ObjectUpgrade?.IsMaxLevel ?? true) && (!TreeManager?.IsMaxLevel ?? true) && CanPlaceCoin)
         {
             PlaceCoin();
             coinRecentlyPlaced = true;
@@ -132,7 +134,16 @@ public class UpgradeManager : MonoBehaviour
     private void CompleteUpgrade()
     {
         Debug.Log("Upgrade complete!");
-        wall.Upgrade();
+
+        if (ObjectUpgrade != null)
+        {
+            ObjectUpgrade.Upgrade();
+        }
+        else 
+        {
+            TreeManager.TreeCutDown();
+        }
+
         currentLevel++; // Increment the level
         coinsPlaced = 0; // Reset coins placed
         instantiatedCoins.ForEach(Destroy); // Destroy all coins
@@ -143,21 +154,51 @@ public class UpgradeManager : MonoBehaviour
 
     private void UpdateIconVisibility(bool isVisible)
     {
-        // Assume IsCompleted is a new property in UpgradeBuildingAnimatio indicating the completion state
-
-        // Hide all icons initially
-        foreach (var container in levelIconContainers)
+        // Check if levelIconContainers is not null and has elements before trying to access them
+        if (levelIconContainers != null && levelIconContainers.Count > 0)
         {
-            container.SetActive(false);
+            // Hide all icons initially
+            foreach (var container in levelIconContainers)
+            {
+                if (container != null) // Check if the container is not null
+                {
+                    container.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogError("A container in levelIconContainers is null.");
+                }
+            }
+
+            // Check if the current level is within the bounds of the list
+            if (currentLevel >= 0 && currentLevel < levelIconContainers.Count)
+            {
+                // Also, check if levelIconContainers[currentLevel] is not null
+                if (levelIconContainers[currentLevel] != null)
+                {
+                    // Check if the player is in range, the upgrade is not at max level, and upgrade is not completed
+                    // Then show the icon for the current level
+                    if (isVisible && (!ObjectUpgrade?.IsMaxLevel ?? true) && (!TreeManager?.IsMaxLevel ?? true))
+                    {
+                        levelIconContainers[currentLevel].SetActive(true);
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"The level icon container at index {currentLevel} is null.");
+                }
+            }
+            else
+            {
+                Debug.LogError($"Current level index {currentLevel} is out of bounds for levelIconContainers list.");
+            }
         }
-
-        // If the player is in range, the wall is not at its max level, and the upgrade is not completed,
-        // then show the icon for the current level
-        if (isVisible && !wall.IsMaxLevel && currentLevel < levelIconContainers.Count)
+        else
         {
-            levelIconContainers[currentLevel].SetActive(true);
+            Debug.LogError("levelIconContainers list is null or empty.");
         }
     }
+
 
 }
 

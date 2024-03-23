@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-public class Wall : MonoBehaviour
+public class ObjectUpgrade : MonoBehaviour
 {
     public int level = 1;
     public int maxLevel = 3;
@@ -14,7 +14,7 @@ public class Wall : MonoBehaviour
     [SerializeField] public GameObject nightPoint; // Corrected naming convention
     private SpriteRenderer spriteRenderer;
     private int currentHealth;
-    public static event Action<Wall> OnWallConstructed;
+    public static event Action<ObjectUpgrade> OnWallConstructed;
     public event Action OnWallUpgraded;
     private GameObject currentWallInstance; // Add this line near the top of your Wall class
     private bool Preparation = true;
@@ -123,6 +123,9 @@ public class Wall : MonoBehaviour
             Debug.Log("Wall is already at maximum level!");
         }
     }
+
+
+
 
 
     GameObject UpdateWallVisual()
