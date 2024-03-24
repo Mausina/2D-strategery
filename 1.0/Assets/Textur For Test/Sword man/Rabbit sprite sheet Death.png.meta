@@ -644,7 +644,29 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rabbit sprite sheet Death_0: -1597977975687121360
+      Rabbit sprite sheet Death_1: -5174467063595719388
+      Rabbit sprite sheet Death_10: -6996928074457222809
+      Rabbit sprite sheet Death_11: 4331452700733182733
+      Rabbit sprite sheet Death_12: -8384276054718307678
+      Rabbit sprite sheet Death_13: 3225986245593693732
+      Rabbit sprite sheet Death_14: 2852742807059333055
+      Rabbit sprite sheet Death_15: 3024115896442147530
+      Rabbit sprite sheet Death_16: 4663146155127285237
+      Rabbit sprite sheet Death_17: -6840812254874196746
+      Rabbit sprite sheet Death_18: 8656187042997267431
+      Rabbit sprite sheet Death_19: -7064692711574298499
+      Rabbit sprite sheet Death_2: 6018753263261798420
+      Rabbit sprite sheet Death_20: 6626362436571100777
+      Rabbit sprite sheet Death_21: 7735487292856072176
+      Rabbit sprite sheet Death_3: -4371927666263184135
+      Rabbit sprite sheet Death_4: -6952464427621333334
+      Rabbit sprite sheet Death_5: -9128815010314686099
+      Rabbit sprite sheet Death_6: -1907404223813905998
+      Rabbit sprite sheet Death_7: -1822852899039165403
+      Rabbit sprite sheet Death_8: -971276318396005728
+      Rabbit sprite sheet Death_9: -1143431118377877178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

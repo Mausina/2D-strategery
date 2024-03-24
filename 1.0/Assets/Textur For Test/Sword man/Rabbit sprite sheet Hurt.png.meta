@@ -260,7 +260,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rabbit sprite sheet Hurt_0: 5081943606279804871
+      Rabbit sprite sheet Hurt_1: -7609553764045629855
+      Rabbit sprite sheet Hurt_2: 2127611913576016455
+      Rabbit sprite sheet Hurt_3: 2161600056587544715
+      Rabbit sprite sheet Hurt_4: 3245722861822288460
+      Rabbit sprite sheet Hurt_5: -5130856417549891110
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

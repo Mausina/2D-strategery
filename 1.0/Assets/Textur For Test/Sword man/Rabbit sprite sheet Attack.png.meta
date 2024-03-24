@@ -524,7 +524,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rabbit sprite sheet Attack_0: 6687076750830833450
+      Rabbit sprite sheet Attack_1: -5189755288454988103
+      Rabbit sprite sheet Attack_10: 6925747655939474797
+      Rabbit sprite sheet Attack_11: 1029008395327836493
+      Rabbit sprite sheet Attack_12: 5616090100950970590
+      Rabbit sprite sheet Attack_13: 4870571912160653773
+      Rabbit sprite sheet Attack_14: -1170251984342505882
+      Rabbit sprite sheet Attack_15: 8929043151002979798
+      Rabbit sprite sheet Attack_16: 9137635945106012564
+      Rabbit sprite sheet Attack_2: -2785961193087814927
+      Rabbit sprite sheet Attack_3: 3578037758209308351
+      Rabbit sprite sheet Attack_4: -356609487935554825
+      Rabbit sprite sheet Attack_5: 182254000631311921
+      Rabbit sprite sheet Attack_6: -4530742333263861323
+      Rabbit sprite sheet Attack_7: -1972815204046558314
+      Rabbit sprite sheet Attack_8: -2341331301568438881
+      Rabbit sprite sheet Attack_9: 8051549878317849177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

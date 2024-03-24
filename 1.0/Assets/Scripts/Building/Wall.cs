@@ -103,10 +103,25 @@ public class ObjectUpgrade : MonoBehaviour
                 OnWallUpgraded?.Invoke();
                 coins[level - 1].isFilled = true;
 
-                if (level == 2 && nightPoint != null)
+                if (level == 2)
                 {
-                    Debug.Log("new nightPoint instalizaided");
-                    RallyPointManager.Instance.UpdateRallyPoint(nightPoint.transform);
+                    SafeZone safeZoneComponent = FindObjectOfType<SafeZone>();
+                    if (safeZoneComponent != null)
+                    {
+                        
+                            // Assume the wall prefab has a sprite renderer and its size is used to determine the width
+                            SpriteRenderer wallSpriteRenderer = newWallInstance.GetComponent<SpriteRenderer>();
+                            if (wallSpriteRenderer != null)
+                            {
+                                float wallWidth = wallSpriteRenderer.bounds.size.x;
+                                safeZoneComponent.ExpandSafeZone(newWallInstance.transform.position, wallWidth);
+                            }
+                        
+                    }
+                    else
+                    {
+                        Debug.Log("SafeZone component not found.");
+                    }
                 }
                 else
                 {
@@ -131,7 +146,7 @@ public class ObjectUpgrade : MonoBehaviour
     GameObject UpdateWallVisual()
     {
         // Destroy the old instance if it exists
-        if (currentWallInstance != null)
+        if (level > 1 && currentWallInstance != null)
         {
             Destroy(currentWallInstance);
         }

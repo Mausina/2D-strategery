@@ -51,6 +51,5 @@ namespace WorldTimeSystem
     }
 
 
-    // Custom EventArgs class to hold the TimeSpan data
     
 }
