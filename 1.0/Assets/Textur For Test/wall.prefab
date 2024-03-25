@@ -460,7 +460,8 @@ MonoBehaviour:
   - {fileID: 5879901865621494421}
   - {fileID: 944869450929254028}
   - {fileID: 444832088259743376}
-  wall: {fileID: 7840109157948324104}
+  ObjectUpgrade: {fileID: 0}
+  TreeManager: {fileID: 0}
   prefabCoin: {fileID: 2731523164008856927, guid: 4055fcac05e2808408875cc1b207d54e, type: 3}
   upgradeBuildingAnimation: {fileID: 0}
   isUpgrading: 0
@@ -1445,7 +1446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e97502f01369534bbb3ccb5b4dae320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  level: 1
   maxLevel: 4
   coins: []
   wallLevels:
@@ -1465,7 +1466,6 @@ MonoBehaviour:
     health: 100
     upgradeCost: 4
     timeForUpgrade: 0
-  nightPoint: {fileID: 0}
 --- !u!61 &3748083850688822774
 BoxCollider2D:
   m_ObjectHideFlags: 0

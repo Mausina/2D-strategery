@@ -14,6 +14,7 @@ TagManager:
   - Camp
   - Upgradable
   - Bush
+  - SafeZone
   layers:
   - Default
   - TransparentFX

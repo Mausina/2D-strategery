@@ -31,7 +31,6 @@ public class SwordsmanController : MonoBehaviour
             if (Random.Range(0, 100) < 60)
             {
                 // 60% chance to move forward
-                Debug.Log("move forward");
                 Transform newTarget;
                 do
                 {
@@ -42,7 +41,6 @@ public class SwordsmanController : MonoBehaviour
             else
             {
                 // 40% chance to turn around
-                Debug.Log("turn around");
                 isMovingRight = !isMovingRight; // Simply reverse the direction flag
                 // Choose a target in the new direction if applicable
                 // This logic assumes you might have targets suitable for turning around.

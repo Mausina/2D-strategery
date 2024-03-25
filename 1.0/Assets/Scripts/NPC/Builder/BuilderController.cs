@@ -1,16 +1,20 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class BuilderController : MonoBehaviour
 {
-    public float speed = 5f; // Movement speed of the builder.
-    public float stamina = 10f; // Builder's stamina for continuous movement.
-    public float staminaThreshold = 3f; // Minimum stamina required to start moving.
-    private BuildingList buildingList; // Reference to the BuildingList component containing buildings to upgrade.
-    private Animator animator; // Animator component for controlling the builder's animations.
-    private bool isMoving = false; // Flag to track if the builder is currently moving.
-    private bool isMovingRight = true; // Indicates the builder's current moving direction.
-    private bool isUpgrading = false; // Indicates if the builder is currently upgrading a building.
+    public float speed = 5f;
+    public float runSpeed = 10f; // Speed when running to a new building
+    private BuildingList buildingList;
+    private Animator animator;
+    private bool isMoving = false;
+    private Collider2D targetSafeZoneCollider = null;
+    private bool isMovingRight = true;
+    private GameObject currentBuilding = null; // Current building to work on
+    private Vector3 buildingPosition; // The position of the building to move towards
+    private bool isNight = false;
+    private bool isRunning = false;
 
     private void Awake()
     {
@@ -25,187 +29,181 @@ public class BuilderController : MonoBehaviour
             Debug.LogError("BuildingList not found in the scene.");
             return;
         }
-        StartCoroutine(MoveAndUpgradeBuildings());
+
+        FindNearestSafeZoneCollider();
+        CheckStartPosition();
     }
 
-    private IEnumerator MoveAndUpgradeBuildings()
+    private void Update()
     {
-        while (true)
+        CheckForNight();
+
+        if (isMoving)
         {
-            if (buildingList.buildingsToUpgrade.Count > 0 && !isMoving && !isUpgrading && stamina > staminaThreshold)
-            {
-                Transform targetBuilding = buildingList.buildingsToUpgrade[0];
-                yield return StartCoroutine(MoveToPosition(targetBuilding.position));
-                ActivateBuilding(targetBuilding);
-                yield return new WaitUntil(() => !isMoving && !isUpgrading);
-            }
-            if (!isMoving)
-            {
-                stamina = Mathf.Min(stamina + Time.deltaTime * 2, 10f);
-            }
-            yield return null;
+            AdjustFacingDirection();
+        }
+        HandleBuilderBehavior();
+    }
+    private void CheckForNight()
+    {
+        if (WorldTimeSystem.WorldTime.Instance != null)
+        {
+            TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
+            isNight = currentTime.Hours < 6 || currentTime.Hours >= 18;
         }
     }
+    private void HandleBuilderBehavior()
+    {
+        
+    }
+    public void AssignToBuild(GameObject building)
+    {
+        StopAllCoroutines();
+        Debug.Log("It WORKS!!!!!!");
+    }
 
-    private IEnumerator MoveToPosition(Vector3 targetPosition)
+
+    public void ResetBuilder()
+    {
+
+    }
+
+    private void FindNearestSafeZoneCollider()
+    {
+        GameObject[] safeZones = GameObject.FindGameObjectsWithTag("SafeZone");
+        float closestDistance = Mathf.Infinity;
+        foreach (GameObject zone in safeZones)
+        {
+            Collider2D zoneCollider = zone.GetComponent<Collider2D>();
+            if (zoneCollider != null)
+            {
+                float distance = Vector3.Distance(transform.position, zoneCollider.bounds.center);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    targetSafeZoneCollider = zoneCollider;
+                }
+            }
+        }
+    }
+    private void CheckStartPosition()
+    {
+        if (targetSafeZoneCollider != null && targetSafeZoneCollider.OverlapPoint(transform.position))
+        {
+            StartMoveRoutineInsideSafeZone();
+        }
+            StartMovingToSafeZone();
+        
+    }
+
+    private void StartMovingToSafeZone()
+    {
+        isMovingRight = transform.position.x < targetSafeZoneCollider.bounds.center.x;
+        AdjustFacingDirection();
+        StartCoroutine(MoveTowardsSafeZone(targetSafeZoneCollider.bounds.min));
+    }
+
+    IEnumerator MoveTowardsSafeZone(Vector3 target)
     {
         isMoving = true;
-        animator.SetBool("isMoving", true);
-        while (Vector3.Distance(transform.position, targetPosition) > 0.7f)
+        animator.SetBool("isMoving", isMoving);
+
+        while (Vector3.Distance(transform.position, target) > 0.5f)
         {
-            isMovingRight = targetPosition.x > transform.position.x;
-            AdjustFacingDirection();
-            Vector3 step = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            transform.position = step;
+
+            MoveTowards(target, speed);
+
             yield return null;
         }
-        animator.SetBool("isMoving", false);
+
+        StopMoving();
+        // Instead of starting the MoveRoutine immediately, wait for a second.
+        StartCoroutine(WaitAndStartMoveRoutineInsideSafeZone());
+    }
+
+    private IEnumerator WaitAndStartMoveRoutineInsideSafeZone()
+    {
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        StartMoveRoutineInsideSafeZone();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("SafeZone"))
+        {
+            // Stop all movement and start the routine
+            StopAllCoroutines(); // Stop any current movement coroutines
+            StartCoroutine(PauseAndStartMoveRoutine());
+        }
+    }
+    private IEnumerator PauseAndStartMoveRoutine()
+    {
         isMoving = false;
-    }
+        animator.SetBool("isMoving", isMoving);
+        yield return new WaitForSeconds(1f); // Wait for a second
 
-    private void ActivateBuilding(Transform building)
+        // Now that we've paused, start moving within the safezone
+        StartMoveRoutineInsideSafeZone();
+    }
+    private void StartMoveRoutineInsideSafeZone()
     {
-       
-        Debug.Log($"Activating Building: {building.name}");
-        var upgradeBuildingAnimation = building.GetComponent<UpgradeBuildingAnimatio>();
-       
-        if (upgradeBuildingAnimation != null)
-        {
-            buildingList.UpdateBuilderCount(building, true); // Increment builder count
-            float animationSpeedMultiplier = buildingList.CalculateAnimationSpeedMultiplier(building); // Calculate speed multiplier
-
-            upgradeBuildingAnimation.SetAnimatorSpeed(animationSpeedMultiplier); // Adjust animator speed based on builder count
-
-            animator.SetBool("isBuilding", true);
-            isUpgrading = true;
-
-            // Check if there's an ongoing upgrade coroutine and update its speed and remaining time accordingly.
-            if (buildingList.upgradeCoroutines.ContainsKey(building))
-            {
-                // Update the remaining time with the time that has already passed, considering the new speed multiplier.
-                float timePassed = buildingList.buildingUpgradeTimeList[buildingList.buildingsToUpgrade.IndexOf(building)] - buildingList.remainingUpgradeTimes[building];
-                float newRemainingTime = buildingList.remainingUpgradeTimes[building] - (timePassed * (animationSpeedMultiplier - 1));
-                buildingList.remainingUpgradeTimes[building] = Mathf.Max(newRemainingTime, 0); // Ensuring we don't go negative
-
-                Debug.Log($"Building '{building.name}' already upgrading. Time passed: {timePassed}, New Remaining Time: {buildingList.remainingUpgradeTimes[building]}");
-            }
-            else
-            {
-                int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
-                if (buildingIndex != -1)
-                {
-                    float upgradeTime = buildingList.buildingUpgradeTimeList[buildingIndex];
-                    buildingList.remainingUpgradeTimes[building] = upgradeTime; // Set initial remaining time
-                    Coroutine upgradeCoroutine = StartCoroutine(RepeatUpgradeAnimation(building));
-                    buildingList.upgradeCoroutines[building] = upgradeCoroutine; // Store the coroutine reference
-                }
-                else
-                {
-                    Debug.LogError($"Index for {building.name} not found in upgrade time list.");
-                }
-            }
-        }
-        else
-        {
-            Debug.LogError($"UpgradeBuildingAnimatio component not found on {building.name}.");
-        }
+        StartCoroutine(MoveRoutine());
     }
 
-
-
-
-
-    private IEnumerator RepeatUpgradeAnimation(Transform building)
+    IEnumerator MoveRoutine()
     {
-        var upgradeBuildingAnimation = building.GetComponent<UpgradeBuildingAnimatio>();
+        float originalSpeed = speed;
 
-        if (upgradeBuildingAnimation == null)
+        while (true)
         {
-            Debug.LogError($"UpgradeBuildingAnimation component not found on {building.name}. Coroutine will not run.");
-            yield break;
+            Vector2 newTargetPointWithinSafeZone = GetRandomPointAlongBottomOfCollider(targetSafeZoneCollider);
+            isMovingRight = transform.position.x < newTargetPointWithinSafeZone.x;
+            AdjustFacingDirection();
+
+            isMoving = true;
+            animator.SetBool("isMoving", isMoving);
+            while (Vector3.Distance(transform.position, new Vector3(newTargetPointWithinSafeZone.x, transform.position.y, 0)) > 0.5f)
+            {
+                MoveTowards(new Vector3(newTargetPointWithinSafeZone.x, transform.position.y, 0), originalSpeed);
+                yield return null;
+            }
+
+            isMoving = false;
+            animator.SetBool("isMoving", isMoving);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(2, 10));
         }
-
-        Debug.Log($"Starting RepeatUpgradeAnimation coroutine for {building.name}.");
-
-        while (buildingList.remainingUpgradeTimes[building] > 0)
-        {
-            // Set the upgrade animation state to true, indicating that the upgrade is in progress.
-            upgradeBuildingAnimation.SetUpgradeAnimationState(true);
-
-            // Calculate the current animation speed multiplier based on the number of builders.
-            float animationSpeedMultiplier = buildingList.CalculateAnimationSpeedMultiplier(building);
-            // Log the current animation speed setting.
-            Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Animation speed set to {animationSpeedMultiplier}.");
-
-            // Wait for an adjusted amount of time based on the current speed multiplier.
-            // This effectively speeds up or slows down the upgrade process based on the number of builders.
-            float timeToWait = 1 / animationSpeedMultiplier;
-            float adjustedRemainingTime = buildingList.remainingUpgradeTimes[building] * animationSpeedMultiplier;
-
-            // Check if the adjusted remaining time is less than 0.6 seconds.
-            if (adjustedRemainingTime <= 0.6)
-            {
-                // If less than 0.6 seconds are left, skip the wait and set the remaining time to 0 to complete the upgrade.
-                buildingList.remainingUpgradeTimes[building] = 0;
-                Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Less than 0.6 seconds remaining. Skipping to end of upgrade.");
-            }
-            else
-            {
-                // If more than 0.6 seconds are left, wait for the adjusted amount of time.
-                yield return new WaitForSeconds(timeToWait);
-                // Decrement the remaining upgrade time by the adjusted time.
-                buildingList.remainingUpgradeTimes[building] -= timeToWait;
-                Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Decreased remaining time by {timeToWait}, new remaining time: {buildingList.remainingUpgradeTimes[building]}");
-            }
-            // Decrement the remaining upgrade time by the adjusted time, accounting for the speed multiplier.
-            buildingList.remainingUpgradeTimes[building] -= timeToWait;
-            // Log the updated remaining time after the adjustment.
-            Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Decreased remaining time by {timeToWait}, new remaining time: {buildingList.remainingUpgradeTimes[building]}");
-
-            upgradeBuildingAnimation.SetUpgradeAnimationState(false);
-
-            if (buildingList.remainingUpgradeTimes[building] <= 0)
-            {
-                Debug.Log($"Upgrade complete for {building.name}. Exiting coroutine.");
-                break; // Exit loop if timeLeft has been exhausted.
-            }
-        }
-
-        upgradeBuildingAnimation.CompleteUpgrade();
-        buildingList.upgradeCoroutines.Remove(building); // Clean up the coroutine reference
-        buildingList.remainingUpgradeTimes.Remove(building); // Clean up the remaining time
-        buildingList.buildingUpgradePending[building] = false;
-        OnUpgradeComplete(building); // Trigger upgrade completion event or logic
-        Debug.Log($"[RepeatUpgradeAnimation] {building.name} - Coroutine finished. Upgrade and cleanup done.");
     }
-
-
-
-
-
-
-    public void OnUpgradeComplete(Transform building)
+    private Vector2 GetRandomPointAlongBottomOfCollider(Collider2D collider)
     {
-        animator.SetBool("isBuilding", false);
-        isUpgrading = false;
-        int buildingIndex = buildingList.buildingsToUpgrade.IndexOf(building);
-        if (buildingIndex != -1)
+        float x = UnityEngine.Random.Range(collider.bounds.min.x, collider.bounds.max.x);
+        float y = collider.transform.position.y; // Set Y to the SafeZone's Y position
+        return new Vector2(x, y);
+    }
+
+    private void MoveTowards(Vector3 target, float moveSpeed)
+    {
+        float step = moveSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target, step);
+        // Facing direction should be updated immediately after setting isMovingRight
+        AdjustFacingDirection();
+    }
+
+    void StopMoving()
+    {
+        isMoving = false;
+        animator.SetBool("isMoving", isMoving);
+    }
+
+    void AdjustFacingDirection()
+    {
+        animator.SetBool("isMoving", isMoving);
+        if (isMoving) // Only adjust the direction if the guard is supposed to be moving
         {
-            buildingList.buildingsToUpgrade.Remove(building);
-            if (buildingList.buildingUpgradeTimeList.Count > buildingIndex)
-            {
-                buildingList.buildingUpgradeTimeList.RemoveAt(buildingIndex);
-            }
-            buildingList.UpdateBuilderCount(building, false); // Decrement the builder count.
+            Vector3 localScale = transform.localScale;
+            localScale.x = isMovingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+            transform.localScale = localScale;
         }
     }
 
 
-
-    private void AdjustFacingDirection()
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x = isMovingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
-        transform.localScale = localScale;
-    }
 }

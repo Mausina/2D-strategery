@@ -51,6 +51,11 @@ public class UpgradeManager : MonoBehaviour
                 CanPlaceCoin = false; // Prevent further coin placement until new interaction
             }
         }
+
+        if (playerInRange)
+        {
+            UpdateIconVisibility(true); 
+        }
     }
 
     public void AttemptPlaceOrDropCoin()
@@ -70,6 +75,7 @@ public class UpgradeManager : MonoBehaviour
             CanPlaceCoin = true;
             UpdateIconVisibility(true);
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -135,19 +141,22 @@ public class UpgradeManager : MonoBehaviour
     {
         Debug.Log("Upgrade complete!");
 
-        if (ObjectUpgrade != null)
-        {
-            ObjectUpgrade.Upgrade();
-        }
-        else 
-        {
-            TreeManager.TreeCutDown();
-        }
 
         currentLevel++; // Increment the level
         coinsPlaced = 0; // Reset coins placed
         instantiatedCoins.ForEach(Destroy); // Destroy all coins
         instantiatedCoins.Clear(); // Clear the list of instantiated coins
+
+
+        if (ObjectUpgrade != null)
+        {
+            ObjectUpgrade.Upgrade();
+        }
+        else if (TreeManager != null)
+        {
+            TreeManager.TreeCutDown();
+        }
+
 
         if (playerInRange) UpdateIconVisibility(true); // Update icon visibility if the player is still in range
     }

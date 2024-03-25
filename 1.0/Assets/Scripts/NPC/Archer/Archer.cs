@@ -40,7 +40,7 @@ public class ArcherController : MonoBehaviour
             TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
             bool isNight = currentTime.Hours < 6 || currentTime.Hours >= 18;
 
-            if (isNight && RallyPointManager.Instance.CurrentRallyPoint != null && !IsAtRallyPoint())
+            if (isNight && !IsAtRallyPoint())
             {
                 MoveTowardsRallyPoint();
             }

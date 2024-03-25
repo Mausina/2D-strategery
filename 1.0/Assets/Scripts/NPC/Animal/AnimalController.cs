@@ -52,7 +52,7 @@ public class AnimalController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Tree") || collision.CompareTag("Wall"))
+        if (collision.CompareTag("Tree"))
         {
             StartCoroutine(TurnAroundRoutine(true));
         }

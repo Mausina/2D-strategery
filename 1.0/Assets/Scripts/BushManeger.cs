@@ -57,7 +57,7 @@ public class BushManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Detect if a tree enters the trigger zone.
-        if (collision.CompareTag("Tree"))
+        if (collision.CompareTag("Tree") || collision.CompareTag("SafeZone"))
         {
             detectedTrees.Add(collision.gameObject);
             UpdateSpawning();
@@ -72,7 +72,7 @@ public class BushManager : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         // Detect if a tree exits the trigger zone.
-        if (collision.CompareTag("Tree"))
+        if (collision.CompareTag("Tree") || collision.CompareTag("SafeZone"))
         {
             detectedTrees.Remove(collision.gameObject);
             UpdateSpawning();

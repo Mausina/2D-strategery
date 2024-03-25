@@ -11,7 +11,6 @@ public class ObjectUpgrade : MonoBehaviour
     private BuilderController builderController; // Ensure this has the necessary logic for building/upgrading
     private BuildingList buildingList;
     private UpgradeBuildingAnimation buildingAnimatio;
-    [SerializeField] public GameObject nightPoint; // Corrected naming convention
     private SpriteRenderer spriteRenderer;
     private int currentHealth;
     public static event Action<ObjectUpgrade> OnWallConstructed;
@@ -30,7 +29,6 @@ public class ObjectUpgrade : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         UpdateWallVisual();
-        DontDestroyOnLoad(nightPoint);
     }
 
     public int Level { get; private set; } = 1;
@@ -90,8 +88,7 @@ public class ObjectUpgrade : MonoBehaviour
                 if (newWallInstance != null)
                 {
                     // Now that we have a new building instance, add it to the list
-                    buildingList.AddBuildingToUpgradeList(newWallInstance.transform, nextLevelInfo.timeForUpgrade);
-
+                    buildingList.AddBuildingToUpgradeList(newWallInstance.gameObject, nextLevelInfo.timeForUpgrade, nextLevelInfo.HowManyNeedBuilder);
                     if (buildingAnimatio != null)
                     {
                         Debug.Log("buildingAnimatio: "+ nextLevelInfo.timeForUpgrade);
@@ -107,8 +104,7 @@ public class ObjectUpgrade : MonoBehaviour
                 {
                     SafeZone safeZoneComponent = FindObjectOfType<SafeZone>();
                     if (safeZoneComponent != null)
-                    {
-                        
+                    {                     
                             // Assume the wall prefab has a sprite renderer and its size is used to determine the width
                             SpriteRenderer wallSpriteRenderer = newWallInstance.GetComponent<SpriteRenderer>();
                             if (wallSpriteRenderer != null)
@@ -116,7 +112,6 @@ public class ObjectUpgrade : MonoBehaviour
                                 float wallWidth = wallSpriteRenderer.bounds.size.x;
                                 safeZoneComponent.ExpandSafeZone(newWallInstance.transform.position, wallWidth);
                             }
-                        
                     }
                     else
                     {
@@ -199,6 +194,7 @@ public class WallLevel
 {
     public GameObject wallPrefab;
     public int health;
+    public int HowManyNeedBuilder;
     public int upgradeCost;
     public int timeForUpgrade; // Corrected naming convention
 }

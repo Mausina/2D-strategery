@@ -1,71 +1,54 @@
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 public class BuildingList : MonoBehaviour
 {
-    public List<Transform> buildingsToUpgrade = new List<Transform>();
-    public List<float> buildingUpgradeTimeList = new List<float>();
-    public Dictionary<Transform, int> buildersPerBuilding = new Dictionary<Transform, int>();
-    public Dictionary<Transform, Coroutine> upgradeCoroutines = new Dictionary<Transform, Coroutine>();
-    public Dictionary<Transform, float> remainingUpgradeTimes = new Dictionary<Transform, float>();
-    public Dictionary<Transform, bool> buildingUpgradePending = new Dictionary<Transform, bool>();
+    public BuilderPoolManager builderPoolManager;
+    private List<GameObject> buildingsToUpgrade = new List<GameObject>();
+    private List<GameObject> buildingTimeForUpgrade = new List<GameObject>();
+    private Dictionary<GameObject, int> buildingNeeds = new Dictionary<GameObject, int>();
 
-    public void AddBuildingToUpgradeList(Transform building, float timeForUpgrade)
+    void Update()
     {
-        if (!buildingsToUpgrade.Contains(building))
+        AssignBuildersToBuildings();
+    }
+
+    public void AddBuildingToUpgradeList(GameObject building, int neededBuilders, int buildingTimeForUpgrade)
+    {
+        if (!buildingNeeds.ContainsKey(building))
         {
-            buildingUpgradePending[building] = true;
-            buildingsToUpgrade.Add(building);
-            buildingUpgradeTimeList.Add(timeForUpgrade);
-            buildersPerBuilding[building] = 0; // Initialize builder count for this building.
-            remainingUpgradeTimes[building] = timeForUpgrade; // Set the initial remaining time for upgrade.
-            Debug.Log($"Added building {building.name} with initial upgrade time: {timeForUpgrade}");
+            buildingNeeds.Add(building, neededBuilders);
+            SortBuildingsByPriority();
         }
     }
 
-    public void UpdateBuilderCount(Transform building, bool adding)
+    private void SortBuildingsByPriority()
     {
-        if (!buildersPerBuilding.ContainsKey(building))
-        {
-            buildersPerBuilding[building] = 0; // Initialize if not already present
-        }
-
-        if (adding)
-        {
-            buildersPerBuilding[building] = Mathf.Min(buildersPerBuilding[building] + 1, 4); // Max 4 builders
-        }
-        else
-        {
-            buildersPerBuilding[building] = Mathf.Max(buildersPerBuilding[building] - 1, 0); // Prevent negative count
-        }
-        Debug.Log($"{(adding ? "Added" : "Removed")} builder for '{building.name}'. Total builders now: {buildersPerBuilding[building]}");
+        // Assuming priority is determined by the GameObject's tag for simplicity.
+        buildingsToUpgrade = buildingNeeds.Keys.OrderBy(
+            building => building.tag == "Wall" ? 0 : building.tag == "Tower" ? 1 : 2).ToList();
     }
 
-    public int GetBuilderCount(Transform building)
+    private void AssignBuildersToBuildings()
     {
-        if (buildersPerBuilding.ContainsKey(building))
+        foreach (var building in buildingsToUpgrade)
         {
-            return buildersPerBuilding[building];
+            int needs = buildingNeeds[building];
+            while (needs > 0)
+            {
+                var builder = builderPoolManager.RequestBuilder();
+                if (builder != null)
+                {
+                    builder.AssignToBuild(building);
+                    needs--;
+                }
+                else
+                {
+                    break; // No available builders, try again later.
+                }
+            }
+            buildingNeeds[building] = needs; // Update remaining needs.
         }
-        return 0;
-    }
-
-    public float CalculateAnimationSpeedMultiplier(Transform building)
-    {
-        int numberOfBuilders = GetBuilderCount(building);
-        float multiplier = 1f; // Default speed multiplier
-
-        switch (numberOfBuilders)
-        {
-            case 1: multiplier = 1f; break;
-            case 2: multiplier = 1.25f; break;
-            case 3: multiplier = 1.5f; break;
-            case 4: multiplier = 1.75f; break;
-            default: multiplier = 1f; break;
-        }
-
-        Debug.Log($"Calculated Animation Speed Multiplier: x{multiplier} for {numberOfBuilders} builders.");
-        return multiplier;
     }
 }
