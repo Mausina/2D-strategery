@@ -148,21 +148,31 @@ public class ArcherController : MonoBehaviour
         // Check if there are any enemies detected
         if (enemies.Count > 0 && Time.time >= lastShotTime + shootCooldownSeconds)
         {
-            // Randomly select one enemy from the list if more than one enemy is present
             Transform targetEnemy = enemies[Random.Range(0, enemies.Count)];
 
-            // Proceed to target the selected enemy
-     
+            // Define a LayerMask for the Wall layer (adjust the layer number as needed)
+            LayerMask wallLayer = LayerMask.GetMask("Wall");
+
+            // Adjust the Raycast to use the LayerMask
+            RaycastHit2D hit = Physics2D.Raycast(firePoint.position, (targetEnemy.position - firePoint.position).normalized, Mathf.Infinity, wallLayer);
+            Debug.DrawLine(firePoint.position, targetEnemy.position, Color.red, 5f);
+
+
+            if (hit.collider != null && hit.collider.CompareTag("Wall"))
+            {
+                // If there's a wall, shoot over it
                 animator.SetBool("isMove", false);
                 animator.SetBool("isRun", false);
-                float angleOflaunch = 72f; // Example angle, adjust as needed
-                ShootArrowAtTarget(targetEnemy.position, angleOflaunch);
+                float angleOfLaunch = 72f; // Adjust as necessary for your game
+                ShootArrowAtTarget(targetEnemy.position, angleOfLaunch);
                 lastShotTime = Time.time;
-            
-
+            }
+            else
+            {
+                // No wall detected, proceed with direct shot
                 ShootArrow();
                 lastShotTime = Time.time;
-            
+            }
         }
     }
 
@@ -174,9 +184,9 @@ public class ArcherController : MonoBehaviour
             Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                float angleVariation = Random.Range(-2f, 2f);
+                float angleVariation = Random.Range(-5f, 5f);
                 Vector2 adjustedDirection = (Quaternion.Euler(0, 0, 5 + angleVariation) * firePoint.right).normalized;
-                float forceVariation = Random.Range(-1f, 1f);
+                float forceVariation = Random.Range(-3f, 3f);
                 rb.AddForce(adjustedDirection * (launchForce + forceVariation), ForceMode2D.Impulse);
 
                 // Update the lastShotTime and randomly adjust shootCooldownSeconds
@@ -207,10 +217,10 @@ public class ArcherController : MonoBehaviour
         // Here, the arrow is about to be fired...
         Vector3 startPosition = firePoint.position;
         float gravity = Physics2D.gravity.magnitude;
-        float angleVariation = Random.Range(-3f, 3f);
+        float angleVariation = Random.Range(-10f, 10f);
         float angle = angleOfLaunch + angleVariation; // Adjusted angle with randomness
-
-        Vector2 velocity = CalculateVelocity(targetPosition, startPosition, gravity, angle);
+        float randomFactor = Random.Range(0.9f, 1.1f);
+        Vector2 velocity = CalculateVelocity(targetPosition, startPosition, gravity * randomFactor, angle); // Apply randomness in gravity effect
         GameObject arrow = Instantiate(arrowPrefab, startPosition, Quaternion.identity);
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         if (rb != null)
