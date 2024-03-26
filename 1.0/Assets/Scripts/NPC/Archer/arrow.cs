@@ -17,12 +17,18 @@ public class Arrow : MonoBehaviour
     {
         if (isFlying && rb.velocity != Vector2.zero)
         {
-            // Calculate the rotation angle of the arrow based on its velocity
             float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-            // Apply the rotation to the arrow
+            // If your sprite is, for example, drawn at a 45-degree angle in the sprite image, subtract 45 degrees
+            angle -= 45; // Adjust this value as needed for your sprite
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            // Keep the debug line to check alignment
+            Debug.DrawLine(transform.position, transform.position + new Vector3(rb.velocity.x, rb.velocity.y, 0), Color.red);
         }
     }
+
+
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {

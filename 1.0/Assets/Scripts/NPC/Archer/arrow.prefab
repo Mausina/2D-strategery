@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6957361007300742521
 Transform:
   m_ObjectHideFlags: 0
@@ -114,14 +114,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729712013140753639}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.432039, w: 0.9018549}
-  m_LocalPosition: {x: -0.564, y: 0.024, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.41032764, w: 0.9119382}
+  m_LocalPosition: {x: 1, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6957361007300742521}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -51.194}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -48.451}
 --- !u!212 &5753730888836422426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!61 &1801363033753373070
 BoxCollider2D:
   m_ObjectHideFlags: 0

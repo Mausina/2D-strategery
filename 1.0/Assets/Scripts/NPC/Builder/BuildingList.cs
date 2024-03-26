@@ -1,54 +1,72 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 public class BuildingList : MonoBehaviour
 {
     public BuilderPoolManager builderPoolManager;
-    private List<GameObject> buildingsToUpgrade = new List<GameObject>();
-    private List<GameObject> buildingTimeForUpgrade = new List<GameObject>();
-    private Dictionary<GameObject, int> buildingNeeds = new Dictionary<GameObject, int>();
+    public List<float> buildingUpgradeTimeList = new List<float>();
+    [SerializeField]
+    private List<KeyValuePair<GameObject, int>> buildingsToUpgrade = new List<KeyValuePair<GameObject, int>>();
 
-    void Update()
+    private void Awake()
     {
-        AssignBuildersToBuildings();
+        builderPoolManager = FindObjectOfType<BuilderPoolManager>();
     }
 
-    public void AddBuildingToUpgradeList(GameObject building, int neededBuilders, int buildingTimeForUpgrade)
+    public void AddBuildingToUpgradeList(GameObject building, int howManyNeedBuilders, float timeForUpgrade)
     {
-        if (!buildingNeeds.ContainsKey(building))
-        {
-            buildingNeeds.Add(building, neededBuilders);
-            SortBuildingsByPriority();
-        }
+        buildingsToUpgrade.Add(new KeyValuePair<GameObject, int>(building, howManyNeedBuilders));
+        buildingUpgradeTimeList.Add(timeForUpgrade);
+        Debug.Log($"Added building '{building.name}' for upgrade with {howManyNeedBuilders} builders needed and upgrade time {timeForUpgrade} seconds.");
+        SortBuildingsByPriority(); // Sort buildings after adding a new one
+        AssignBuildersToBuildings();
     }
 
     private void SortBuildingsByPriority()
     {
-        // Assuming priority is determined by the GameObject's tag for simplicity.
-        buildingsToUpgrade = buildingNeeds.Keys.OrderBy(
-            building => building.tag == "Wall" ? 0 : building.tag == "Tower" ? 1 : 2).ToList();
+        buildingsToUpgrade.Sort((pair1, pair2) =>
+        {
+            if (pair1.Key.tag == "Wall" && pair2.Key.tag != "Wall") return -1;
+            if (pair2.Key.tag == "Wall" && pair1.Key.tag != "Wall") return 1;
+            if (pair1.Key.tag == "Tower" && pair2.Key.tag != "Tower") return -1;
+            if (pair2.Key.tag == "Tower" && pair1.Key.tag != "Tower") return 1;
+            return 0;
+        });
+        Debug.Log("Sorted buildings by priority. (Walls > Towers > Others)");
     }
 
     private void AssignBuildersToBuildings()
     {
-        foreach (var building in buildingsToUpgrade)
+        Debug.Log($"Starting assignment of builders to buildings. Total Buildings: {buildingsToUpgrade.Count}");
+        foreach (var buildingPair in buildingsToUpgrade)
         {
-            int needs = buildingNeeds[building];
-            while (needs > 0)
+            var building = buildingPair.Key;
+            var neededBuilders = buildingPair.Value;
+            var assignedBuilders = 0;
+
+            Debug.Log($"Attempting to assign builders to {building.name}, Needed Builders: {neededBuilders}");
+
+            while (assignedBuilders < neededBuilders)
             {
                 var builder = builderPoolManager.RequestBuilder();
                 if (builder != null)
                 {
+                    Debug.Log($"Assigned builder to {building.name}. Total Assigned: {assignedBuilders + 1}/{neededBuilders}");
                     builder.AssignToBuild(building);
-                    needs--;
+                    assignedBuilders++;
                 }
                 else
                 {
-                    break; // No available builders, try again later.
+                    Debug.LogWarning($"No available builder to assign to {building.name}. Needed: {neededBuilders}, Assigned: {assignedBuilders}");
+                    break; // Break if no builder is available, wait for next opportunity
                 }
             }
-            buildingNeeds[building] = needs; // Update remaining needs.
         }
+    }
+
+    public void NotifyNewBuilderAvailable()
+    {
+        Debug.Log("New builder available. Reassigning builders to buildings.");
+        AssignBuildersToBuildings();
     }
 }

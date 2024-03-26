@@ -14,7 +14,7 @@ public class UpgradeBuildingAnimatio : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("Start UpgradeBuildingAnimatio");
+       // Debug.Log("Start UpgradeBuildingAnimatio");
         IsUpgrading = false;
     }
 

@@ -21,7 +21,6 @@ public class ArcherController : MonoBehaviour
     public float chanceToIdle = 0.1f; // Chance to idle every 10 seconds
     public float chanceToTurnAround = 0.3f; // Chance to turn around after idling
     public float idleDuration = 3f; // How long to idle
-    private bool isIdling = false;
     private Animator animator;
 
     private void Start()
@@ -40,9 +39,8 @@ public class ArcherController : MonoBehaviour
             TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
             bool isNight = currentTime.Hours < 6 || currentTime.Hours >= 18;
 
-            if (isNight && !IsAtRallyPoint())
+            if (isNight && RallyPointManager.Instance.CurrentRallyPoint != null)
             {
-                MoveTowardsRallyPoint();
             }
             else if (!isNight)
             {
@@ -57,7 +55,6 @@ public class ArcherController : MonoBehaviour
     private void DaytimeBehavior()
     {
         // If the archer is idling, don't do anything else
-        if (isIdling) return;
 
         // Decrease the timer
         idleCheckTimer -= Time.deltaTime;
@@ -74,18 +71,12 @@ public class ArcherController : MonoBehaviour
             }
         }
 
-        // Continue moving the archer
-        MoveArcher();
+
     }
 
     private IEnumerator IdleRoutine()
     {
-        // Start idling
-        isIdling = true;
-        // Trigger idle animation
-        // animator.SetBool("IsIdling", true);
 
-        // Wait for the duration of the idle
         yield return new WaitForSeconds(idleDuration);
 
         // Optionally turn around with a certain chance
@@ -94,28 +85,9 @@ public class ArcherController : MonoBehaviour
             AdjustFacingDirection();
         }
 
-        // Stop idling
-        isIdling = false;
-        // Trigger walking animation
-        // animator.SetBool("IsIdling", false);
     }
 
-    private void MoveArcher()
-    {
-        // Only move if not at rally point and not idling
-        if (!IsAtRallyPoint() && !isIdling)
-        {
-            transform.Translate(Vector2.right * (isMovingRight ? 1 : -1) * speed * Time.deltaTime);
-            animator.SetBool("isMove", true);
-            // Example for isRun - this is just an example condition
-            animator.SetBool("isRun", speed > 1.0f); // Assuming 'speed > 1.0f' indicates running
-        }
-        else
-        {
-            animator.SetBool("isMove", false);
-            animator.SetBool("isRun", false);
-        }
-    }
+
     IEnumerator CheckTimeOfDay()
     {
         while (true)
@@ -125,10 +97,7 @@ public class ArcherController : MonoBehaviour
 
             if (isNight)
             {
-                if (!IsAtRallyPoint())
-                {
-                    MoveTowardsRallyPoint();
-                }
+
             }
             else
             {
@@ -138,43 +107,7 @@ public class ArcherController : MonoBehaviour
             yield return null; // This ensures the check runs continuously
         }
     }
-    private void MoveTowardsRallyPoint()
-    {
-        if (RallyPointManager.Instance.CurrentRallyPoint != null)
-        {
-            Vector3 direction = RallyPointManager.Instance.CurrentRallyPoint.position - transform.position;
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position, step);
-            float distance = Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position);
-            // Debug.Log($"Distance to Rally Point: {distance}, IsAtRallyPoint: {IsAtRallyPoint()}");
-            // Continuously adjust facing direction based on movement direction
-            isMovingRight = RallyPointManager.Instance.CurrentRallyPoint.position.x > transform.position.x;
-            AdjustFacingDirection();
-        }
-    }
-    /*
-    private bool IsAtRallyPoint()
-    {
-        if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
-        return Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.2f;
-    }
-    */
 
-
-
-    private bool IsAtRallyPoint()
-    {
-        if (RallyPointManager.Instance.CurrentRallyPoint == null) return false;
-        bool atRallyPoint = Vector3.Distance(transform.position, RallyPointManager.Instance.CurrentRallyPoint.position) < 0.5f;
-
-        // If at rally point and it's daytime, start idling
-        if (atRallyPoint && !isNight && !isIdling)
-        {
-            StartCoroutine(IdleRoutine());
-        }
-
-        return atRallyPoint;
-    }
 
 
 
@@ -219,19 +152,17 @@ public class ArcherController : MonoBehaviour
             Transform targetEnemy = enemies[Random.Range(0, enemies.Count)];
 
             // Proceed to target the selected enemy
-            if (IsAtRallyPoint() == true)
-            {
+     
                 animator.SetBool("isMove", false);
                 animator.SetBool("isRun", false);
                 float angleOflaunch = 72f; // Example angle, adjust as needed
                 ShootArrowAtTarget(targetEnemy.position, angleOflaunch);
                 lastShotTime = Time.time;
-            }
-            else
-            {
+            
+
                 ShootArrow();
                 lastShotTime = Time.time;
-            }
+            
         }
     }
 
