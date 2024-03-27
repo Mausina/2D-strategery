@@ -10,6 +10,7 @@ public class SafeZone : MonoBehaviour
         DontDestroyOnLoad(gameObject); // Make this object persistent across scenes
     }
 
+
     public void ExpandSafeZone(Vector2 wallPosition, float wallWidth)
     {
         if (safezone != null)

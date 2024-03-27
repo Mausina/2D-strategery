@@ -175,7 +175,6 @@ public class ArcherController : MonoBehaviour
             }
         }
     }
-
     private void ShootArrow()
     {
         if (arrowPrefab && firePoint)
@@ -199,8 +198,6 @@ public class ArcherController : MonoBehaviour
             }
         }
     }
-
-
     private void ShootArrowAtTarget(Vector3 targetPosition, float angleOflaunch)
     {
         if (arrowPrefab && firePoint)
@@ -236,8 +233,6 @@ public class ArcherController : MonoBehaviour
 
         animator.SetBool("isFire", false);
     }
-
-
 
     private Vector2 CalculateVelocity(Vector3 target, Vector3 source, float gravity, float angle)
     {
