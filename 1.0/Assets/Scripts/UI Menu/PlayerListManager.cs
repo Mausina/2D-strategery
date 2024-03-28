@@ -14,6 +14,7 @@ public class PlayerListManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        AssignRandomNickname(); // Assign a random nickname to the local player
         UpdatePlayerList();
         AssignRandomColor();
     }
@@ -61,5 +62,12 @@ public class PlayerListManager : MonoBehaviourPunCallbacks
     {
         Color randomColor = availableColors[Random.Range(0, availableColors.Length)];
         PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "color", randomColor } });
+    }
+
+    private void AssignRandomNickname()
+    {
+        // Assuming a method to generate or retrieve a random nickname
+        string randomNickname = "Player" + Random.Range(1000, 9999);
+        PhotonNetwork.LocalPlayer.NickName = randomNickname;
     }
 }

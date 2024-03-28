@@ -763,11 +763,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6933849491547351702, guid: cf534b8a313078047b71701b586ff0ca, type: 3}
   m_PrefabInstance: {fileID: 6951044930637083163}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &894319918 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4396515053010251556, guid: cf534b8a313078047b71701b586ff0ca, type: 3}
-  m_PrefabInstance: {fileID: 6951044930637083163}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919186490
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +897,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919186490}
   m_CullTransparentMesh: 1
+--- !u!114 &946819998 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 66487390836393278, guid: cf534b8a313078047b71701b586ff0ca, type: 3}
+  m_PrefabInstance: {fileID: 6951044930637083163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &961378589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,6 +1519,7 @@ GameObject:
   - component: {fileID: 1368719512}
   - component: {fileID: 1368719513}
   - component: {fileID: 1368719514}
+  - component: {fileID: 1368719515}
   m_Layer: 5
   m_Name: Lobby Meneger
   m_TagString: Untagged
@@ -1555,8 +1562,7 @@ MonoBehaviour:
   generateIdButton: {fileID: 1323536226}
   copyIdButton: {fileID: 1840518150}
   backButton: {fileID: 2131275208}
-  oneVsOneButton: {fileID: 0}
-  twoVsTwoButton: {fileID: 0}
+  startButton: {fileID: 946819998}
 --- !u!114 &1368719514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1564,18 +1570,40 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368719511}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e47a378d89f609f4db9271c7d57e64fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerListItemPrefab: {fileID: 894319918}
+  playerListItemPrefab: {fileID: 8319335159607736841, guid: 9366077b16d0f2746aba15832e606431, type: 3}
   playerListContent: {fileID: 1368719512}
   availableColors:
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
+--- !u!114 &1368719515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368719511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1389044671
 GameObject:
   m_ObjectHideFlags: 0

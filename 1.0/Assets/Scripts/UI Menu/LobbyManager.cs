@@ -1,10 +1,9 @@
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using UnityEngine.SceneManagement;
 using Photon.Realtime;
-using System.Collections;
+using System;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -12,8 +11,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Button generateIdButton;
     public Button copyIdButton; // Button to copy the lobby ID
     public Button backButton; // Button to go back
-    public Button oneVsOneButton;
-    public Button twoVsTwoButton;
+    public Button startButton;
+
     private bool isCreatingRoom = false;
 
     void Start()
@@ -21,20 +20,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         generateIdButton.onClick.AddListener(GenerateAndCreateLobby);
         copyIdButton.onClick.AddListener(CopyLobbyIdToClipboard);
         backButton.onClick.AddListener(GoBack);
+        startButton.onClick.AddListener(StartGame); // Add this listener for the startButton
         PhotonNetwork.ConnectUsingSettings();
-                oneVsOneButton.onClick.AddListener(() => UpdateMaxPlayers(2)); // 1vs1, so 2 players
-        twoVsTwoButton.onClick.AddListener(() => UpdateMaxPlayers(4)); // 2vs2, so 4 players
 
-    }
-    private void UpdateMaxPlayers(byte maxPlayers)
-    {
-        if (PhotonNetwork.IsMasterClient) // Only the master client can update this
+        // Display stored lobby ID if it exists
+        if (PlayerPrefs.HasKey("LobbyID"))
         {
-            // Update the custom property for max players, which will automatically update for all clients
-            PhotonNetwork.CurrentRoom.MaxPlayers = maxPlayers;
-            PhotonNetwork.CurrentRoom.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "maxPlayers", maxPlayers } });
+            lobbyIdText.text = PlayerPrefs.GetString("LobbyID");
         }
     }
+
     public override void OnConnectedToMaster()
     {
         Debug.Log("Connected to Master Server");
@@ -71,14 +66,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         isCreatingRoom = false;
-        generateIdButton.interactable = true; // Re-enable the button in case we need to create another room
+        generateIdButton.interactable = true; // Re-enable the button
         CreateLobby();
     }
 
     private void CreateLobby()
     {
         string lobbyId = GenerateLobbyId();
-        PhotonNetwork.CreateRoom(lobbyId, new Photon.Realtime.RoomOptions { MaxPlayers = 4 });
+        PhotonNetwork.CreateRoom(lobbyId, new RoomOptions { MaxPlayers = 4 });
     }
 
     private string GenerateLobbyId()
@@ -90,7 +85,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         lobbyIdText.text = PhotonNetwork.CurrentRoom.Name;
         Debug.Log("Room created with ID: " + PhotonNetwork.CurrentRoom.Name);
-        isCreatingRoom = false; // Room is created, reset the flag
+        isCreatingRoom = false; // Reset the flag
+        PlayerPrefs.SetString("LobbyID", PhotonNetwork.CurrentRoom.Name); // Store the lobby ID
     }
 
     private void CopyLobbyIdToClipboard()
@@ -105,37 +101,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void GoBack()
     {
-        Debug.Log("Back button clicked");
         SceneManager.LoadScene("Menu");
+        Debug.Log("Back button clicked");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.LogError("Room creation failed: " + message);
         isCreatingRoom = false;
-        generateIdButton.interactable = true; // Allow the user to try creating a room again
+        generateIdButton.interactable = true; // Allow retry
     }
 
-    // Add a method to synchronize settings changes.
-    public void UpdateLobbySettings(string key, object value)
+    // Start the game and load the map scene for all players in the lobby
+    private void StartGame()
     {
-        // Only the master client can update the lobby settings
-        if (PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient) // Only the Master Client can start the game
         {
-            ExitGames.Client.Photon.Hashtable newSettings = new ExitGames.Client.Photon.Hashtable();
-            newSettings[key] = value;
-            PhotonNetwork.CurrentRoom.SetCustomProperties(newSettings);
-        }
-    }
-
-    public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
-    {
-        // Here you would handle the changes and update the UI accordingly.
-        // This method is called on all clients when the room's custom properties are updated.
-        foreach (DictionaryEntry entry in propertiesThatChanged)
-        {
-            Debug.Log("Lobby setting updated: " + entry.Key + " = " + entry.Value);
-            // Example: if (entry.Key.Equals("gameMode")) { UpdateGameModeUI(entry.Value.ToString()); }
+            PhotonNetwork.LoadLevel("SampleScene"); // Replace with your map scene name
         }
     }
 }
