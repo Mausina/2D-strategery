@@ -67,33 +67,20 @@ public class ArcherController : MonoBehaviour
             // Randomly decide to idle
             if (UnityEngine.Random.value < chanceToIdle)
             {
-                StartCoroutine(IdleRoutine());
             }
         }
 
 
     }
 
-    private IEnumerator IdleRoutine()
-    {
 
-        yield return new WaitForSeconds(idleDuration);
-
-        // Optionally turn around with a certain chance
-        if (UnityEngine.Random.value < chanceToTurnAround)
-        {
-            AdjustFacingDirection();
-        }
-
-    }
 
 
     IEnumerator CheckTimeOfDay()
     {
         while (true)
         {
-            // Replace this with your actual day/night cycle check
-            isNight = (Time.time % 24 < 12);
+
 
             if (isNight)
             {
@@ -104,20 +91,24 @@ public class ArcherController : MonoBehaviour
                 // Implement daytime behavior here
                 DaytimeBehavior();
             }
-            yield return null; // This ensures the check runs continuously
+            yield return null; 
         }
     }
 
 
 
 
-    private void AdjustFacingDirection()
+    private void AdjustFacingDirection(bool shouldFaceRight)
     {
+        // Set isMovingRight based on the parameter
+        isMovingRight = shouldFaceRight;
+
         // Adjust the facing direction of the NPC based on isMovingRight
         Vector3 localScale = transform.localScale;
         localScale.x = isMovingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
         transform.localScale = localScale;
     }
+
     private void CheckDetectionZone()
     {
         List<Transform> enemies = new List<Transform>();
@@ -130,7 +121,7 @@ public class ArcherController : MonoBehaviour
                 treeCount++;
                 if (treeCount >= 3)
                 {
-                    AdjustFacingDirection();
+                    //AdjustFacingDirection(shouldFaceRight);
                     break;
                 }
             }
@@ -149,6 +140,8 @@ public class ArcherController : MonoBehaviour
         if (enemies.Count > 0 && Time.time >= lastShotTime + shootCooldownSeconds)
         {
             Transform targetEnemy = enemies[Random.Range(0, enemies.Count)];
+            bool shouldFaceRight = targetEnemy.position.x > transform.position.x;
+            AdjustFacingDirection(shouldFaceRight);
 
             // Define a LayerMask for the Wall layer (adjust the layer number as needed)
             LayerMask wallLayer = LayerMask.GetMask("Wall");
@@ -175,29 +168,44 @@ public class ArcherController : MonoBehaviour
             }
         }
     }
-    private void ShootArrow()
+private void ShootArrow()
+{
+    // Check if the arrowPrefab and firePoint are assigned
+    if (arrowPrefab && firePoint)
     {
-        if (arrowPrefab && firePoint)
+        // Instantiate the arrow at the fire point without any rotation
+        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);
+        // Get the Rigidbody2D component of the instantiated arrow
+        Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+        // Check if the Rigidbody2D component exists
+        if (rb != null)
         {
-            GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                float angleVariation = Random.Range(-5f, 5f);
-                Vector2 adjustedDirection = (Quaternion.Euler(0, 0, 5 + angleVariation) * firePoint.right).normalized;
-                float forceVariation = Random.Range(-3f, 3f);
-                rb.AddForce(adjustedDirection * (launchForce + forceVariation), ForceMode2D.Impulse);
-
-                // Update the lastShotTime and randomly adjust shootCooldownSeconds
-                lastShotTime = Time.time;
-                shootCooldownSeconds = Random.Range(1f, 2.5f); // Random cooldown between 1 and 2.5 seconds
-            }
-            else
-            {
-                Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
-            }
+            // Determine the shooting direction based on the archer's orientation
+            Vector2 shootingDirection = isMovingRight ? Vector2.right : Vector2.left;
+            
+            // Apply a slight angle variation to the shooting direction
+            float angleVariation = Random.Range(-5f, 5f);
+            shootingDirection = (Quaternion.Euler(0, 0, angleVariation) * shootingDirection).normalized;
+            
+            // Apply force variation to the launch force
+            float forceVariation = Random.Range(-3f, 3f);
+            
+            // Add force to the Rigidbody2D component to shoot the arrow
+            rb.AddForce(shootingDirection * (launchForce + forceVariation), ForceMode2D.Impulse);
+            
+            // Record the time of the shot and determine the next possible shot time
+            lastShotTime = Time.time;
+            shootCooldownSeconds = Random.Range(1f, 2.5f); // Random cooldown between shots
+        }
+        else
+        {
+            // Log an error if the Rigidbody2D component is not found
+            Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
         }
     }
+}
+
+
     private void ShootArrowAtTarget(Vector3 targetPosition, float angleOflaunch)
     {
         if (arrowPrefab && firePoint)

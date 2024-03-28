@@ -820,7 +820,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 425208313}
+  m_TargetTexture: {fileID: 427950095}
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1
@@ -1302,7 +1302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &250096040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,7 +1459,7 @@ Transform:
   m_GameObject: {fileID: 250096039}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.89, y: 54.53, z: 0}
+  m_LocalPosition: {x: -20.3, y: 54.7, z: 0}
   m_LocalScale: {x: 1.582845, y: 1.582845, z: 1.582845}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1576,7 +1576,7 @@ Transform:
   m_GameObject: {fileID: 266046761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 57.9, z: -0.2182264}
+  m_LocalPosition: {x: -1.28, y: 56.43, z: -0.2182264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2812,7 +2812,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!84 &425208313
+--- !u!84 &427950095
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7311,7 +7311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6169330965735690560, guid: 0d6e9e9a47fbf604db7e0ed9f4339cda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.1
+      value: 15.43
       objectReference: {fileID: 0}
     - target: {fileID: 6169330965735690560, guid: 0d6e9e9a47fbf604db7e0ed9f4339cda, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17842,7 +17842,7 @@ Transform:
   m_GameObject: {fileID: 1788379106}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.13515, y: 9.13, z: -0.13571678}
+  m_LocalPosition: {x: -48, y: 9, z: -0.13571678}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20809,11 +20809,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2215479875555768284, guid: 1336935e47bc34e46815fd856c223e7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -70.7
+      value: -37.47
       objectReference: {fileID: 0}
     - target: {fileID: 2215479875555768284, guid: 1336935e47bc34e46815fd856c223e7d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: 53.74
       objectReference: {fileID: 0}
     - target: {fileID: 2215479875555768284, guid: 1336935e47bc34e46815fd856c223e7d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20853,11 +20853,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4081819356419926825, guid: 1336935e47bc34e46815fd856c223e7d, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4081819356419926825, guid: 1336935e47bc34e46815fd856c223e7d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081819356419926825, guid: 1336935e47bc34e46815fd856c223e7d, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
