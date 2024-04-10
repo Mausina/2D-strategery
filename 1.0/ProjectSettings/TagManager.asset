@@ -15,6 +15,9 @@ TagManager:
   - Upgradable
   - Bush
   - SafeZone
+  - Farmer
+  - Builder
+  - Archer
   layers:
   - Default
   - TransparentFX

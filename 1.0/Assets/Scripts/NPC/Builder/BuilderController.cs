@@ -67,7 +67,18 @@ public class BuilderController : MonoBehaviour
     {
 
     }
-
+    public void SetSafeZone(GameObject safeZone)
+    {
+        if (safeZone != null)
+        {
+            Collider2D zoneCollider = safeZone.GetComponent<Collider2D>();
+            if (zoneCollider != null)
+            {
+                targetSafeZoneCollider = zoneCollider;
+                FindNearestSafeZoneCollider(); // Optionally adjust to directly use the provided safe zone
+            }
+        }
+    }
     private void FindNearestSafeZoneCollider()
     {
         GameObject[] safeZones = GameObject.FindGameObjectsWithTag("SafeZone");
