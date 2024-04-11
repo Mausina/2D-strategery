@@ -14,11 +14,13 @@ public class WorldPoolManager : MonoBehaviour
     {
         if (other.CompareTag("SafeZone"))
         {
+            Debug.Log("SafeZone find!");
             safeZone = other.gameObject;
             UpdateArcherSafeZones();
         }
         else if (other.CompareTag("SearchZone"))
         {
+            Debug.Log("SearchZone find!");
             searchZone = other.gameObject;
             UpdateArcherSearchZones();
         }

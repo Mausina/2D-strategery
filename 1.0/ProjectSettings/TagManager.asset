@@ -18,6 +18,8 @@ TagManager:
   - Farmer
   - Builder
   - Archer
+  - SearchZone
+  - Ground
   layers:
   - Default
   - TransparentFX
