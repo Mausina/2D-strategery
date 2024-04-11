@@ -14,10 +14,11 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8f;
     public float airWalkSpeed = 3f;
     public float jumpInpulse = 5f;
+    public float maxStamina = 30f; // Maximum stamina
     public int maxHealth = 100;
     public HealthBar healthBar;
-    public float maxStamina = 30f; // Maximum stamina
     public UpgradeManager upgradeManager;
+    public bool _isFacingRight = true;
     [SerializeField] private GameObject prefabCoin;
     [SerializeField] private DetectionZoneForPlayer detectionZoneForPlayer;
     private float currentStamina; // Current stamina level
@@ -25,10 +26,10 @@ public class PlayerController : MonoBehaviour
     private float staminaWarningDuration = 5f; // Duration to show the stamina warning animation
     private float staminaWarningTimer = 0f; // Timer for the stamina warning animation
     private bool _isDefending = false;
-    private bool isExhausted = false; // Is the player exhausted?1
-    public bool _isFacingRight = true;
+    private bool isExhausted = false; // Is the player exhausted?
+    private IMountable currentMountable;
+    private bool isWithinMountTrigger = false;
 
-    
     Vector2 moveInput;
 
     Damageable damageable;
@@ -43,7 +44,10 @@ public class PlayerController : MonoBehaviour
     Animator animator;
 
 
-
+    public Animator GetAnimator()
+    {
+        return GetComponent<Animator>();
+    }
     private void Update()
     {
         HandleStamina();
@@ -364,19 +368,40 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-
-    /*
-    public void OnJump(InputAction.CallbackContext context)
+    public void CheckForMountInteraction(InputAction.CallbackContext context)
     {
-        if (context.started && touchingDirection.isGround && CanMove)
+        // We only want to trigger on the 'F' key press, not hold or release
+        if (context.started)
         {
-            animator.SetTrigger(AnimationStrings.jump);
-            rb.velocity = new Vector2(rb.velocity.x, jumpInpulse);
+            // Use the detectionZoneForPlayer to find a mountable entity
+            IMountable mountable = detectionZoneForPlayer.FindMountable();
+            if (mountable != null)
+            {
+                // Call the Mount method on the animal, which will handle the mounting logic
+                mountable.Mount(this);
+
+                // Optionally, disable player controls here or handle it in the Mount method
+                // of the mountable animal.
+            }
         }
     }
-    */
-    public void OnAttack(InputAction.CallbackContext context)
+
+    public void DisableMovement()
+    {
+        walkSpeed = 0;
+        rb.isKinematic = true;
+    }
+        /*
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (context.started && touchingDirection.isGround && CanMove)
+            {
+                animator.SetTrigger(AnimationStrings.jump);
+                rb.velocity = new Vector2(rb.velocity.x, jumpInpulse);
+            }
+        }
+        */
+        public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.started)
         {

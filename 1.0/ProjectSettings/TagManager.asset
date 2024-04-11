@@ -20,6 +20,7 @@ TagManager:
   - Archer
   - SearchZone
   - Ground
+  - Mountable
   layers:
   - Default
   - TransparentFX
