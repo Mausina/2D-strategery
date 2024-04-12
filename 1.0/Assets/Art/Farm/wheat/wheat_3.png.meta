@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wheat_3_0: 2198727236798310039
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

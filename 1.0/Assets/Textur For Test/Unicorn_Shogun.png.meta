@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Unicorn_Shogun_0: 2559001170467569968
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

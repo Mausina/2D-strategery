@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Deer3_0: 4867492581489671136
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
