@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Archer
 {
@@ -17,6 +19,11 @@ namespace Archer
         WorldPoolManager poolManager;
         private Vector3 bottomLeftCorner;
         private Vector3 bottomRightCorner;
+        private Vector3 safeZoneLeftPoint;
+        private Vector3 safeZoneRightPoint;
+
+
+
         void Start()
         {
             animator = GetComponent<Animator>();
@@ -36,6 +43,7 @@ namespace Archer
                 archerShooting.CheckDetectionZone();
             }
             UpdatePatrolPoints();
+            BehaviorController();
         }
         private void UpdatePatrolPoints()
         {
@@ -54,7 +62,44 @@ namespace Archer
         public void SetSafeZone(GameObject zone)
         {
             safeZone = zone;
+            SetSafeZonePoints();
         }
+        private void SetSafeZonePoints()
+        {
+            if (safeZone != null)
+            {
+                // Find "Point 1" which is a direct child of safeZone
+                Transform point1Transform = safeZone.transform.Find("Point 1");
+                if (point1Transform != null)
+                {
+                    // Set the position of Point 1
+                    safeZoneLeftPoint = point1Transform.position;
+
+                    // Now find "Point 2" which is a child of "Point 1"
+                    Transform point2Transform = point1Transform.Find("Point 2");
+                    if (point2Transform != null)
+                    {
+                        // Set the position of Point 2
+                        safeZoneRightPoint = point2Transform.position;
+                        UnityEngine.Debug.Log("SafeZone points initialized: Point 1 (" + safeZoneLeftPoint + "), Point 2 (" + safeZoneRightPoint + ")");
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.LogError("Point 2 is not set as a child of Point 1 in the SafeZone.");
+                    }
+                }
+                else
+                {
+                    UnityEngine.Debug.LogError("Point 1 is not set as a child in the SafeZone.");
+                }
+            }
+            else
+            {
+                UnityEngine.Debug.LogError("SafeZone GameObject is not assigned.");
+            }
+        }
+
+
         private void SetPatrolPoints()
         {
             if (searchZone != null)
@@ -66,16 +111,16 @@ namespace Archer
                 {
                     bottomLeftCorner = blcTransform.position;
                     bottomRightCorner = brcTransform.position;
-                    Debug.Log("Bottom Right Corner Position: " + bottomRightCorner + ", Bottom Left Corner Position: " + bottomLeftCorner);
+                    UnityEngine.Debug.Log("Bottom Right Corner Position: " + bottomRightCorner + ", Bottom Left Corner Position: " + bottomLeftCorner);
                 }
                 else
                 {
-                    Debug.LogError("Patrol points not found. Check names and hierarchy.");
+                    UnityEngine.Debug.LogError("Patrol points not found. Check names and hierarchy.");
                 }
             }
             else
             {
-                Debug.LogError("Search zone not set.");
+                UnityEngine.Debug.LogError("Search zone not set.");
             }
         }
 
@@ -98,7 +143,7 @@ namespace Archer
         public void SetSearchZone(GameObject zone)
         {
             searchZone = zone;
-            Debug.Log("SetSearchZone: " + zone);
+            UnityEngine.Debug.Log("SetSearchZone: " + zone);
             SetPatrolPoints();
         }
 
@@ -199,29 +244,59 @@ namespace Archer
             localScale.x = facingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
             transform.localScale = localScale;
         }
-
-
-
-
-
-
         private IEnumerator RunToSafeZone()
         {
-            yield return null;
+
+            // Ensure the SafeZone points have been set
+            if (safeZoneLeftPoint == Vector3.zero || safeZoneRightPoint == Vector3.zero)
+            {
+              //  Debug.LogError("SafeZone points have not been initialized.");
+                yield break;
+            }
+
+            // Calculate a random position between the SafeZone points
+            Vector3 randomPosition = Vector3.Lerp(safeZoneLeftPoint, safeZoneRightPoint, UnityEngine.Random.value);
+            isMovingRight = randomPosition.x > transform.position.x;
+            FlipDirection(isMovingRight);
+            UnityEngine.Debug.Log($"Moving to random position within SafeZone: {randomPosition}");
+
+            // Move to the random position
+            while (Vector3.Distance(transform.position, randomPosition) > 1.7f)
+            {
+                Move(randomPosition, runSpeed);
+                yield return null;
+            }
+
+            // Stop all movement once the random position is reached
+            PauseMovement();
+
+            // Wait until it's day
+            while (IsNightTime())
+            {
+                // Optionally, you can play  perform other night-time behaviors
+                yield return null;
+            }
+
+            // Resume patrolling once it's day
+            UnityEngine.Debug.Log("Daytime has arrived. Archer is resuming movement.");
+            ResumeMovement();
+            
         }
+
 
         private void Move(Vector3 target, float speed)
         {
             target.y = transform.position.y; // Keeps the movement in the horizontal plane
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, target, step);
-            Debug.Log("Moving to target: " + target + " Step: " + step);
+            //UnityEngine.Debug.Log("Moving to target: " + target + " Step: " + step);
         }
 
 
         private bool IsNightTime()
         {
             TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
+            UnityEngine.Debug.Log(currentTime);
             return currentTime.Hours < 6 || currentTime.Hours >= 18;
         }
 

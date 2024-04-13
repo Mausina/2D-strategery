@@ -61,7 +61,6 @@ public class SearchZone : MonoBehaviour
 
     private void UpdateCornerPositions()
     {
-        Debug.Log("Updating corner positions");
         Vector2 offset = boxCollider.offset;
         Vector2 size = boxCollider.size;
         Vector3 centerPosition = transform.position + new Vector3(offset.x, offset.y, 0);
