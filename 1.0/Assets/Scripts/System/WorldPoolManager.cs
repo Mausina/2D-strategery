@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Archer;
-
+using Farmer;
 public class WorldPoolManager : MonoBehaviour
 {
     private GameObject safeZone;
     private GameObject searchZone;
+    private GameObject CampFireZone;
     public List<ArcherController> archers = new List<ArcherController>();
     public List<BuilderController> builders = new List<BuilderController>();
+    public List<FarmerController> farmers = new List<FarmerController>();
 
     private void OnTriggerEnter2D(Collider2D other) // Correct parameter name
     {
@@ -23,6 +25,13 @@ public class WorldPoolManager : MonoBehaviour
             Debug.Log("SearchZone find!");
             searchZone = other.gameObject;
             UpdateArcherSearchZones();
+        }
+        else if (other.CompareTag("CampFire"))
+        {
+            Debug.Log("SafeZone Camp Fire!");
+            CampFireZone = other.gameObject;
+            UpdateFarmerCampFireZone();
+
         }
         else if (other.CompareTag("Archer")) // Check if the object has the "Archer" tag
         {
@@ -39,6 +48,14 @@ public class WorldPoolManager : MonoBehaviour
             if (builder != null && !builders.Contains(builder))
             {
                 RegisterBuilder(builder);
+            }
+        }
+        else if (other.CompareTag("Farmer"))
+        {
+            FarmerController farmer = other.GetComponent<FarmerController>();
+            if (farmer != null && !farmers.Contains(farmer))
+            {
+                RegisterFarmer(farmer);
             }
         }
     }
@@ -67,8 +84,13 @@ public class WorldPoolManager : MonoBehaviour
             builder.SetSafeZone(safeZone);
         }
     }
-    
-    private void RegisterArcher(Archer.ArcherController archer)
+
+    private void RegisterFarmer(FarmerController farmer)
+    {
+        farmers.Add(farmer);
+    }
+
+    private void RegisterArcher(ArcherController archer)
     {
         archers.Add(archer);
         archer.AssignPool(this);
@@ -79,10 +101,10 @@ public class WorldPoolManager : MonoBehaviour
         archers.Remove(archer);
         archer.AssignPool(null);
     }
-    
+
     private void UpdateArcherSafeZones()
     {
-        foreach (Archer.ArcherController archer in archers)
+        foreach (ArcherController archer in archers)
         {
             archer.SetSafeZone(safeZone);
         }
@@ -93,6 +115,15 @@ public class WorldPoolManager : MonoBehaviour
         foreach (Archer.ArcherController archer in archers)
         {
             archer.SetSearchZone(searchZone);
+        }
+    }
+
+
+    private void UpdateFarmerCampFireZone()
+    {
+        foreach(FarmerController farmer in farmers)
+        {
+            farmer.SetCampFireZone(CampFireZone);
         }
     }
 }

@@ -21,6 +21,8 @@ TagManager:
   - SearchZone
   - Ground
   - Mountable
+  - Bullet
+  - CampFire
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,12 @@ public class SearchZone : MonoBehaviour
     public List<Collider2D> detectedCollidersWall = new List<Collider2D>();
     private bool isSafeZoneDetected = false;
 
+    // GameObjects for the corners of the collider
+    public GameObject topLeftCorner;
+    public GameObject topRightCorner;
+    public GameObject bottomLeftCorner;
+    public GameObject bottomRightCorner;
+
     private float checkInterval = 1f; // Time interval between checks
     private int requiredTreeCount = 5;
     private float expansionStep = 0.5f;
@@ -19,7 +25,51 @@ public class SearchZone : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>() ?? gameObject.AddComponent<BoxCollider2D>();
         boxCollider.isTrigger = true;
         DontDestroyOnLoad(gameObject);
+
+        // Initialize corner GameObjects
+        InitializeCorners();
+
         StartCoroutine(AdjustColliderRoutine());
+    }
+
+    private void InitializeCorners()
+    {
+        // Instantiate corner GameObjects or assign them if they are already in the scene
+        topLeftCorner = new GameObject("TopLeftCorner");
+        topRightCorner = new GameObject("TopRightCorner");
+        bottomLeftCorner = new GameObject("BottomLeftCorner");
+        bottomRightCorner = new GameObject("BottomRightCorner");
+
+        // Initially set the corner positions based on the collider's current bounds
+        SetCornerPositions();
+    }
+
+    private void SetCornerPositions()
+    {
+        Physics2D.SyncTransforms();
+
+        Vector3 topRight = new Vector3(boxCollider.bounds.max.x, boxCollider.bounds.max.y, 0);
+        Vector3 topLeft = new Vector3(boxCollider.bounds.min.x, boxCollider.bounds.max.y, 0);
+        Vector3 bottomRight = new Vector3(boxCollider.bounds.max.x, boxCollider.bounds.min.y, 0);
+        Vector3 bottomLeft = new Vector3(boxCollider.bounds.min.x, boxCollider.bounds.min.y, 0);
+
+        topLeftCorner.transform.parent = this.transform;
+        topRightCorner.transform.parent = this.transform;
+        bottomLeftCorner.transform.parent = this.transform;
+        bottomRightCorner.transform.parent = this.transform;
+    }
+
+    private void UpdateCornerPositions()
+    {
+        Debug.Log("Updating corner positions");
+        Vector2 offset = boxCollider.offset;
+        Vector2 size = boxCollider.size;
+        Vector3 centerPosition = transform.position + new Vector3(offset.x, offset.y, 0);
+
+        topLeftCorner.transform.position = centerPosition + new Vector3(-size.x / 2, size.y / 2, 0);
+        topRightCorner.transform.position = centerPosition + new Vector3(size.x / 2, size.y / 2, 0);
+        bottomLeftCorner.transform.position = centerPosition + new Vector3(-size.x / 2, -size.y / 2, 0);
+        bottomRightCorner.transform.position = centerPosition + new Vector3(size.x / 2, -size.y / 2, 0);
     }
 
     IEnumerator AdjustColliderRoutine()
@@ -39,25 +89,23 @@ public class SearchZone : MonoBehaviour
 
     private IEnumerator ExpandZone()
     {
-        // Expand until the required number of trees are detected, even if a wall is present.
         while (detectedCollidersTree.Count < requiredTreeCount && !isSafeZoneDetected)
         {
-            // We expand regardless of the presence of a wall, so we remove the wall count check
             boxCollider.size += new Vector2(expansionStep, 0);
+            UpdateCornerPositions(); // Update the corner positions
 
-            // We only move the offset if no wall is detected to the right side of the collider
             if (!IsWallOnRightSide())
             {
                 boxCollider.offset += new Vector2(expansionStep / 2, 0);
+                UpdateCornerPositions(); // Update the corner positions
             }
 
             yield return new WaitForFixedUpdate();
 
-            // If a wall is detected on the right during expansion, adjust the collider once
             if (IsWallOnRightSide())
             {
                 AdjustColliderToWall();
-                break; // Break the loop if a wall is detected to avoid expanding into the wall
+                break;
             }
         }
     }
@@ -72,7 +120,6 @@ public class SearchZone : MonoBehaviour
         if (detectedCollidersWall.Count > 0)
         {
             var rightmostWall = GetRightmostWall();
-
             if (rightmostWall != null)
             {
                 AdjustCollider(rightmostWall);
@@ -82,42 +129,33 @@ public class SearchZone : MonoBehaviour
 
     private Collider2D GetRightmostWall()
     {
-        return detectedCollidersWall
-            .OrderByDescending(wall => wall.transform.position.x)
-            .FirstOrDefault(wall => wall != null && wall.isActiveAndEnabled);
+        return detectedCollidersWall.OrderByDescending(wall => wall.transform.position.x).FirstOrDefault();
     }
+
     private bool IsWallOnRightSide()
     {
-        // Assuming walls can only appear from the right side for this check
         return detectedCollidersWall.Any(wall => wall.transform.position.x > boxCollider.bounds.max.x);
     }
 
     private void AdjustColliderToWall()
     {
-        // Find the rightmost wall that is inside the collider bounds
-        Collider2D rightmostWallInsideBounds = detectedCollidersWall
-            .OrderByDescending(wall => wall.transform.position.x)
-            .FirstOrDefault();
-
+        Collider2D rightmostWallInsideBounds = detectedCollidersWall.OrderByDescending(wall => wall.transform.position.x).FirstOrDefault();
         if (rightmostWallInsideBounds != null)
         {
             float wallPositionX = rightmostWallInsideBounds.transform.position.x;
             float colliderRightBoundary = boxCollider.bounds.max.x;
-
-            // If the wall is within the bounds of the collider, adjust the collider
             if (wallPositionX < colliderRightBoundary)
             {
-                // Calculate the new width of the collider based on the wall's position
                 float newWidth = wallPositionX - boxCollider.bounds.min.x;
                 boxCollider.size = new Vector2(newWidth, boxCollider.size.y);
-                // Since we're only adjusting the size, no change to offset is necessary
+                UpdateCornerPositions(); // Update the corner positions
             }
         }
     }
+
     private void AdjustCollider(Collider2D rightmostWall)
     {
-        Physics2D.SyncTransforms(); // Sync transforms before making adjustments
-
+        Physics2D.SyncTransforms();
         float wallPositionX = rightmostWall.transform.position.x;
         float colliderLeftBoundary = transform.position.x + boxCollider.offset.x - boxCollider.size.x / 2;
 
@@ -125,7 +163,7 @@ public class SearchZone : MonoBehaviour
         {
             float newWidth = wallPositionX - colliderLeftBoundary;
             boxCollider.size = new Vector2(newWidth, boxCollider.size.y);
-            // Sync transforms after making adjustments
+            UpdateCornerPositions(); // Update the corner positions
             Physics2D.SyncTransforms();
         }
     }
@@ -162,4 +200,3 @@ public class SearchZone : MonoBehaviour
         }
     }
 }
-

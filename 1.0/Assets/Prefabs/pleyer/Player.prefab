@@ -138,7 +138,7 @@ RectTransform:
   m_GameObject: {fileID: 1752345679988308863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2107093, y: 1.2107093, z: 1.2107093}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5707586294729579782}
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -230,7 +230,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5442175173671451417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +380,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 444ad82d-40ef-4dbb-80a3-206185bbe3d5
     m_ActionName: 'Player/Defense[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1051055565148118458}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: TryPlaceCoin
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f053e78d-7230-4ad3-bfd7-36cbe157739a
+    m_ActionName: 'Player/TryPlaceCoin[/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1051055565148118458}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: CheckForMountInteraction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: db04807f-0266-4f1b-a45e-e15792878e24
+    m_ActionName: 'Player/MountInteraction[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -411,9 +443,9 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  groundDistance: 0.05
-  wallDistance: 0.05
-  cailingDistance: 0.05
+  groundDistance: 0.025
+  wallDistance: 0.025
+  cailingDistance: 0.025
   _isGrounded: 0
   _isOnWall: 0
   _isOnCeiling: 0
@@ -433,13 +465,13 @@ MonoBehaviour:
   runSpeed: 325
   airWalkSpeed: 0
   jumpInpulse: 6
+  maxStamina: 30
   maxHealth: 100
   healthBar: {fileID: 0}
-  maxStamina: 30
   upgradeManager: {fileID: 0}
-  prefabCoin: {fileID: 0}
-  detectionZoneForPlayer: {fileID: 0}
   _isFacingRight: 1
+  prefabCoin: {fileID: 2731523164008856927, guid: 4055fcac05e2808408875cc1b207d54e, type: 3}
+  detectionZoneForPlayer: {fileID: 2647814108604515006}
   myWorldTime: {fileID: 0}
   _isRunning: 0
   _isMoving: 0
