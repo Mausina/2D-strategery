@@ -2,14 +2,41 @@ using UnityEngine;
 
 public class SafeZone : MonoBehaviour
 {
+    public GameObject cornerMarker; // Assign a prefab or sprite in the inspector
     BoxCollider2D safezone;
 
     private void Awake()
     {
         safezone = GetComponent<BoxCollider2D>();
         DontDestroyOnLoad(gameObject); // Make this object persistent across scenes
+        if (cornerMarker == null)
+        {
+            Debug.LogError("Corner Marker is not assigned!");
+            this.enabled = false; // Disable script if no marker is assigned
+            return;
+        }
+
+        UpdateMarkerPosition();
     }
 
+    private void Update()
+    {
+        UpdateMarkerPosition(); // Update marker position in case of any changes in runtime
+    }
+
+    private void UpdateMarkerPosition()
+    {
+        if (safezone != null && cornerMarker != null)
+        {
+            // Calculate the position for the lower right corner of the collider
+            Vector2 lowerRightCorner = new Vector2(
+                safezone.bounds.max.x, // Right side
+                safezone.bounds.min.y); // Bottom side
+
+            // Set the corner marker to match the calculated position
+            cornerMarker.transform.position = lowerRightCorner;
+        }
+    }
 
     public void ExpandSafeZone(Vector2 wallPosition, float wallWidth)
     {
@@ -24,7 +51,7 @@ public class SafeZone : MonoBehaviour
             if (wallRightEdge - safezoneRight > 1f)
             {
                 // Calculate how much to expand the safezone so it's 1 unit smaller than the wall's right edge
-                float expansion = wallRightEdge - safezoneRight - 5f;
+                float expansion = wallRightEdge - safezoneRight - 1f;
                 Vector2 newSize = safezone.size;
                 newSize.x += expansion; // Expand the safezone's width
 
@@ -34,8 +61,9 @@ public class SafeZone : MonoBehaviour
 
                 safezone.size = newSize;
                 safezone.offset = newPosition;
+
+                UpdateMarkerPosition(); // Update marker position after expanding
             }
         }
     }
-
 }

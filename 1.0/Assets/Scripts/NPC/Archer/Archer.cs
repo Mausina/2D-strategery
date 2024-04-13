@@ -14,14 +14,12 @@ namespace Archer
         private GameObject searchZone;
         private GameObject safeZone;
         private bool isMovingRight = true;
-        private Vector3 originalScale; // To maintain the original local scale
         WorldPoolManager poolManager;
         private Vector3 bottomLeftCorner;
         private Vector3 bottomRightCorner;
         void Start()
         {
             animator = GetComponent<Animator>();
-            originalScale = transform.localScale;
             StartCoroutine(BehaviorController());
             isMovingRight = true;
         }
@@ -110,8 +108,7 @@ namespace Archer
             {
                 if (IsNightTime())
                 {
-                    yield return StartCoroutine(Patrol());
-                    //yield return StartCoroutine(RunToSafeZone());
+                    yield return StartCoroutine(RunToSafeZone());
                 }
                 else
                 {
