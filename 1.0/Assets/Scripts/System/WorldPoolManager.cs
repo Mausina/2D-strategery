@@ -12,8 +12,10 @@ public class WorldPoolManager : MonoBehaviour
     public List<BuilderController> builders = new List<BuilderController>();
     public List<FarmerController> farmers = new List<FarmerController>();
 
-    private void OnTriggerEnter2D(Collider2D other) // Correct parameter name
+    private void OnTriggerEnter2D(Collider2D other) 
     {
+
+        // Trigger detection for SafeZone, SearchZone, and etc
         if (other.CompareTag("SafeZone"))
         {
             Debug.Log("SafeZone find!");
@@ -33,7 +35,7 @@ public class WorldPoolManager : MonoBehaviour
             UpdateFarmerCampFireZone();
 
         }
-        else if (other.CompareTag("Archer")) // Check if the object has the "Archer" tag
+        else if (other.CompareTag("Archer")) 
         {
             Debug.Log("Archer entered");
             ArcherController archer = other.GetComponent<ArcherController>();
@@ -60,9 +62,9 @@ public class WorldPoolManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) // Correct for 2D
+    private void OnTriggerExit2D(Collider2D other) 
     {
-        if (other.CompareTag("Archer")) // Check if the object has the "Archer" tag
+        if (other.CompareTag("Archer")) 
         {
             Debug.Log("Archer exited");
             ArcherController archer = other.GetComponent<ArcherController>();
@@ -72,7 +74,7 @@ public class WorldPoolManager : MonoBehaviour
             }
         }
     }
-    private void RegisterBuilder(BuilderController builder) // Add this method
+    private void RegisterBuilder(BuilderController builder) 
     {
         builders.Add(builder);
         builder.SetSafeZone(safeZone); // Assuming SetSafeZone(GameObject safeZone) is implemented in BuilderController

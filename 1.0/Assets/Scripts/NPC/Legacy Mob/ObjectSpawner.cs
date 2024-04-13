@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
@@ -6,7 +7,7 @@ public class ObjectSpawner : MonoBehaviour
     public float spawnRate = 2f;
     private GameObject player;
     public float moveSpeed = 5f;
-
+    public bool NigthAttack;
     private float nextSpawnTime = 0f;
 
     void Start()
@@ -18,11 +19,29 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (Time.time >= nextSpawnTime && player != null)
         {
-            SpawnObject();
-            nextSpawnTime = Time.time + 1f / spawnRate;
+            if (NigthAttack)
+            {
+                if (IsNightTime())
+                {
+                    SpawnObject();
+                    nextSpawnTime = Time.time + 1f / spawnRate;
+                }
+            }
+            else
+            {
+                SpawnObject();
+                nextSpawnTime = Time.time + 1f / spawnRate;
+            }
+
+
         }
     }
-
+    private bool IsNightTime()
+    {
+        TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
+        UnityEngine.Debug.Log(currentTime);
+        return currentTime.Hours < 6 || currentTime.Hours >= 18;
+    }
     void SpawnObject()
     {
         GameObject spawnedObject = Instantiate(objectPrefab, transform.position, Quaternion.identity);

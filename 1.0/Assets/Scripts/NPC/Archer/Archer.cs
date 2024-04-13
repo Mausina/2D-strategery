@@ -9,8 +9,8 @@ namespace Archer
     public class ArcherController : MonoBehaviour
     {
         [SerializeField] private Animator animator;
-        [SerializeField] private float patrolSpeed = 2f;
-        [SerializeField] private float runSpeed = 4f;
+        [SerializeField] private float patrolSpeed = 3f;
+        [SerializeField] private float runSpeed = UnityEngine.Random.Range(4f, 5.3f);
         archerShooting archerShooting;
         private bool isPaused = false;
         private GameObject searchZone;
@@ -286,9 +286,12 @@ namespace Archer
 
         private void Move(Vector3 target, float speed)
         {
-            target.y = transform.position.y; // Keeps the movement in the horizontal plane
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target, step);
+            
+                target.y = transform.position.y; // Keeps the movement in the horizontal plane
+                float step = speed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, target, step);
+            
+
             //UnityEngine.Debug.Log("Moving to target: " + target + " Step: " + step);
         }
 
