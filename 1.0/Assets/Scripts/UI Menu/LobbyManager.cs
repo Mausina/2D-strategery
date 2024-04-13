@@ -1,12 +1,13 @@
-using Photon.Pun;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Photon.Realtime;
+
 using System;
 
-public class LobbyManager : MonoBehaviourPunCallbacks
+public class LobbyManager : MonoBehaviour
 {
+    /*
     public Text lobbyIdText; // UI element to display the lobby ID
     public Button generateIdButton;
     public Button copyIdButton; // Button to copy the lobby ID
@@ -120,4 +121,5 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             PhotonNetwork.LoadLevel("SampleScene"); // Replace with your map scene name
         }
     }
+    */
 }

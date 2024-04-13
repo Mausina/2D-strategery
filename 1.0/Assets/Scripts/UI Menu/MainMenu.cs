@@ -1,11 +1,12 @@
-using Photon.Pun;
+//using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviourPunCallbacks
+public class MainMenu : MonoBehaviour
 {
+    /*
     public Button exitButton;
     public Button settingsButton;
     public Button joinLobbyButton;
@@ -90,4 +91,5 @@ public class MainMenu : MonoBehaviourPunCallbacks
     {
         Debug.LogError("Room creation failed: " + message);
     }
+    */
 }

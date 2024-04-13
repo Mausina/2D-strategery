@@ -1,10 +1,10 @@
-using Photon.Pun;
-using Photon.Realtime;
+//using Photon.Pun;
+//using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class PlayerListManager : MonoBehaviourPunCallbacks
+public class PlayerListManager : MonoBehaviour
 {
     public GameObject playerListItemPrefab; // Assign a prefab that represents a player item in the list
     public Transform playerListContent; // Assign the content of the ScrollView where player items will be added
@@ -12,6 +12,7 @@ public class PlayerListManager : MonoBehaviourPunCallbacks
 
     private Dictionary<Player, GameObject> playerListItems = new Dictionary<Player, GameObject>();
 
+    /*
     public override void OnJoinedRoom()
     {
         AssignRandomNickname(); // Assign a random nickname to the local player
@@ -70,4 +71,5 @@ public class PlayerListManager : MonoBehaviourPunCallbacks
         string randomNickname = "Player" + Random.Range(1000, 9999);
         PhotonNetwork.LocalPlayer.NickName = randomNickname;
     }
+    */
 }
