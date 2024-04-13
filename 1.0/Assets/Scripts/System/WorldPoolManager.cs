@@ -28,7 +28,7 @@ public class WorldPoolManager : MonoBehaviour
         }
         else if (other.CompareTag("CampFire"))
         {
-            Debug.Log("SafeZone Camp Fire!");
+            Debug.Log("Camp Fire find!");
             CampFireZone = other.gameObject;
             UpdateFarmerCampFireZone();
 

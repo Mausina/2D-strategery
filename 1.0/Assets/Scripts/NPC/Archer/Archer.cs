@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections;
 using UnityEngine;
@@ -11,32 +10,98 @@ namespace Archer
         [SerializeField] private float patrolSpeed = 2f;
         [SerializeField] private float runSpeed = 4f;
         archerShooting archerShooting;
+        private bool isPaused = false;
         private GameObject searchZone;
         private GameObject safeZone;
         private bool isMovingRight = true;
         private Vector3 originalScale; // To maintain the original local scale
         WorldPoolManager poolManager;
+        private Vector3 bottomLeftCorner;
+        private Vector3 bottomRightCorner;
         void Start()
         {
             animator = GetComponent<Animator>();
             originalScale = transform.localScale;
             StartCoroutine(BehaviorController());
+            isMovingRight = true;
         }
-        
-// This method will be called by the WorldPoolManager when the archer is registered or deregistered
-public void AssignPool(WorldPoolManager newPool)
-{
-     poolManager = newPool;
-}
+        private void Awake()
+        {
+            archerShooting = GetComponent<archerShooting>();
+            OnDrawGizmos();
+        }
+
+        private void Update()
+        {
+            if (archerShooting != null)
+            {
+                archerShooting.CheckDetectionZone();
+            }
+            UpdatePatrolPoints();
+        }
+        private void UpdatePatrolPoints()
+        {
+            // Assuming 'BottomLeftCorner' and 'BottomRightCorner' are transform names of children of searchZone.
+            if (searchZone != null)
+            {
+                bottomLeftCorner = searchZone.transform.Find("BottomLeftCorner").position;
+                bottomRightCorner = searchZone.transform.Find("BottomRightCorner").position;
+            }
+        }
+        public void AssignPool(WorldPoolManager newPool)
+        {
+          poolManager = newPool;
+        }
 
         public void SetSafeZone(GameObject zone)
         {
             safeZone = zone;
         }
+        private void SetPatrolPoints()
+        {
+            if (searchZone != null)
+            {
+                Transform blcTransform = searchZone.transform.Find("BottomLeftCorner");
+                Transform brcTransform = searchZone.transform.Find("BottomRightCorner");
+
+                if (blcTransform != null && brcTransform != null)
+                {
+                    bottomLeftCorner = blcTransform.position;
+                    bottomRightCorner = brcTransform.position;
+                    Debug.Log("Bottom Right Corner Position: " + bottomRightCorner + ", Bottom Left Corner Position: " + bottomLeftCorner);
+                }
+                else
+                {
+                    Debug.LogError("Patrol points not found. Check names and hierarchy.");
+                }
+            }
+            else
+            {
+                Debug.LogError("Search zone not set.");
+            }
+        }
+
+        void OnDrawGizmos()
+        {
+            if (searchZone != null)
+            {
+                // Set the color of the Gizmos
+                Gizmos.color = Color.red;
+
+                // Draw small spheres at the patrol points
+                Gizmos.DrawSphere(bottomLeftCorner, 1f);
+                Gizmos.DrawSphere(bottomRightCorner, 1f);
+
+                // Draw a line connecting the patrol points
+                Gizmos.DrawLine(bottomLeftCorner, bottomRightCorner);
+            }
+        }
 
         public void SetSearchZone(GameObject zone)
         {
             searchZone = zone;
+            Debug.Log("SetSearchZone: " + zone);
+            SetPatrolPoints();
         }
 
         private IEnumerator BehaviorController()
@@ -45,7 +110,8 @@ public void AssignPool(WorldPoolManager newPool)
             {
                 if (IsNightTime())
                 {
-                    yield return StartCoroutine(RunToSafeZone());
+                    yield return StartCoroutine(Patrol());
+                    //yield return StartCoroutine(RunToSafeZone());
                 }
                 else
                 {
@@ -53,62 +119,108 @@ public void AssignPool(WorldPoolManager newPool)
                 }
             }
         }
+        public void PauseMovement()
+        {
+            isPaused = true;
+            //animator.SetBool("isMove", false); // Assuming there is an 'isMove' animation parameter
+        }
 
+        public void ResumeMovement()
+        {
+            isPaused = false;
+        }
         private IEnumerator Patrol()
         {
-            float patrolTime = UnityEngine.Random.Range(5f, 10f);
+            isMovingRight = true; // Assuming starting direction.
+            FlipDirection(isMovingRight); // Ensure the archer faces the right direction initially.
 
-            animator.SetBool("isMoving", true);
-            float endTime = Time.time + patrolTime;
-
-            while (Time.time < endTime)
+            while (true)
             {
-                Move(patrolSpeed);
-                yield return null;
-
-                // Check if the archer has reached the edge of the SearchZone
-                if (ReachedEdgeOfSearchZone())
+                if (!isPaused)
                 {
-                    TurnAround();
+                    Vector3 target = isMovingRight ? searchZone.transform.Find("BottomRightCorner").position
+                                                   : searchZone.transform.Find("BottomLeftCorner").position;
+
+                    float patrolTime = UnityEngine.Random.Range(5f, 8f);
+                    float timePassed = 0f;
+
+                    // Patrol towards the target with checks to ensure responsiveness to pause.
+                    while (Vector3.Distance(transform.position, target) > 1.5f && !isPaused)
+                    {
+                        Move(target, patrolSpeed);
+                        timePassed += Time.deltaTime;
+
+                        if (timePassed >= patrolTime)
+                        {
+                            float actionChance = UnityEngine.Random.value;
+                            HandlePatrolDecision(actionChance);
+
+                            patrolTime = UnityEngine.Random.Range(5f, 8f);
+                            timePassed = 0f;  // Reset timer
+                        }
+
+                        target = UpdateTarget(); // Always get the most current target
+                        yield return null;
+                    }
+                    if (!isPaused) FlipDirection(isMovingRight = !isMovingRight);
                 }
-            }
-
-            animator.SetBool("isMoving", false);
-            yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 3f));
-
-            if (UnityEngine.Random.value < 0.4f) // 40% chance to turn around
-            {
-                TurnAround();
+                yield return null;
             }
         }
+
+        private void HandlePatrolDecision(float chance)
+        {
+            if (chance < 0.5f)
+            {
+                // 50% chance to pause. Implement wait directly here to ensure it handles immediately.
+                StartCoroutine(PauseTemporarily(UnityEngine.Random.Range(5f, 8f)));
+            }
+            else if (chance < 0.9f)
+            {
+                // 40% chance to turn around immediately
+                FlipDirection(isMovingRight = !isMovingRight);
+            }
+        }
+
+        private IEnumerator PauseTemporarily(float duration)
+        {
+            PauseMovement();
+            yield return new WaitForSeconds(duration);
+            ResumeMovement();
+        }
+
+        private Vector3 UpdateTarget()
+        {
+            return isMovingRight ? searchZone.transform.Find("BottomRightCorner").position
+                                 : searchZone.transform.Find("BottomLeftCorner").position;
+        }
+
+
+        private void FlipDirection(bool facingRight)
+        {
+            Vector3 localScale = transform.localScale;
+            localScale.x = facingRight ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+            transform.localScale = localScale;
+        }
+
+
+
+
+
 
         private IEnumerator RunToSafeZone()
         {
-            animator.SetBool("isRun", true);
-
-            while (Vector3.Distance(transform.position, safeZone.transform.position) > 0.1f)
-            {
-                Move(runSpeed);
-                yield return null;
-            }
-
-            animator.SetBool("isRun", false);
-            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 1.5f));
+            yield return null;
         }
 
-        private void Move(float speed)
+        private void Move(Vector3 target, float speed)
         {
+            target.y = transform.position.y; // Keeps the movement in the horizontal plane
             float step = speed * Time.deltaTime;
-            transform.position += isMovingRight ? new Vector3(step, 0, 0) : new Vector3(-step, 0, 0);
+            transform.position = Vector3.MoveTowards(transform.position, target, step);
+            Debug.Log("Moving to target: " + target + " Step: " + step);
         }
 
-        private void TurnAround()
-        {
-            isMovingRight = !isMovingRight;
-            Vector3 flippedScale = originalScale;
-            flippedScale.x *= isMovingRight ? 1 : -1;
-            transform.localScale = flippedScale;
-        }
 
         private bool IsNightTime()
         {
@@ -116,22 +228,7 @@ public void AssignPool(WorldPoolManager newPool)
             return currentTime.Hours < 6 || currentTime.Hours >= 18;
         }
 
-        private bool ReachedEdgeOfSearchZone()
-        {
-            // Simple example assuming searchZone is a BoxCollider2D
-            BoxCollider2D collider = searchZone.GetComponent<BoxCollider2D>();
-            if (!collider) return false;
 
-            float rightEdge = searchZone.transform.position.x + collider.size.x / 2;
-            float leftEdge = searchZone.transform.position.x - collider.size.x / 2;
-
-            // Turn around when reaching the edges
-            if (transform.position.x >= rightEdge || transform.position.x <= leftEdge)
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }
 

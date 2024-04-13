@@ -1,17 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Archer
 {
     public class archerShooting : MonoBehaviour
     {
-        private void Start()
-        {
-            animator = GetComponent<Animator>();
-            lastShotTime = Time.time; // Initialize lastShotTime with the current time
-        }
-
         public GameObject arrowPrefab; // Assign your arrow prefab in the inspector
         public Transform firePoint; // Assign the position from which arrows are fired
         public float launchForce = 20f; // Adjustable force to apply for arrow shooting
@@ -21,7 +16,21 @@ namespace Archer
         private float fireDelay = 1f;
         public float shootCooldownSeconds; // Time in seconds between shots
         private float lastShotTime = 0f; // When the last shot was fired
+        public float deviationAngle = 5f;
         private Animator animator;
+        ArcherController archerController;
+
+
+        private void Start()
+        {
+            animator = GetComponent<Animator>();
+            lastShotTime = Time.time; // Initialize lastShotTime with the current time
+        }
+
+        private void Awake()
+        {
+            archerController = GetComponent<ArcherController>();
+        }
 
         private void AdjustFacingDirection(bool shouldFaceRight)
         {
@@ -41,11 +50,15 @@ namespace Archer
             {
                 if (collider.CompareTag("Animal"))
                 {
-                    ShootArrow();
+                    Transform targetEnemy = enemies[Random.Range(0, enemies.Count)];
+                    bool shouldFaceRight = targetEnemy.position.x > transform.position.x;
+                    AdjustFacingDirection(shouldFaceRight);
+                    ShootArrowDirectly(targetEnemy.position);
                     lastShotTime = Time.time;
                 }
                 else if (collider.CompareTag("Enemy"))
                 {
+                    archerController.PauseMovement();
                     enemies.Add(collider.transform);
                 }
 
@@ -67,6 +80,7 @@ namespace Archer
 
                 if (hit.collider != null && hit.collider.CompareTag("Wall"))
                 {
+
                     // If there's a wall, shoot over it
                     animator.SetBool("isMove", false);
                     animator.SetBool("isRun", false);
@@ -77,55 +91,42 @@ namespace Archer
                 else
                 {
                     // No wall detected, proceed with direct shot
-                    ShootArrow();
+                    ShootArrowDirectly(targetEnemy.position);
                     lastShotTime = Time.time;
                 }
             }
         }
 
-        private void ShootArrow()
+        private void ShootArrowDirectly(Vector3 targetPosition)
         {
-            // Check if the arrowPrefab and firePoint are assigned
-            if (arrowPrefab && firePoint)
+            GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);
+            Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                // Instantiate the arrow at the fire point without any rotation
-                GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);
-                // Get the Rigidbody2D component of the instantiated arrow
-                Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-                // Check if the Rigidbody2D component exists
-                if (rb != null)
-                {
-                    // Determine the shooting direction based on the archer's orientation
-                    Vector2 shootingDirection = isMovingRight ? Vector2.right : Vector2.left;
+                Vector2 shootingDirection = (targetPosition - firePoint.position).normalized;
 
-                    // Apply a slight angle variation to the shooting direction
-                    float angleVariation = Random.Range(-5f, 5f);
-                    shootingDirection = (Quaternion.Euler(0, 0, angleVariation) * shootingDirection).normalized;
+                // Randomize the shooting direction slightly for inaccuracy
+                float deviation = UnityEngine.Random.Range(-deviationAngle, deviationAngle); // Define 'deviationAngle' as the max deviation you want in degrees
+                shootingDirection = Quaternion.Euler(0, 0, deviation) * shootingDirection;
 
-                    // Apply force variation to the launch force
-                    float forceVariation = Random.Range(-3f, 3f);
+                rb.velocity = shootingDirection * launchForce;
+                float angleDegrees = Mathf.Atan2(shootingDirection.y, shootingDirection.x) * Mathf.Rad2Deg;
+                arrow.transform.rotation = Quaternion.AngleAxis(angleDegrees, Vector3.forward);
 
-                    // Add force to the Rigidbody2D component to shoot the arrow
-                    rb.AddForce(shootingDirection * (launchForce + forceVariation), ForceMode2D.Impulse);
-
-                    // Record the time of the shot and determine the next possible shot time
-                    lastShotTime = Time.time;
-                    shootCooldownSeconds = Random.Range(1f, 2.5f); // Random cooldown between shots
-                }
-                else
-                {
-                    // Log an error if the Rigidbody2D component is not found
-                    Debug.LogError("Arrow prefab is missing Rigidbody2D component.");
-                }
+                // After shooting, resume movement if you have such logic
+                archerController.ResumeMovement();
             }
         }
+
 
 
         private void ShootArrowAtTarget(Vector3 targetPosition, float angleOflaunch)
         {
             if (arrowPrefab && firePoint)
             {
+
                 animator.SetBool("isFire", true);
+                archerController.PauseMovement();
                 StartCoroutine(FireArrowAfterDelay(targetPosition, angleOflaunch, fireDelay));
 
             }
@@ -153,7 +154,7 @@ namespace Archer
             // Arrow has been fired; now adjust the shoot cooldown for the next shot.
             lastShotTime = Time.time;
             shootCooldownSeconds = Random.Range(1f, 2.5f); // Set new random cooldown between 1 and 2.5 seconds
-
+            archerController.ResumeMovement();
             animator.SetBool("isFire", false);
         }
 

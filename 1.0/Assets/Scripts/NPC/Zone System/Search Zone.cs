@@ -50,7 +50,7 @@ public class SearchZone : MonoBehaviour
 
         Vector3 topRight = new Vector3(boxCollider.bounds.max.x, boxCollider.bounds.max.y, 0);
         Vector3 topLeft = new Vector3(boxCollider.bounds.min.x, boxCollider.bounds.max.y, 0);
-        Vector3 bottomRight = new Vector3(boxCollider.bounds.max.x, boxCollider.bounds.min.y, 0);
+        Vector3 bomottRight = new Vector3(boxCollider.bounds.max.x, boxCollider.bounds.min.y, 0);
         Vector3 bottomLeft = new Vector3(boxCollider.bounds.min.x, boxCollider.bounds.min.y, 0);
 
         topLeftCorner.transform.parent = this.transform;
