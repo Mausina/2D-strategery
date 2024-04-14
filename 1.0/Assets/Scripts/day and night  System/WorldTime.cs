@@ -9,9 +9,10 @@ namespace WorldTimeSystem
         public static WorldTime Instance { get; private set; }
         // Define the event using the generic EventHandler delegate with your custom EventArgs
         public event EventHandler<TimeSpan> WorldTimeChanged;
-        
+
         [SerializeField]
-        private float _dayLength; // 150 _dayLength
+        public float _dayLength; // 150 _dayLength
+
         private void Awake()
         {
             if (Instance == null)

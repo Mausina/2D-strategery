@@ -1,28 +1,71 @@
 using System.Collections;
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
+
 namespace Farmer
 {
     public class FarmerController : MonoBehaviour
     {
         private GameObject campFireZone;
+        private GameObject field;
         public Transform pointA;
         public Transform pointB;
         private Transform currentTarget;
         private bool isMovingToB = true;
         private float speed = 5f;
-        private bool insideZone = false;  // Flag to check if the farmer is inside the zone
-        private float nextPauseTime = 0;  // Time when the next pause may occur
-        private float timeBetweenPauses = 2.5f;  // Minimum time between pauses
-        private Vector3 lastTurnPosition; // Keep track of the position at the last turn
-        private float minimumMoveDistance = Random.Range(1f, 3f); // Minimum distance to move before turning again
-        private bool isTurning = false;
+        private bool insideZone = false;
+        private float nextPauseTime = 0;
+        private float timeBetweenPauses = 2.5f;
+        private Vector3 lastTurnPosition;
+        private float minimumMoveDistance = Random.Range(1f, 3f);
+        private bool isCoroutineRunning = false;
+        private Coroutine movingBetweenPointsCoroutine = null;
         public void SetCampFireZone(GameObject zone)
         {
             campFireZone = zone;
             pointA = campFireZone.transform.GetChild(0);
             pointB = campFireZone.transform.GetChild(1);
-            currentTarget = pointA;  // Initialize the first target
-            lastTurnPosition = transform.position; // Initialize last turn position
+            currentTarget = pointA;
+            lastTurnPosition = transform.position;
+        }
+
+        public void SetField(GameObject field)
+        {
+            this.field = field;
+        }
+
+        private void Update()
+        {
+            if (IsNightTime())
+            {
+                if (!insideZone)
+                {
+                    MoveTowards(campFireZone.transform.position); // Move towards the campfire zone at night if outside
+                }
+                else if (!isCoroutineRunning)
+                {
+                    StartCoroutine(MoveBetweenPoints()); // Start moving between points at night if inside zone
+                }
+            }
+            else // Daytime logic
+            {
+                if (field != null) // If there is a field
+                {
+                    StopCoroutineIfNeeded();
+                    MoveTowards(field.transform.position); // Move towards the field
+                }
+                else if (!isCoroutineRunning && insideZone) // No field, and coroutine is not running, ensure it's day and inside zone
+                {
+                    StartCoroutine(MoveBetweenPoints());
+                }
+            }
+        }
+
+        private bool IsNightTime()
+        {
+            TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
+            return currentTime.Hours < 6 || currentTime.Hours >= 18;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -30,103 +73,83 @@ namespace Farmer
             if (collision.gameObject == campFireZone)
             {
                 insideZone = true;
-                StartCoroutine(MoveBetweenPoints());
+                if (IsNightTime())
+                {
+                    movingBetweenPointsCoroutine = StartCoroutine(MoveBetweenPoints());
+                }
             }
         }
-
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.gameObject == campFireZone)
             {
                 insideZone = false;
-                StopAllCoroutines();
+                StopCoroutine(MoveBetweenPoints());
+                isCoroutineRunning = false;
             }
         }
 
         private IEnumerator MoveBetweenPoints()
         {
-
+            isCoroutineRunning = true;
             while (insideZone)
             {
-                while (Vector3.Distance(transform.position, currentTarget.position) > 0.5f)
+                while (Vector3.Distance(transform.position, currentTarget.position) > 2f)
                 {
-                    MoveTowardsTarget();
-
+                    MoveTowards(currentTarget.position);
                     if (Time.time >= nextPauseTime && Vector3.Distance(transform.position, lastTurnPosition) > minimumMoveDistance)
                     {
-                        if (Random.Range(0, 100) < 20)  // 20% chance to pause
-                        {
-                            float pauseTime = Random.Range(2f, 6f);
-                            yield return new WaitForSeconds(pauseTime);
-
-                            if (Random.Range(0, 2) > 0) // 50% chance to turn around after pausing
-                            {
-                                isMovingToB = !isMovingToB;
-                                currentTarget = isMovingToB ? pointB : pointA;
-                                FlipDirection();
-                                lastTurnPosition = transform.position; // Update last turn position
-                            }
-
-                            nextPauseTime = Time.time + timeBetweenPauses; // Set next pause time
-                        }
+                        yield return PauseAndPotentiallyTurn();
                     }
-
                     yield return null;
                 }
+                yield return PauseAtTarget();
+            }
+            isCoroutineRunning = false;
+        }
 
-                float stopTime = Random.Range(2f, 4f);
-                yield return new WaitForSeconds(stopTime);
+        private void StopCoroutineIfNeeded()
+        {
+            if (isCoroutineRunning)
+            {
+                StopAllCoroutines();
+                isCoroutineRunning = false; // Reset the coroutine flag
+            }
+        }
 
-                if (Random.Range(0, 2) > 0) // 50% chance to turn around after reaching the target
+        private IEnumerator PauseAndPotentiallyTurn()
+        {
+            if (Random.Range(0, 100) < 20)
+            {
+                float pauseTime = Random.Range(2f, 6f);
+                yield return new WaitForSeconds(pauseTime);
+                if (Random.Range(0, 2) > 0)
                 {
                     isMovingToB = !isMovingToB;
                     currentTarget = isMovingToB ? pointB : pointA;
                     FlipDirection();
-                    lastTurnPosition = transform.position; // Update last turn position
+                    lastTurnPosition = transform.position;
                 }
+                nextPauseTime = Time.time + timeBetweenPauses;
             }
         }
 
-        private void FlipDirection()
+        private IEnumerator PauseAtTarget()
         {
-            // Adjust the facing direction of the NPC based on the target
-            Vector3 localScale = transform.localScale;
-            if ((currentTarget == pointB && localScale.x < 0) || (currentTarget == pointA && localScale.x > 0))
+            float stopTime = Random.Range(2f, 4f);
+            yield return new WaitForSeconds(stopTime);
+            if (Random.Range(0, 2) > 0)
             {
-                localScale.x *= -1; // Flip the x-scale to face the new direction
-                transform.localScale = localScale;
+                isMovingToB = !isMovingToB;
+                currentTarget = isMovingToB ? pointB : pointA;
+                FlipDirection();
+                lastTurnPosition = transform.position;
             }
         }
-        /*
-        private IEnumerator SmoothTurn()
+
+        private void MoveTowards(Vector3 targetPosition)
         {
-            if (isTurning)
-                yield break; // Exit if we're already turning to prevent overlapping turns.
-
-            isTurning = true;
-
-            float turnDuration = 0.5f; // Duration to smoothly turn
-            float timer = 0;
-            Vector3 startScale = transform.localScale;
-            Vector3 endScale = new Vector3(-startScale.x, startScale.y, startScale.z); // Flip x-scale to turn
-
-            while (timer < turnDuration)
-            {
-                transform.localScale = Vector3.Lerp(startScale, endScale, timer / turnDuration);
-                timer += Time.deltaTime;
-                yield return null;
-            }
-
-            transform.localScale = endScale; // Ensure the scale is fully set to end scale
-            lastTurnPosition = transform.position; // Update last turn position
-
-            isTurning = false; // Turning is complete
-        }
-        */
-        private void MoveTowardsTarget()
-        {
-            FlipDirection();
-            Vector3 newPosition = Vector3.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+            Vector3 newPosition = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             if (GetComponent<Rigidbody2D>() != null)
             {
                 GetComponent<Rigidbody2D>().MovePosition(newPosition);
@@ -135,7 +158,17 @@ namespace Farmer
             {
                 transform.position = newPosition;
             }
+            FlipDirection();
+        }
+
+        private void FlipDirection()
+        {
+            Vector3 localScale = transform.localScale;
+            if ((currentTarget == pointB && localScale.x < 0) || (currentTarget == pointA && localScale.x > 0))
+            {
+                localScale.x *= -1;
+                transform.localScale = localScale;
+            }
         }
     }
 }
-

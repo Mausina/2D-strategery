@@ -1315,7 +1315,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 937631868}
+  m_TargetTexture: {fileID: 1274068033}
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1
@@ -1888,7 +1888,7 @@ Transform:
   m_GameObject: {fileID: 209936612}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -72.7, y: 3.89, z: 0}
+  m_LocalPosition: {x: -73.02, y: 4.27, z: 0}
   m_LocalScale: {x: 0.5305298, y: 0.5305298, z: 0.5305298}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7883,6 +7883,7 @@ MonoBehaviour:
   archers: []
   builders: []
   farmers: []
+  swordsmans: []
 --- !u!61 &720841985
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9917,44 +9918,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 433827377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &937631868
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 1315
-  m_Height: 613
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 90
-  m_ColorFormat: 8
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 0
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &940660852
 GameObject:
   m_ObjectHideFlags: 0
@@ -11748,6 +11711,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1149828978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1149828979}
+  m_Layer: 0
+  m_Name: Point 1 for sowing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1149828979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149828978}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.41, y: 0.68, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1527053943}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1192036810
 GameObject:
   m_ObjectHideFlags: 0
@@ -12334,6 +12328,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1546481723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1274068033
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 1315
+  m_Height: 613
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 90
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &1284605710
 GameObject:
   m_ObjectHideFlags: 0
@@ -14625,10 +14657,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874b029c2cd985a428aeb339ece43f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targets:
-  - {fileID: 1854535851}
-  - {fileID: 2094919708}
-  speed: 2
+  animator: {fileID: 0}
+  patrolSpeed: 3
+  runSpeed: 5
 --- !u!61 &1321868491
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15321,6 +15352,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1436070866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1436070867}
+  m_Layer: 0
+  m_Name: Point 2 for sowing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1436070867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436070866}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.02, y: 1.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1527053943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1437804284
 GameObject:
@@ -16135,7 +16197,7 @@ Transform:
   m_GameObject: {fileID: 1494512359}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62.7, y: -50.52, z: 0.860437}
+  m_LocalPosition: {x: -39.82, y: -50.52, z: 0.860437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16719,7 +16781,7 @@ GameObject:
   - component: {fileID: 1527053940}
   m_Layer: 0
   m_Name: Wheat
-  m_TagString: Untagged
+  m_TagString: Field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16758,7 +16820,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.47745895, y: 1.4966025}
+  m_Offset: {x: 1.6537094, y: 1.4966025}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -16768,7 +16830,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9549179, y: 3.993205}
+  m_Size: {x: 9.070511, y: 3.993205}
   m_EdgeRadius: 0
 --- !u!114 &1527053941
 MonoBehaviour:
@@ -16792,6 +16854,8 @@ MonoBehaviour:
   - {fileID: 1398737563679273863, guid: 7ded66ed04177a0488b86b03db183e48, type: 3}
   deterioratedPrefab: {fileID: 2163731163069488534, guid: 0e39b0f40626e4b4cb8d4812a5b1c4e6, type: 3}
   prefabCoin: {fileID: 2731523164008856927, guid: 4055fcac05e2808408875cc1b207d54e, type: 3}
+  numberOfCoins: 5
+  spawnRadius: 1
 --- !u!50 &1527053942
 Rigidbody2D:
   serializedVersion: 4
@@ -16828,10 +16892,12 @@ Transform:
   m_GameObject: {fileID: 1527053939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77.07, y: 2.47, z: -0.60708207}
+  m_LocalPosition: {x: -68.33, y: 2.81, z: -0.60708207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1149828979}
+  - {fileID: 1436070867}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1532225128
@@ -19140,7 +19206,7 @@ SpriteRenderer:
   m_Size: {x: 9, y: 9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1778791616
@@ -21206,7 +21272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2019041820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22487,6 +22553,7 @@ MonoBehaviour:
   archers: []
   builders: []
   farmers: []
+  swordsmans: []
 --- !u!61 &2079185040
 BoxCollider2D:
   m_ObjectHideFlags: 0

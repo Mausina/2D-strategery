@@ -23,6 +23,7 @@ TagManager:
   - Mountable
   - Bullet
   - CampFire
+  - Field
   layers:
   - Default
   - TransparentFX

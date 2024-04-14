@@ -1,18 +1,24 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class archerBehaviour : MonoBehaviour
+namespace Archer
 {
-    // Start is called before the first frame update
-    void Start()
+    public class archerBehaviour : MonoBehaviour
     {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
+

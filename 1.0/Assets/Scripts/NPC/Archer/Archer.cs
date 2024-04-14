@@ -10,7 +10,7 @@ namespace Archer
     {
         [SerializeField] private Animator animator;
         [SerializeField] private float patrolSpeed = 3f;
-        [SerializeField] private float runSpeed = UnityEngine.Random.Range(4f, 5.3f);
+        [SerializeField] private float runSpeed = 5;
         archerShooting archerShooting;
         private bool isPaused = false;
         private GameObject searchZone;
@@ -43,7 +43,6 @@ namespace Archer
                 archerShooting.CheckDetectionZone();
             }
             UpdatePatrolPoints();
-            BehaviorController();
         }
         private void UpdatePatrolPoints()
         {
@@ -299,7 +298,6 @@ namespace Archer
         private bool IsNightTime()
         {
             TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
-            UnityEngine.Debug.Log(currentTime);
             return currentTime.Hours < 6 || currentTime.Hours >= 18;
         }
 

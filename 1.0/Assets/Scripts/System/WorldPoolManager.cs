@@ -3,68 +3,89 @@ using System.Collections.Generic;
 using UnityEngine;
 using Archer;
 using Farmer;
+using SwordsMan;
 public class WorldPoolManager : MonoBehaviour
 {
     private GameObject safeZone;
     private GameObject searchZone;
     private GameObject CampFireZone;
+    private GameObject field;
     public List<ArcherController> archers = new List<ArcherController>();
     public List<BuilderController> builders = new List<BuilderController>();
     public List<FarmerController> farmers = new List<FarmerController>();
-
-    private void OnTriggerEnter2D(Collider2D other) 
+    public List<SwordsmanController> swordsmans = new List<SwordsmanController>();
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        // Use switch statement to handle different collider tags
+        switch (other.tag)
+        {
+            case "Field":
+                Debug.Log("Field found!");
+                field = other.gameObject;
+                UpdateFieldLocation();
+                break;
+            case "SafeZone":
+                Debug.Log("SafeZone find!");
+                safeZone = other.gameObject;
+                UpdateSafeZones();
+                break;
 
-        // Trigger detection for SafeZone, SearchZone, and etc
-        if (other.CompareTag("SafeZone"))
-        {
-            Debug.Log("SafeZone find!");
-            safeZone = other.gameObject;
-            UpdateArcherSafeZones();
-        }
-        else if (other.CompareTag("SearchZone"))
-        {
-            Debug.Log("SearchZone find!");
-            searchZone = other.gameObject;
-            UpdateArcherSearchZones();
-        }
-        else if (other.CompareTag("CampFire"))
-        {
-            Debug.Log("Camp Fire find!");
-            CampFireZone = other.gameObject;
-            UpdateFarmerCampFireZone();
+            case "SearchZone":
+                Debug.Log("SearchZone find!");
+                searchZone = other.gameObject;
+                UpdateArcherSearchZones();
+                break;
 
-        }
-        else if (other.CompareTag("Archer")) 
-        {
-            Debug.Log("Archer entered");
-            ArcherController archer = other.GetComponent<ArcherController>();
-            if (archer != null && !archers.Contains(archer))
-            {
-                RegisterArcher(archer);
-            }
-        }
-        else if (other.CompareTag("Builder"))
-        {
-            BuilderController builder = other.GetComponent<BuilderController>();
-            if (builder != null && !builders.Contains(builder))
-            {
-                RegisterBuilder(builder);
-            }
-        }
-        else if (other.CompareTag("Farmer"))
-        {
-            FarmerController farmer = other.GetComponent<FarmerController>();
-            if (farmer != null && !farmers.Contains(farmer))
-            {
-                RegisterFarmer(farmer);
-            }
+            case "CampFire":
+                Debug.Log("Camp Fire find!");
+                CampFireZone = other.gameObject;
+                UpdateFarmerCampFireZone();
+                break;
+
+            case "Archer":
+                Debug.Log("Archer entered");
+                ArcherController archer = other.GetComponent<ArcherController>();
+                if (archer != null && !archers.Contains(archer))
+                {
+                    RegisterArcher(archer);
+                }
+                break;
+
+            case "Builder":
+                BuilderController builder = other.GetComponent<BuilderController>();
+                if (builder != null && !builders.Contains(builder))
+                {
+                    RegisterBuilder(builder);
+                }
+                break;
+
+            case "Farmer":
+                FarmerController farmer = other.GetComponent<FarmerController>();
+                if (farmer != null && !farmers.Contains(farmer))
+                {
+                    RegisterFarmer(farmer);
+                }
+                break;
+
+            case "Swordsman":
+                SwordsmanController swordsman = other.GetComponent<SwordsmanController>();
+                if (swordsman != null && !swordsmans.Contains(swordsman))
+                {
+                    RegisterSwordsman(swordsman);
+                }
+                break;
+
+            default:
+                // Optionally handle the case where no known tag is matched
+                //Debug.Log("Unknown tag detected: " + other.tag);
+                break;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) 
+
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Archer")) 
+        if (other.CompareTag("Archer"))
         {
             Debug.Log("Archer exited");
             ArcherController archer = other.GetComponent<ArcherController>();
@@ -74,7 +95,7 @@ public class WorldPoolManager : MonoBehaviour
             }
         }
     }
-    private void RegisterBuilder(BuilderController builder) 
+    private void RegisterBuilder(BuilderController builder)
     {
         builders.Add(builder);
         builder.SetSafeZone(safeZone); // Assuming SetSafeZone(GameObject safeZone) is implemented in BuilderController
@@ -86,7 +107,10 @@ public class WorldPoolManager : MonoBehaviour
             builder.SetSafeZone(safeZone);
         }
     }
-
+    private void RegisterSwordsman(SwordsmanController swardman)
+    {
+        swordsmans.Add(swardman);
+    }
     private void RegisterFarmer(FarmerController farmer)
     {
         farmers.Add(farmer);
@@ -104,11 +128,15 @@ public class WorldPoolManager : MonoBehaviour
         archer.AssignPool(null);
     }
 
-    private void UpdateArcherSafeZones()
+    private void UpdateSafeZones()
     {
         foreach (ArcherController archer in archers)
         {
             archer.SetSafeZone(safeZone);
+        }
+        foreach (SwordsmanController swordsman in swordsmans)
+        {
+            swordsman.SetSafeZone(safeZone);
         }
     }
 
@@ -123,9 +151,19 @@ public class WorldPoolManager : MonoBehaviour
 
     private void UpdateFarmerCampFireZone()
     {
-        foreach(FarmerController farmer in farmers)
+        foreach (FarmerController farmer in farmers)
         {
             farmer.SetCampFireZone(CampFireZone);
+        }
+    }
+
+    private void UpdateFieldLocation()
+    {
+        if (farmers.Count > 0 && field != null)
+        {
+            // Sending field coordinates to the first farmer in the list
+            farmers[0].SetField(field);
+            Debug.Log($"Field coordinates sent to Farmer: {field.transform.position}");
         }
     }
 }

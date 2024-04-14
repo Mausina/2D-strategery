@@ -39,7 +39,6 @@ public class ObjectSpawner : MonoBehaviour
     private bool IsNightTime()
     {
         TimeSpan currentTime = WorldTimeSystem.WorldTime.Instance.GetCurrentTime();
-        UnityEngine.Debug.Log(currentTime);
         return currentTime.Hours < 6 || currentTime.Hours >= 18;
     }
     void SpawnObject()

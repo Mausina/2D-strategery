@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using WorldTimeSystem;
 
 namespace WorldTimeSystem
 {
-    public static class WorldTimeConstants
-    {
-        public const int MinutesInDay = 1440; // Example value for 24 hours
-    }
+
     public class Wheat : MonoBehaviour
     {
         [SerializeField]
@@ -17,6 +15,10 @@ namespace WorldTimeSystem
         private GameObject deterioratedPrefab; // Prefab for the deteriorated crop
         [SerializeField]
         private GameObject prefabCoin; // Prefab to drop when harvested
+        [SerializeField]
+        private int numberOfCoins = 5; // Number of coins to spawn
+        [SerializeField]
+        private float spawnRadius = 1.0f; // Radius within which coins will spawn
 
         private int currentStage = -1; // Start at -1 to indicate not growing
         private const int GROWTH_DAYS = 3; // Total days for full growth
@@ -28,52 +30,53 @@ namespace WorldTimeSystem
 
         private void Start()
         {
-            // Subscribe to the WorldTimeChanged event
             WorldTime.Instance.WorldTimeChanged += OnWorldTimeChanged;
+            lastGrowthTime = WorldTime.Instance.GetCurrentTime();
         }
 
         private void OnDestroy()
         {
-            // Unsubscribe from the WorldTimeChanged event
             WorldTime.Instance.WorldTimeChanged -= OnWorldTimeChanged;
         }
 
         private void OnWorldTimeChanged(object sender, TimeSpan currentTime)
         {
-            if (!isFarmerInteracted) return; // Only proceed if farmer has interacted
+            if (!isFarmerInteracted) return;
 
-            // Calculate the interval in minutes for each stage of growth
-            float growthInterval = (GROWTH_DAYS * WorldTimeConstants.MinutesInDay) / NUM_STAGES;
+            // Calculate the interval in real-time seconds for each growth stage
+            float totalGrowthTimeInSeconds = GROWTH_DAYS * WorldTime.Instance._dayLength;
+            float growthIntervalInSeconds = totalGrowthTimeInSeconds / NUM_STAGES;
 
-            // Grow to the next stage if the interval has passed
-            if (currentStage < NUM_STAGES - 1 && currentTime.TotalMinutes >= lastGrowthTime.TotalMinutes + growthInterval)
+            float secondsSinceLastGrowth = (float)(currentTime - lastGrowthTime).TotalMinutes;
+
+            if (currentStage < NUM_STAGES - 1 && secondsSinceLastGrowth >= growthIntervalInSeconds)
             {
                 lastGrowthTime = currentTime;
                 GrowCrop();
-            }
-
-            // Check if it's time to deteriorate after 2 days of being fully grown
-            if (currentStage == NUM_STAGES - 1 && currentTime.TotalMinutes >= timeWhenFullyGrown.TotalMinutes + (2 * WorldTimeConstants.MinutesInDay))
-            {
-                DeteriorateCrop();
             }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Farmer"))
+            if (other.CompareTag("Farmer") && !isFarmerInteracted)
             {
-                if (currentStage == -1)
-                {
-                    lastGrowthTime = WorldTime.Instance.GetCurrentTime();
-                    isFarmerInteracted = true;
-                    GrowCrop();
-                }
-                else if (currentStage == NUM_STAGES - 1)
-                {
-                    Harvest();
-                }
+                isFarmerInteracted = true;
+                Invoke("InitialGrow", 7f); // Start growing after a 7-second delay
             }
+        }
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.CompareTag("Farmer") && currentStage == NUM_STAGES - 1)
+            {
+                Harvest();
+            }
+        }
+
+        private void InitialGrow()
+        {
+            lastGrowthTime = WorldTime.Instance.GetCurrentTime();
+            GrowCrop();
         }
 
         private void GrowCrop()
@@ -87,7 +90,6 @@ namespace WorldTimeSystem
                 }
                 currentCropInstance = Instantiate(growthStagePrefabs[currentStage], transform.position, Quaternion.identity, transform);
 
-                // If the crop has reached full growth, record the time
                 if (currentStage == NUM_STAGES - 1)
                 {
                     timeWhenFullyGrown = WorldTime.Instance.GetCurrentTime();
@@ -97,15 +99,12 @@ namespace WorldTimeSystem
 
         private void DeteriorateCrop()
         {
-            if (currentStage != NUM_STAGES)
+            currentStage = NUM_STAGES;
+            if (currentCropInstance != null)
             {
-                currentStage = NUM_STAGES;
-                if (currentCropInstance != null)
-                {
-                    Destroy(currentCropInstance);
-                }
-                currentCropInstance = Instantiate(deterioratedPrefab, transform.position, Quaternion.identity, transform);
+                Destroy(currentCropInstance);
             }
+            currentCropInstance = Instantiate(deterioratedPrefab, transform.position, Quaternion.identity, transform);
         }
 
         private void Harvest()
@@ -114,8 +113,20 @@ namespace WorldTimeSystem
             {
                 Destroy(currentCropInstance);
             }
-            Instantiate(prefabCoin, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+
+            // Calculate the top edge of the collider
+            var collider = GetComponent<Collider2D>();
+            float topEdge = collider.bounds.max.y;
+
+            // Spawn coins along the top edge of the collider
+            for (int i = 0; i < numberOfCoins; i++)
+            {
+                float spawnX = UnityEngine.Random.Range(collider.bounds.min.x, collider.bounds.max.x);
+                Vector3 spawnPosition = new Vector3(spawnX, topEdge, 0);
+                Instantiate(prefabCoin, spawnPosition, Quaternion.identity);
+            }
+
+            Destroy(gameObject); // Consider not destroying if you want the crop to regrow
         }
     }
 }
